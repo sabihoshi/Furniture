@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Caliburn.Micro;
+using Furniture.ViewModels;
 
 namespace Furniture
 {
@@ -19,7 +20,7 @@ namespace Furniture
 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            // manager.ShowWindow();
+            manager.ShowWindow(new TableViewModel());
         }
     }
 }

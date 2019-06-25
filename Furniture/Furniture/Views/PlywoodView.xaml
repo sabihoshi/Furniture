@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Furniture.Views.PlywoodView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Furniture.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d">
+    <materialDesign:Card>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Padding="10"
+                       Text="Plywood"/>
+
+            <!--Thickness-->
+            <Grid Column="1" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Slider Grid.Row="0" Padding="10"
+                        Minimum="{Binding Path=Plywood.Min.Percentage}"
+                        Maximum="{Binding Path=Plywood.Max.Percentage}"
+                        Value="{Binding Path=SliderValue}"
+                        IsSnapToTickEnabled="True"
+                        TickFrequency="0.01"
+                        Ticks="{Binding Path=Ticks}" />
+
+                <TextBlock Grid.Row="1" Padding="10"
+                           Text="{Binding Path=Thickness}"/>
+                
+            </Grid>
+
+            <!--Count-->
+            <Grid Column="2">
+                <TextBlock Padding="10"
+                           Text="Hi"/>
+            </Grid>
+        </Grid>
+    </materialDesign:Card>
+</UserControl>
