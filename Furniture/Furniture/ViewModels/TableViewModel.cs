@@ -1,18 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Caliburn.Micro;
 
 namespace Furniture.ViewModels
 {
     public class TableViewModel : Screen
     {
-        public BindableCollection<PlywoodViewModel> OrdersView { get; set; }= new BindableCollection<PlywoodViewModel>();
-        public TableViewModel()
+        public BindableCollection<ItemViewModel> OrdersView { get; set; } = new BindableCollection<ItemViewModel>();
+
+        public decimal Total { get; set; }
+
+        public void AddItem()
         {
-            OrdersView.Add(new PlywoodViewModel());
+            if (OrdersView.Count == 0 || OrdersView.Last().Content != null)
+                OrdersView.Add(new ItemViewModel(this));
+        }
+
+        public void UpdatePrice()
+        {
+            Total = OrdersView.Select(x => x.Content.Price).Sum();
+        }
+
+        public void RemoveItem(ItemViewModel itemViewModel)
+        {
+            OrdersView.Remove(itemViewModel);
         }
     }
 }

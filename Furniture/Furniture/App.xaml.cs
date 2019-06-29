@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Furniture.Models;
+using Newtonsoft.Json;
+using System.IO;
 using System.Windows;
 
 namespace Furniture
@@ -13,5 +11,6 @@ namespace Furniture
     /// </summary>
     public partial class App : Application
     {
+        public static Config Config = new Config(JsonConvert.DeserializeObject<List<Config.Material>>(File.ReadAllText("Config/config.json")));
     }
 }

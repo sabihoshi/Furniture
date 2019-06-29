@@ -5,41 +5,25 @@ namespace Furniture.Models
 {
     public class Thickness
     {
-        private decimal _percentage;
+        private decimal _value;
 
-        public static List<Thickness> CreateList(Dictionary<decimal, decimal> dict)
+        public decimal Value
         {
-            var list = new List<Thickness>();
-            foreach (var item in dict)
-            {
-                list.Add(new Thickness(item.Key, item.Value));
-            }
-
-            return list;
-        }
-        public Thickness(decimal percentage = 0, decimal price = 0)
-        {
-            Percentage = percentage;
-            Price = price;
-        }
-
-        public decimal Percentage
-        {
-            get => _percentage;
+            get => _value;
             set
             {
                 if (value > 1)
-                    _percentage = 1;
+                    _value = 1;
                 else if (value < 0)
-                    _percentage = 0;
+                    _value = 0;
                 else
-                    _percentage = value;
+                    _value = value;
             }
         }
 
         public override string ToString()
         {
-            return Fraction.FromDecimal(Percentage).ToString();
+            return Fraction.FromDecimal(Value).ToString();
         }
 
         public decimal Price { get; set; }

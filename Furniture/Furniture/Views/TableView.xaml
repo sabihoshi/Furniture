@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Furniture.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -15,14 +17,38 @@
         Title="TableView" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
 
         <!--Orders-->
-        <Grid Column="0" Margin="10">
-            <ItemsControl x:Name="OrdersView" />
+        <Grid Column="0" Margin="10" MinWidth="250">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!--The ItemsControl for the Orders. A card and margin is added for each item.-->
+            <ItemsControl Grid.Row="0"
+                          x:Name="OrdersView">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <materialDesign:Card Margin="10">
+                            <ContentControl cal:View.Model="{Binding}"/>
+                        </materialDesign:Card>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Button Grid.Row="1" x:Name="AddItem"
+                    Content="{materialDesign:PackIcon Plus}"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}" />
+        </Grid>
+
+        <!--Total-->
+        <Grid Column="1" Margin="10">
+            <TextBlock Text="{Binding Path=Total, StringFormat=c2, ConverterCulture=en-PH}" />
         </Grid>
     </Grid>
 </Window>

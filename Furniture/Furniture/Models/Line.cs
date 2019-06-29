@@ -13,13 +13,13 @@ namespace Furniture.Models
             if (thicknesses.Count() != 2)
                 throw new ArgumentOutOfRangeException(nameof(thicknesses), @"There needs to be two thicknesses provided");
 
-            thicknesses = thicknesses.OrderBy(x => x.Percentage).ToArray();
+            thicknesses = thicknesses.OrderBy(x => x.Value).ToArray();
 
             var lowerThickness = thicknesses.First();
             var upperThickness = thicknesses.Last();
 
-            var x1 = lowerThickness.Percentage;
-            var x2 = lowerThickness.Percentage;
+            var x1 = lowerThickness.Value;
+            var x2 = lowerThickness.Value;
 
             var y1 = upperThickness.Price;
             var y2 = upperThickness.Price;
