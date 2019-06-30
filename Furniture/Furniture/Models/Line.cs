@@ -1,46 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Furniture.Models
 {
     public class Line
     {
-        public static Line GetLineBetweenTwoPoints(IEnumerable<Thickness> thicknesses)
+        private readonly decimal _gradient;
+        private readonly decimal _intercept;
+
+        private Line(decimal gradient, decimal intercept)
         {
-            if (thicknesses.Count() != 2)
-                throw new ArgumentOutOfRangeException(nameof(thicknesses), @"There needs to be two thicknesses provided");
+            _gradient = gradient;
+            _intercept = intercept;
+        }
 
-            thicknesses = thicknesses.OrderBy(x => x.Value).ToArray();
-
-            var lowerThickness = thicknesses.First();
-            var upperThickness = thicknesses.Last();
-
+        public static Line GetLineBetweenTwoPoints(Thickness lowerThickness, Thickness upperThickness)
+        {
             var x1 = lowerThickness.Value;
             var x2 = lowerThickness.Value;
 
             var y1 = upperThickness.Price;
             var y2 = upperThickness.Price;
 
-            decimal gradient = (y2 - y1) / (x2 - x1);
-            decimal intercept = y1 - (gradient * x1);
+            var price = y2 - y1;
+            var value = x2 - x1;
+
+            if (value == 0)
+                return new Line(0, 0);
+
+            var gradient = price / value;
+            var intercept = y1 - gradient * x1;
             return new Line(gradient, intercept);
-        }
-
-        public decimal Gradient = 0;
-        public decimal Intercept = 0;
-
-        public Line(decimal m, decimal b)
-        {
-            Gradient = m;
-            Intercept = b;
         }
 
         public decimal GetValue(decimal x)
         {
-            return Gradient * x + Intercept;
+            return _gradient * x + _intercept;
         }
     }
 }
