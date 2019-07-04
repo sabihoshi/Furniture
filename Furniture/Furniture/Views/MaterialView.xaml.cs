@@ -3,11 +3,11 @@
 namespace Furniture.Views
 {
     /// <summary>
-    ///     Interaction logic for Plywood.xaml
+    ///     Interaction logic for MaterialView.xaml
     /// </summary>
-    public partial class PlywoodView : UserControl
+    public partial class MaterialView : UserControl
     {
-        public PlywoodView()
+        public MaterialView()
         {
             InitializeComponent();
         }

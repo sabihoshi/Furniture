@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
-using Fractions;
+﻿using Fractions;
 
-namespace Furniture.Models
+namespace Furniture.Materials
 {
     public class Thickness
     {
         private decimal _value;
+        public string Name => Fraction.FromDecimal(Value).ToString();
+        public decimal Price { get; set; }
 
         public decimal Value
         {
@@ -20,12 +21,5 @@ namespace Furniture.Models
                     _value = value;
             }
         }
-
-        public override string ToString()
-        {
-            return Fraction.FromDecimal(Value).ToString();
-        }
-
-        public decimal Price { get; set; }
     }
 }

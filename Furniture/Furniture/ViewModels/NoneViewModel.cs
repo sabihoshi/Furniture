@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Furniture.Models;
 
 namespace Furniture.ViewModels
 {
-    public class NoneViewModel : IMaterial
+    public class NoneViewModel : ChildModel
     {
-        public decimal Price { get; }
-        public string Name { get; } = "None";
+        public NoneViewModel(ItemViewModel sourceViewModel) : base(sourceViewModel) { }
+        public override string Name { get; } = "None";
+        public override decimal Total { get; set; }
+
+        public override void UpdatePrice()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

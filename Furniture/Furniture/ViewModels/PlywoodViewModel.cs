@@ -1,31 +1,22 @@
 ﻿using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using Fractions;
-using Furniture.Models;
+using Furniture.Materials;
 
 namespace Furniture.ViewModels
 {
-    public class PlywoodViewModel : IMaterial, INotifyPropertyChanged
+    public sealed class PlywoodViewModel : ChildModel, INotifyPropertyChanged
     {
-        private int _quantity;
-        private string _quantityField;
-        private decimal _sliderValue;
-        private readonly ItemViewModel _sourceViewModel;
+        private string _quantity = "1";
 
-        public PlywoodViewModel(ItemViewModel sourceViewModel)
-        {
-            _sourceViewModel = sourceViewModel;
-            SliderValue = Plywood.Min.Value;
-        }
+        private Thickness _selectedThickness = Plywood.Min;
 
-        public string Name => "Plywood";
+        public PlywoodViewModel(ItemViewModel sourceViewModel) : base(sourceViewModel) { }
 
-        public Plywood Plywood { get; set; } = new Plywood();
+        public override string Name => "Plywood";
 
-        public decimal Price { get; set; }
+        public static Plywood Plywood { get; set; } = App.Config.Plywood;
 
-        public int Quantity
+        public string Quantity
         {
             get => _quantity;
             set
@@ -35,49 +26,33 @@ namespace Furniture.ViewModels
             }
         }
 
-        private void UpdatePrice()
+        public Thickness SelectedThickness
         {
-            Price = Plywood.GetPrice(SliderValue) * Quantity;
-            _sourceViewModel.UpdatePrice();
-        }
-
-        public string QuantityField
-        {
-            get => _quantityField;
+            get => _selectedThickness;
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    _quantityField = "0";
-                    Quantity = 0;
-                }
-                else if (int.TryParse(value, out var result))
-                {
-                    _quantityField = result.ToString();
-                    Quantity = result;
-                }
+                _selectedThickness = value;
+                UpdatePrice();
             }
         }
 
-        public decimal SliderValue
-        {
-            get => _sliderValue;
-            set
-            {
-                _sliderValue = value;
-                Thickness = Fraction.FromDecimal(_sliderValue).ToString();
-                Price = Plywood.GetPrice(SliderValue) * Quantity;
-            }
-        }
-
-        public string Thickness { get; set; }
-        public string Ticks => string.Join(", ", Plywood.Thicknesses.Select(x => x.Value));
+        public override decimal Total { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public override void UpdatePrice()
+        {
+            if (!int.TryParse(Quantity, out var quantity))
+                return;
+
+            Total = SelectedThickness.Price * quantity;
+
+            _sourceViewModel.UpdatePrice();
         }
     }
 }

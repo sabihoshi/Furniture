@@ -111,18 +111,29 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Config.cs" />
-    <Compile Include="Models\IMaterial.cs" />
-    <Compile Include="Models\Line.cs" />
-    <Compile Include="Models\Plywood.cs" />
-    <Compile Include="Models\Thickness.cs" />
+    <Compile Include="Work\Area.cs" />
+    <Compile Include="Config\Config.cs" />
+    <Compile Include="Work\Fee.cs" />
+    <Compile Include="Work\ICanCalculate.cs" />
+    <Compile Include="Materials\IMaterial.cs" />
+    <Compile Include="Work\IWork.cs" />
+    <Compile Include="ViewModels\ChildModel.cs" />
+    <Compile Include="Materials\Material.cs" />
+    <Compile Include="Materials\Plywood.cs" />
+    <Compile Include="Materials\Thickness.cs" />
+    <Compile Include="Materials\Wood.cs" />
+    <Compile Include="Work\Work.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
+    <Compile Include="ViewModels\MaterialViewModel.cs" />
     <Compile Include="ViewModels\NoneViewModel.cs" />
     <Compile Include="ViewModels\PlywoodViewModel.cs" />
     <Compile Include="ViewModels\TableViewModel.cs" />
     <Compile Include="Views\ItemView.xaml.cs">
       <DependentUpon>ItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MaterialView.xaml.cs">
+      <DependentUpon>MaterialView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PlywoodView.xaml.cs">
       <DependentUpon>PlywoodView.xaml</DependentUpon>
@@ -165,6 +176,10 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="Views\ItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MaterialView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

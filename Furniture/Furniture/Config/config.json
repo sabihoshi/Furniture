@@ -1,17 +1,25 @@
-[{
-    "Name": "Plywood",
-    "Type": 0,
-    "Thicknesses": [{
-            "Value": 0.25,
-            "Price": 450.00
-        },
-        {
-            "Value": 0.50,
-            "Price": 770.00
-        },
-        {
-            "Value": 0.75,
-            "Price": 1270.00
-        }
+{
+  "Plywood": {
+    "Thicknesses": [
+      {
+        "Value": 0.25,
+        "Price": 450.00
+      }, {
+        "Value": 0.50,
+        "Price": 770.00
+      }, {
+        "Value": 0.75,
+        "Price": 1270.00
+      }
     ]
-}]
+  },
+  "Materials": [
+    {
+      "Name": "Mahogany",
+      "Price": 90.00
+    }, {
+      "Name": "Tanguile",
+      "Price": 100.00
+    }
+  ]
+}

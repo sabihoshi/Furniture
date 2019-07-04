@@ -1,32 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Caliburn.Micro;
-using Furniture.Models;
 using Furniture.Properties;
-using PropertyChanged;
 
 namespace Furniture.ViewModels
 {
     public class ItemViewModel : INotifyPropertyChanged
     {
+        private ChildModel _content;
         private readonly TableViewModel _sourceViewModel;
-        private IMaterial _content;
-        private decimal _total;
 
         public ItemViewModel(TableViewModel sourceViewModel)
         {
             _sourceViewModel = sourceViewModel;
-            
-            Items.Add(new NoneViewModel());
+
             Items.Add(new PlywoodViewModel(this));
+
+            foreach (var material in App.Config.Materials)
+                Items.Add(new MaterialViewModel(this, material));
+
+            Items.Add(new NoneViewModel(this));
+
+            Content = Items.First();
         }
 
-        public IMaterial Content
+        public ChildModel Content
         {
             get => _content;
             set
@@ -34,19 +33,16 @@ namespace Furniture.ViewModels
                 if (value.Name == "None")
                 {
                     _sourceViewModel.RemoveItem(this);
+                    UpdatePrice();
                     return;
                 }
+
                 _content = value;
+                UpdatePrice();
             }
         }
 
-        public void UpdatePrice()
-        {
-            _sourceViewModel.UpdatePrice();
-        }
-
-
-        public BindableCollection<IMaterial> Items { get; set; } = new BindableCollection<IMaterial>();
+        public BindableCollection<ChildModel> Items { get; set; } = new BindableCollection<ChildModel>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -54,6 +50,11 @@ namespace Furniture.ViewModels
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void UpdatePrice()
+        {
+            _sourceViewModel.UpdatePrice();
         }
     }
 }

@@ -17,29 +17,31 @@
         Title="TableView" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
 
 
         <!--Orders-->
-        <Grid Column="0" Margin="10" MinWidth="250">
+        <Grid Column="0" Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!--The ItemsControl for the Orders. A card and margin is added for each item.-->
-            <ItemsControl Grid.Row="0"
-                          x:Name="OrdersView">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <materialDesign:Card Margin="10">
-                            <ContentControl cal:View.Model="{Binding}"/>
-                        </materialDesign:Card>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl Grid.Row="0"
+                              x:Name="OrdersView">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <materialDesign:Card Margin="5">
+                                <ContentControl cal:View.Model="{Binding}" />
+                            </materialDesign:Card>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
 
             <Button Grid.Row="1" x:Name="AddItem"
                     Content="{materialDesign:PackIcon Plus}"
@@ -48,7 +50,7 @@
 
         <!--Total-->
         <Grid Column="1" Margin="10">
-            <TextBlock Text="{Binding Path=Total, StringFormat=c2, ConverterCulture=en-PH}" />
+            <DataGrid x:Name="DataGrid" />
         </Grid>
     </Grid>
 </Window>
