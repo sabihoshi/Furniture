@@ -7,18 +7,18 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Title="TableView" Height="450" Width="800">
+    <!--TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="16"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="TableView" Height="450" Width="800">
+        FontFamily="{DynamicResource MaterialDesignFont}"-->
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
 
@@ -44,13 +44,15 @@
             </ScrollViewer>
 
             <Button Grid.Row="1" x:Name="AddItem"
+                    Content="+" />
+
+            <!--<Button Grid.Row="1" x:Name="AddItem"
                     Content="{materialDesign:PackIcon Plus}"
-                    Style="{StaticResource MaterialDesignFloatingActionButton}" />
+                    Style="{StaticResource MaterialDesignFloatingActionButton}" />-->
         </Grid>
 
         <!--Total-->
-        <Grid Column="1" Margin="10">
-            <DataGrid x:Name="DataGrid" />
-        </Grid>
+        <ContentControl Grid.Column="1"
+                        cal:View.Model="{Binding Path=QuotationViewModel}"/>
     </Grid>
 </Window>

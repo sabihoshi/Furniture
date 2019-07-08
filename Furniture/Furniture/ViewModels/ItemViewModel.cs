@@ -8,7 +8,7 @@ namespace Furniture.ViewModels
 {
     public class ItemViewModel : INotifyPropertyChanged
     {
-        private ChildModel _content;
+        private ChildViewModel _content;
         private readonly TableViewModel _sourceViewModel;
 
         public ItemViewModel(TableViewModel sourceViewModel)
@@ -25,7 +25,7 @@ namespace Furniture.ViewModels
             Content = Items.First();
         }
 
-        public ChildModel Content
+        public ChildViewModel Content
         {
             get => _content;
             set
@@ -33,16 +33,16 @@ namespace Furniture.ViewModels
                 if (value.Name == "None")
                 {
                     _sourceViewModel.RemoveItem(this);
-                    UpdatePrice();
+                    Update();
                     return;
                 }
 
                 _content = value;
-                UpdatePrice();
+                Update();
             }
         }
 
-        public BindableCollection<ChildModel> Items { get; set; } = new BindableCollection<ChildModel>();
+        public BindableCollection<ChildViewModel> Items { get; set; } = new BindableCollection<ChildViewModel>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -52,9 +52,9 @@ namespace Furniture.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void UpdatePrice()
+        public void Update()
         {
-            _sourceViewModel.UpdatePrice();
+            _sourceViewModel.Update();
         }
     }
 }

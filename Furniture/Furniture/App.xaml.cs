@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows;
+using Furniture.Work;
 using Newtonsoft.Json;
 
 namespace Furniture
@@ -9,6 +11,14 @@ namespace Furniture
     /// </summary>
     public partial class App : Application
     {
-        public static Config.Config Config = JsonConvert.DeserializeObject<Config.Config>(File.ReadAllText("Config/config.json"));
+        public App()
+        {
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Objects
+            };
+            Config = JsonConvert.DeserializeObject<Config.Config>(File.ReadAllText("Config/config.json"), settings);
+        }
+        public static Config.Config Config { get; private set; }
     }
 }

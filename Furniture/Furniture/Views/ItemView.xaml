@@ -9,12 +9,12 @@
              xmlns:interface="clr-namespace:Furniture.Materials"
              mc:Ignorable="d">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-        <ComboBox Grid.Column="0" Margin="10"
+        <ComboBox Grid.Row="0" Margin="10"
                   x:Name="Items" MinWidth="50"
                   SelectedItem="{Binding Path=Content}">
             <ComboBox.ItemTemplate>
@@ -24,7 +24,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <ContentControl Grid.Column="1" VerticalAlignment="Center"
+        <ContentControl Grid.Row="1" VerticalAlignment="Center"
                         cal:View.Model="{Binding Path=Content}" />
     </Grid>
 </UserControl>

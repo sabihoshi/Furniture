@@ -1,18 +1,19 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Furniture.Materials;
+﻿using Furniture.Materials;
 using Furniture.Properties;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Furniture.ViewModels
 {
-    public sealed class MaterialViewModel : ChildModel, INotifyPropertyChanged
+    public sealed class MaterialViewModel : ChildViewModel, INotifyPropertyChanged
     {
-        private string _length = "1";
-
         private readonly Material _material;
+        private string _length = "1";
         private string _quantity = "1";
         private string _thickness = "1";
         private string _width = "1";
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public MaterialViewModel(ItemViewModel sourceViewModel, Material material) : base(sourceViewModel)
         {
@@ -25,7 +26,7 @@ namespace Furniture.ViewModels
             set
             {
                 _length = value;
-                UpdatePrice();
+                Update();
             }
         }
 
@@ -37,7 +38,7 @@ namespace Furniture.ViewModels
             set
             {
                 _quantity = value;
-                UpdatePrice();
+                Update();
             }
         }
 
@@ -47,7 +48,7 @@ namespace Furniture.ViewModels
             set
             {
                 _thickness = value;
-                UpdatePrice();
+                Update();
             }
         }
 
@@ -59,19 +60,11 @@ namespace Furniture.ViewModels
             set
             {
                 _width = value;
-                UpdatePrice();
+                Update();
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public override void UpdatePrice()
+        public override void Update()
         {
             if (!int.TryParse(Thickness, out var thickness))
                 return;
@@ -86,7 +79,13 @@ namespace Furniture.ViewModels
 
             Total = slice * _material.Price * quantity;
 
-            _sourceViewModel.UpdatePrice();
+            _sourceViewModel.Update();
+        }
+
+        [NotifyPropertyChangedInvocator]
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

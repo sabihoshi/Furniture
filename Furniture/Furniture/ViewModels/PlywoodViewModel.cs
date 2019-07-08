@@ -4,17 +4,20 @@ using Furniture.Materials;
 
 namespace Furniture.ViewModels
 {
-    public sealed class PlywoodViewModel : ChildModel, INotifyPropertyChanged
+    public sealed class PlywoodViewModel : ChildViewModel, INotifyPropertyChanged
     {
         private string _quantity = "1";
 
-        private Thickness _selectedThickness = Plywood.Min;
+        private Thickness _selectedThickness;
 
-        public PlywoodViewModel(ItemViewModel sourceViewModel) : base(sourceViewModel) { }
+        public PlywoodViewModel(ItemViewModel sourceViewModel) : base(sourceViewModel)
+        {
+            _selectedThickness = Plywood.Min;
+        }
 
         public override string Name => "Plywood";
 
-        public static Plywood Plywood { get; set; } = App.Config.Plywood;
+        public Plywood Plywood { get; set; } = App.Config.Plywood;
 
         public string Quantity
         {
@@ -22,7 +25,7 @@ namespace Furniture.ViewModels
             set
             {
                 _quantity = value;
-                UpdatePrice();
+                Update();
             }
         }
 
@@ -32,7 +35,7 @@ namespace Furniture.ViewModels
             set
             {
                 _selectedThickness = value;
-                UpdatePrice();
+                Update();
             }
         }
 
@@ -45,14 +48,14 @@ namespace Furniture.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public override void UpdatePrice()
+        public override void Update()
         {
             if (!int.TryParse(Quantity, out var quantity))
                 return;
 
             Total = SelectedThickness.Price * quantity;
 
-            _sourceViewModel.UpdatePrice();
+            _sourceViewModel.Update();
         }
     }
 }

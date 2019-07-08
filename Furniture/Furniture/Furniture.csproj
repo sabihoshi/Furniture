@@ -17,6 +17,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -111,18 +126,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Work\Area.cs" />
+    <Compile Include="Properties\Annotations1.cs" />
+    <Compile Include="ViewModels\QuotationViewModel.cs" />
+    <Compile Include="Views\QuotationView.xaml.cs">
+      <DependentUpon>QuotationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Config\Config.cs" />
-    <Compile Include="Work\Fee.cs" />
     <Compile Include="Work\ICanCalculate.cs" />
     <Compile Include="Materials\IMaterial.cs" />
-    <Compile Include="Work\IWork.cs" />
-    <Compile Include="ViewModels\ChildModel.cs" />
+    <Compile Include="ViewModels\ChildViewModel.cs" />
     <Compile Include="Materials\Material.cs" />
     <Compile Include="Materials\Plywood.cs" />
     <Compile Include="Materials\Thickness.cs" />
     <Compile Include="Materials\Wood.cs" />
-    <Compile Include="Work\Work.cs" />
+    <Compile Include="Work\QuotationRow.cs" />
+    <Compile Include="Work\QuotationValue.cs" />
+    <Compile Include="Work\Value.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\MaterialViewModel.cs" />
@@ -169,11 +188,23 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Work\QuotationPercentage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Views\ItemView.xaml">
       <SubType>Designer</SubType>
@@ -184,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PlywoodView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QuotationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

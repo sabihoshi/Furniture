@@ -4,10 +4,12 @@
       {
         "Value": 0.25,
         "Price": 450.00
-      }, {
+      },
+      {
         "Value": 0.50,
         "Price": 770.00
-      }, {
+      },
+      {
         "Value": 0.75,
         "Price": 1270.00
       }
@@ -17,9 +19,42 @@
     {
       "Name": "Mahogany",
       "Price": 90.00
-    }, {
+    },
+    {
       "Name": "Tanguile",
       "Price": 100.00
+    }
+  ],
+  "Work": [
+    {
+      "$type": "Furniture.Work.QuotationPercentage, Furniture",
+      "Name": "Milling",
+      "Value": 0.10
+    },
+    {
+      "$type": "Furniture.Work.QuotationValue, Furniture",
+      "Name": "Labor",
+      "Value": 800
+    },
+    {
+      "$type": "Furniture.Work.QuotationPercentage, Furniture",
+      "Name": "Finishing",
+      "Value": 0.45
+    },
+    {
+      "$type": "Furniture.Work.QuotationPercentage, Furniture",
+      "Name": "Overhead",
+      "Value": 0.35
+    },
+    {
+      "$type": "Furniture.Work.QuotationPercentage, Furniture",
+      "Name": "Office",
+      "Value": 0.25
+    },
+    {
+      "$type": "Furniture.Work.QuotationPercentage, Furniture",
+      "Name": "Store",
+      "Value": 0.15
     }
   ]
 }
