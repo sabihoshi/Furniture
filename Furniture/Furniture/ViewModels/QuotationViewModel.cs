@@ -19,7 +19,7 @@ namespace Furniture.ViewModels
             Update();
         }
 
-        public BindableCollection<HasCalculation> Work { get; set; } = App.Config.Work;
+        public BindableCollection<QuotationColumn> Work { get; set; } = App.Config.Work;
 
         public void Update()
         {

@@ -6,6 +6,22 @@
              xmlns:local="clr-namespace:Furniture.Views"
              mc:Ignorable="d">
     <Grid>
-         <DataGrid ItemsSource="{Binding Path=Work, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+         <DataGrid x:Name="Work" 
+                   AlternatingRowBackground="Gray" 
+                   CanUserAddRows="True"
+                   AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Type" IsReadOnly="True"
+                                    Binding="{Binding Path=Name}" />
+
+                <DataGridTextColumn Header="Value" 
+                                    Binding="{Binding Path=Value}"/>
+
+                <DataGridTextColumn Header="Amount" IsReadOnly="True"
+                                    Binding="{Binding Path=Total,
+                                                      ConverterCulture=en-PH,
+                                                      StringFormat='c2'}"  />
+            </DataGrid.Columns>
+         </DataGrid>
     </Grid>
 </UserControl>

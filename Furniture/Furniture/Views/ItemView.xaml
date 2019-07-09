@@ -25,7 +25,8 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <ContentControl Grid.Row="1" VerticalAlignment="Center"
+        <ContentControl Grid.Row="1" Margin="10"
+                        VerticalAlignment="Center"
                         cal:View.Model="{Binding Path=Content}" />
     </Grid>
 </UserControl>

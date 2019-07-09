@@ -132,7 +132,7 @@
       <DependentUpon>QuotationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Config\Config.cs" />
-    <Compile Include="Work\HasCalculation.cs" />
+    <Compile Include="Work\QuotationColumn.cs" />
     <Compile Include="Materials\IMaterial.cs" />
     <Compile Include="Materials\Material.cs" />
     <Compile Include="Materials\Plywood.cs" />
@@ -141,7 +141,6 @@
     <Compile Include="ViewModels\ChildViewModel.cs" />
     <Compile Include="ViewModels\IParentViewModel.cs" />
     <Compile Include="Work\QuotationRow.cs" />
-    <Compile Include="Work\QuotationValue.cs" />
     <Compile Include="Work\Value.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
@@ -189,7 +188,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Work\QuotationPercentage.cs" />
+    <Compile Include="Work\Percentage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

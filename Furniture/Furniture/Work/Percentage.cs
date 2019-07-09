@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace Furniture.Work
 {
-    public class QuotationPercentage : HasCalculation
+    public class Percentage : QuotationColumn
     {
-        public QuotationPercentage(QuotationViewModel sourceViewModel) : base(sourceViewModel)
+        public Percentage(QuotationViewModel sourceViewModel) : base(sourceViewModel)
         {
         }
 
-        public override decimal Calculate(decimal wood, List<HasCalculation> input)
+        public override decimal Calculate(decimal wood, List<QuotationColumn> input)
         {
             return Value * (input.Select(x => x.Total).Sum() + wood);
         }

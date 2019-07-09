@@ -7,19 +7,18 @@ using Furniture.ViewModels;
 
 namespace Furniture.Work
 {
-    public abstract class HasCalculation : ChildViewModel, INotifyPropertyChanged
+    public abstract class QuotationColumn : ChildViewModel, INotifyPropertyChanged
     {
         private decimal _value;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected HasCalculation(IParentViewModel parentViewModel) : base(parentViewModel)
+        protected QuotationColumn(IParentViewModel parentViewModel) : base(parentViewModel)
         {
         }
 
         public string Name { get; set; }
-        [JsonIgnore] public decimal Total { get; set; }
-
+        
         public decimal Value
         {
             get => _value;
@@ -31,7 +30,9 @@ namespace Furniture.Work
             }
         }
 
-        public abstract decimal Calculate(decimal wood, List<HasCalculation> input);
+        [JsonIgnore] public decimal Total { get; set; }
+
+        public abstract decimal Calculate(decimal wood, List<QuotationColumn> input);
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -7,14 +7,14 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
-        Title="TableView" Height="450" Width="800">
-    <!--TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="16"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"-->
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="TableView" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -43,13 +43,22 @@
                 </ItemsControl>
             </ScrollViewer>
 
-            <Button Grid.Row="1" x:Name="AddItem"
-                    Content="+" />
+            
 
             <!--<Button Grid.Row="1" x:Name="AddItem"
+                    Content="+" />-->
+
+            <Button Grid.Row="1" x:Name="AddItem"
                     Content="{materialDesign:PackIcon Plus}"
-                    Style="{StaticResource MaterialDesignFloatingActionButton}" />-->
+                    Style="{StaticResource MaterialDesignFloatingActionButton}" />
         </Grid>
+
+        <GridSplitter
+            Grid.Column="0"
+            ResizeDirection="Columns"
+            Width="3"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Stretch"/>
 
         <!--Total-->
         <ContentControl Grid.Column="1"
