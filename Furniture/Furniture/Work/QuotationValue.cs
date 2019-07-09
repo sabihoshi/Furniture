@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Furniture.ViewModels;
+using System.Collections.Generic;
 
 namespace Furniture.Work
 {
-    public class QuotationValue : ICanCalculate
+    public class QuotationValue : HasCalculation
     {
-        public string Name { get; set; }
-        public decimal Total { get; set; }
-        public decimal Value { get; set; }
+        public QuotationValue(QuotationViewModel sourceViewModel) : base(sourceViewModel)
+        {
+        }
 
-        public decimal Calculate(decimal wood, List<ICanCalculate> input)
+        public override decimal Calculate(decimal wood, List<HasCalculation> input)
         {
             return Value;
         }

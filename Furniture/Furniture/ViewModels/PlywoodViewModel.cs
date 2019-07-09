@@ -1,16 +1,15 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Furniture.Materials;
+﻿using Furniture.Materials;
+using Furniture.Work;
 
 namespace Furniture.ViewModels
 {
-    public sealed class PlywoodViewModel : ChildViewModel, INotifyPropertyChanged
+    public sealed class PlywoodViewModel : MaterialViewModel
     {
         private string _quantity = "1";
 
         private Thickness _selectedThickness;
 
-        public PlywoodViewModel(ItemViewModel sourceViewModel) : base(sourceViewModel)
+        public PlywoodViewModel(IParentViewModel parentViewModelModel) : base(parentViewModelModel)
         {
             _selectedThickness = Plywood.Min;
         }
@@ -41,21 +40,14 @@ namespace Furniture.ViewModels
 
         public override decimal Total { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public override void Update()
+        protected override void Update()
         {
             if (!int.TryParse(Quantity, out var quantity))
                 return;
 
             Total = SelectedThickness.Price * quantity;
 
-            _sourceViewModel.Update();
+            ParentViewModel.Update();
         }
     }
 }

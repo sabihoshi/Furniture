@@ -2,16 +2,22 @@
 {
     public abstract class ChildViewModel
     {
-        protected readonly ItemViewModel _sourceViewModel;
+        protected IParentViewModel ParentViewModel;
 
-        public ChildViewModel(ItemViewModel sourceViewModel)
+        protected ChildViewModel(IParentViewModel parentViewModel)
         {
-            _sourceViewModel = sourceViewModel;
+            ParentViewModel = parentViewModel;
         }
 
-        public abstract string Name { get; }
+        public ChildViewModel AddViewModel(IParentViewModel parent)
+        {
+            ParentViewModel = parent;
+            return this;
+        }
 
-        public abstract decimal Total { get; set; }
-        public abstract void Update();
+        protected virtual void Update()
+        {
+            ParentViewModel?.Update();
+        }
     }
 }

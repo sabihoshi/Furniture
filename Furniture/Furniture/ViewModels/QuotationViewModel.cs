@@ -1,15 +1,12 @@
-﻿using Furniture.Annotations;
+﻿using Caliburn.Micro;
 using Furniture.Work;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using Caliburn.Micro;
+using Furniture.Properties;
 
 namespace Furniture.ViewModels
 {
-    public class QuotationViewModel : INotifyPropertyChanged
+    public class QuotationViewModel : INotifyPropertyChanged, IParentViewModel
     {
         private readonly TableViewModel _tableViewModel;
 
@@ -18,16 +15,15 @@ namespace Furniture.ViewModels
         public QuotationViewModel(TableViewModel tableViewModel)
         {
             _tableViewModel = tableViewModel;
+            foreach (var work in Work) { work.AddViewModel(this); }
             Update();
         }
 
-        public BindableCollection<ICanCalculate> Work { get; set; } = App.Config.Work;
+        public BindableCollection<HasCalculation> Work { get; set; } = App.Config.Work;
 
         public void Update()
         {
             Work.CalculateQuotations(_tableViewModel.WoodTotal);
-            Work.Add(new QuotationPercentage());
-            Work.Remove(Work.Last());
         }
 
         [NotifyPropertyChangedInvocator]

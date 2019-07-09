@@ -2,13 +2,16 @@
 
 namespace Furniture.ViewModels
 {
-    public class NoneViewModel : ChildViewModel
+    public class NoneViewModel : MaterialViewModel
     {
-        public NoneViewModel(ItemViewModel sourceViewModel) : base(sourceViewModel) { }
+        public NoneViewModel(ItemViewModel sourceViewModel) : base(sourceViewModel)
+        {
+        }
+
         public override string Name { get; } = "None";
         public override decimal Total { get; set; }
 
-        public override void Update()
+        protected override void Update()
         {
             throw new NotImplementedException();
         }

@@ -10,7 +10,7 @@ namespace Furniture.Config
     public class Config
     {
         public List<Material> Materials { get; set; }
-        public BindableCollection<ICanCalculate> Work { get; set; }
+        public BindableCollection<HasCalculation> Work { get; set; }
         public Plywood Plywood { get; set; }
     }
 }

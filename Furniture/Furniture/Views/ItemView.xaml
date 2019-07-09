@@ -7,6 +7,7 @@
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:interface="clr-namespace:Furniture.Materials"
+             xmlns:viewModels="clr-namespace:Furniture.ViewModels"
              mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -18,7 +19,7 @@
                   x:Name="Items" MinWidth="50"
                   SelectedItem="{Binding Path=Content}">
             <ComboBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type interface:IMaterial}">
+                <DataTemplate DataType="{x:Type viewModels:MaterialViewModel}">
                     <TextBlock Text="{Binding Name}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>

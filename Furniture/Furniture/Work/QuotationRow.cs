@@ -8,7 +8,7 @@ namespace Furniture.Work
 {
     public static class QuotationRow
     {
-        public static void CalculateQuotations(this BindableCollection<ICanCalculate> quotations, decimal woodTotal)
+        public static void CalculateQuotations(this BindableCollection<HasCalculation> quotations, decimal woodTotal)
         {
             var total = woodTotal;
 

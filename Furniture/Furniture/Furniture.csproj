@@ -126,33 +126,34 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Annotations1.cs" />
+    <Compile Include="ViewModels\MaterialViewModel.cs" />
     <Compile Include="ViewModels\QuotationViewModel.cs" />
     <Compile Include="Views\QuotationView.xaml.cs">
       <DependentUpon>QuotationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Config\Config.cs" />
-    <Compile Include="Work\ICanCalculate.cs" />
+    <Compile Include="Work\HasCalculation.cs" />
     <Compile Include="Materials\IMaterial.cs" />
-    <Compile Include="ViewModels\ChildViewModel.cs" />
     <Compile Include="Materials\Material.cs" />
     <Compile Include="Materials\Plywood.cs" />
     <Compile Include="Materials\Thickness.cs" />
     <Compile Include="Materials\Wood.cs" />
+    <Compile Include="ViewModels\ChildViewModel.cs" />
+    <Compile Include="ViewModels\IParentViewModel.cs" />
     <Compile Include="Work\QuotationRow.cs" />
     <Compile Include="Work\QuotationValue.cs" />
     <Compile Include="Work\Value.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
-    <Compile Include="ViewModels\MaterialViewModel.cs" />
+    <Compile Include="ViewModels\WoodViewModel.cs" />
     <Compile Include="ViewModels\NoneViewModel.cs" />
     <Compile Include="ViewModels\PlywoodViewModel.cs" />
     <Compile Include="ViewModels\TableViewModel.cs" />
     <Compile Include="Views\ItemView.xaml.cs">
       <DependentUpon>ItemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MaterialView.xaml.cs">
-      <DependentUpon>MaterialView.xaml</DependentUpon>
+    <Compile Include="Views\WoodView.xaml.cs">
+      <DependentUpon>WoodView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PlywoodView.xaml.cs">
       <DependentUpon>PlywoodView.xaml</DependentUpon>
@@ -210,7 +211,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MaterialView.xaml">
+    <Page Include="Views\WoodView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

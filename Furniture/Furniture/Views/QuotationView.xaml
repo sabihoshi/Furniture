@@ -6,6 +6,6 @@
              xmlns:local="clr-namespace:Furniture.Views"
              mc:Ignorable="d">
     <Grid>
-         <DataGrid ItemsSource="{Binding Path=Work, Mode=TwoWay}"/>
+         <DataGrid ItemsSource="{Binding Path=Work, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
     </Grid>
 </UserControl>
