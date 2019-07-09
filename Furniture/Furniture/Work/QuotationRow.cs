@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using Caliburn.Micro;
@@ -7,7 +8,7 @@ namespace Furniture.Work
 {
     public static class QuotationRow
     {
-        public static BindingList<ICanCalculate> CalculateQuotations(this BindingList<ICanCalculate> quotations, decimal woodTotal)
+        public static void CalculateQuotations(this BindableCollection<ICanCalculate> quotations, decimal woodTotal)
         {
             var total = woodTotal;
 
@@ -16,8 +17,6 @@ namespace Furniture.Work
                 var quotation = quotations[i];
                 quotation.Total = quotation.Calculate(total, quotations.Take(i).ToList());
             }
-
-            return quotations;
         }
     }
 }
