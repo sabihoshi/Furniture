@@ -15,8 +15,8 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid.Resources>
@@ -32,32 +32,32 @@
         <!--Properties-->
         <TextBlock Grid.Row="0" Grid.Column="0"
                    Text="Thickness" />
-        <TextBox Grid.Row="0" Grid.Column="1" 
+        <TextBox Grid.Row="0" Grid.Column="1"
                  Text="{Binding Path=Thickness, Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBlock Grid.Row="1" Grid.Column="0"
-                   Text="Width"/>
-        <TextBox Grid.Row="1" Grid.Column="1" 
+                   Text="Width" />
+        <TextBox Grid.Row="1" Grid.Column="1"
                  Text="{Binding Path=Width, Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBlock Grid.Row="2" Grid.Column="0"
                    Text="Length" />
-        <TextBox Grid.Row="2" Grid.Column="1" 
+        <TextBox Grid.Row="2" Grid.Column="1"
                  Text="{Binding Path=Length, Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged}" />
 
         <TextBlock Grid.Row="3" Grid.Column="0"
                    Text="Quantity" />
-        <TextBox Grid.Row="3" Grid.Column="1" 
+        <TextBox Grid.Row="3" Grid.Column="1"
                  Text="{Binding Path=Quantity, Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged}" />
 
         <!--Total-->
         <TextBlock Grid.Row="4" Grid.Column="0"
                    Text="Total" />
-        <TextBlock Grid.Row="4" Grid.Column="1" 
+        <TextBlock Grid.Row="4" Grid.Column="1"
                    Text="{Binding Path=Total, Mode=TwoWay,
                                   ConverterCulture=en-PH,
                                   StringFormat='c2'}" />

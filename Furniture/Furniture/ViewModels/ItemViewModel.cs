@@ -1,18 +1,15 @@
-﻿using Caliburn.Micro;
-using Furniture.Properties;
-using Furniture.Work;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Caliburn.Micro;
+using Furniture.Properties;
 
 namespace Furniture.ViewModels
 {
     public class ItemViewModel : INotifyPropertyChanged, IParentViewModel
     {
-        private readonly TableViewModel _sourceViewModel;
         private MaterialViewModel _content;
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        private readonly TableViewModel _sourceViewModel;
 
         public ItemViewModel(TableViewModel sourceViewModel)
         {
@@ -46,6 +43,8 @@ namespace Furniture.ViewModels
         }
 
         public BindableCollection<MaterialViewModel> Items { get; set; } = new BindableCollection<MaterialViewModel>();
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public void Update()
         {

@@ -1,8 +1,8 @@
-﻿using Caliburn.Micro;
-using Furniture.Work;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Caliburn.Micro;
 using Furniture.Properties;
+using Furniture.Work;
 
 namespace Furniture.ViewModels
 {
@@ -10,16 +10,16 @@ namespace Furniture.ViewModels
     {
         private readonly TableViewModel _tableViewModel;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public QuotationViewModel(TableViewModel tableViewModel)
         {
             _tableViewModel = tableViewModel;
-            foreach (var work in Work) { work.AddViewModel(this); }
+            foreach (var work in Work) work.AddViewModel(this);
             Update();
         }
 
         public BindableCollection<QuotationColumn> Work { get; set; } = App.Config.Work;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public void Update()
         {

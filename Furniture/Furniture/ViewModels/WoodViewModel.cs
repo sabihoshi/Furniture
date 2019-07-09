@@ -4,8 +4,8 @@ namespace Furniture.ViewModels
 {
     public sealed class WoodViewModel : MaterialViewModel
     {
-        private readonly Material _material;
         private string _length = "1";
+        private readonly Material _material;
         private string _quantity = "1";
         private string _thickness = "1";
         private string _width = "1";

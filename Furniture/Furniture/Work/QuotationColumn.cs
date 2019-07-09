@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Furniture.Properties;
 using Furniture.ViewModels;
+using Newtonsoft.Json;
 
 namespace Furniture.Work
 {
@@ -11,14 +11,12 @@ namespace Furniture.Work
     {
         private decimal _value;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected QuotationColumn(IParentViewModel parentViewModel) : base(parentViewModel)
-        {
-        }
+        protected QuotationColumn(IParentViewModel parentViewModel) : base(parentViewModel) { }
 
         public string Name { get; set; }
-        
+
+        [JsonIgnore] public decimal Total { get; set; }
+
         public decimal Value
         {
             get => _value;
@@ -30,7 +28,7 @@ namespace Furniture.Work
             }
         }
 
-        [JsonIgnore] public decimal Total { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public abstract decimal Calculate(decimal wood, List<QuotationColumn> input);
 

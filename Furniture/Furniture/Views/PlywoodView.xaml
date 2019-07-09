@@ -34,7 +34,7 @@
 
         <!--Count-->
         <TextBox Grid.Row="1"
-            Text="{Binding Path=Quantity,
+                 Text="{Binding Path=Quantity,
                            UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </UserControl>

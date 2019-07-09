@@ -4,9 +4,7 @@ namespace Furniture.ViewModels
 {
     public class NoneViewModel : MaterialViewModel
     {
-        public NoneViewModel(ItemViewModel sourceViewModel) : base(sourceViewModel)
-        {
-        }
+        public NoneViewModel(ItemViewModel sourceViewModel) : base(sourceViewModel) { }
 
         public override string Name { get; } = "None";
         public override decimal Total { get; set; }

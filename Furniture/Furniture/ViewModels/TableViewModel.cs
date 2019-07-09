@@ -1,5 +1,5 @@
-﻿using Caliburn.Micro;
-using System.Linq;
+﻿using System.Linq;
+using Caliburn.Micro;
 
 namespace Furniture.ViewModels
 {

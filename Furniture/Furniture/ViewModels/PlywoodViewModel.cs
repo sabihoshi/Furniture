@@ -1,5 +1,4 @@
 ﻿using Furniture.Materials;
-using Furniture.Work;
 
 namespace Furniture.ViewModels
 {
