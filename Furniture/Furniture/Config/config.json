@@ -27,32 +27,40 @@
   ],
   "Work": [
     {
-      "$type": "Furniture.Work.Percentage, Furniture",
+      "$type": "Furniture.Quotation.Percentage, Furniture",
       "Name": "Milling",
       "Value": 0.10
     },
     {
-      "$type": "Furniture.Work.Value, Furniture",
+      "$type": "Furniture.Quotation.Value, Furniture",
       "Name": "Labor",
-      "Value": 800
+      "Value": 500,
+      "Values": [
+        500,  800,
+        1000, 1200, 1500, 1700,
+        2000, 2200, 2500, 2700,
+        3000, 3200, 3500, 3700,
+        4000, 4200, 4500, 4700,
+        5000
+      ]
     },
     {
-      "$type": "Furniture.Work.Percentage, Furniture",
+      "$type": "Furniture.Quotation.Percentage, Furniture",
       "Name": "Finishing",
       "Value": 0.45
     },
     {
-      "$type": "Furniture.Work.Percentage, Furniture",
+      "$type": "Furniture.Quotation.Percentage, Furniture",
       "Name": "Overhead",
       "Value": 0.35
     },
     {
-      "$type": "Furniture.Work.Percentage, Furniture",
+      "$type": "Furniture.Quotation.Percentage, Furniture",
       "Name": "Office",
       "Value": 0.25
     },
     {
-      "$type": "Furniture.Work.Percentage, Furniture",
+      "$type": "Furniture.Quotation.Percentage, Furniture",
       "Name": "Store",
       "Value": 0.15
     }

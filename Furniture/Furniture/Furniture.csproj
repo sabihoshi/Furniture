@@ -126,22 +126,36 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Caption\CaptionFactory.cs" />
+    <Compile Include="ViewModels\ComboBoxViewModel.cs" />
+    <Compile Include="Caption\Input.cs" />
+    <Compile Include="ViewModels\TextBoxViewModel.cs" />
+    <Compile Include="ViewModels\CaptionViewModel.cs" />
     <Compile Include="ViewModels\MaterialViewModel.cs" />
+    <Compile Include="ViewModels\QuotationEditViewModel.cs" />
     <Compile Include="ViewModels\QuotationViewModel.cs" />
+    <Compile Include="Views\CaptionView.xaml.cs">
+      <DependentUpon>CaptionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ComboBoxView.xaml.cs">
+      <DependentUpon>ComboBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QuotationEditView.xaml.cs">
+      <DependentUpon>QuotationEditView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\QuotationView.xaml.cs">
       <DependentUpon>QuotationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Config\Config.cs" />
-    <Compile Include="Work\QuotationColumn.cs" />
+    <Compile Include="Quotation\Quotation.cs" />
     <Compile Include="Materials\IMaterial.cs" />
     <Compile Include="Materials\Material.cs" />
     <Compile Include="Materials\Plywood.cs" />
     <Compile Include="Materials\Thickness.cs" />
     <Compile Include="Materials\Wood.cs" />
     <Compile Include="ViewModels\ChildViewModel.cs" />
-    <Compile Include="ViewModels\IParentViewModel.cs" />
-    <Compile Include="Work\QuotationRow.cs" />
-    <Compile Include="Work\Value.cs" />
+    <Compile Include="ViewModels\IParent.cs" />
+    <Compile Include="Quotation\Value.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\WoodViewModel.cs" />
@@ -150,6 +164,9 @@
     <Compile Include="ViewModels\TableViewModel.cs" />
     <Compile Include="Views\ItemView.xaml.cs">
       <DependentUpon>ItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TextBoxView.xaml.cs">
+      <DependentUpon>TextBoxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WoodView.xaml.cs">
       <DependentUpon>WoodView.xaml</DependentUpon>
@@ -188,7 +205,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Work\Percentage.cs" />
+    <Compile Include="Quotation\Percentage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -206,7 +223,23 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\CaptionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ComboBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QuotationEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TextBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

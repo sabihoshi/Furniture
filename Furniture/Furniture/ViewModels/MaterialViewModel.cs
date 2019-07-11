@@ -6,7 +6,7 @@ namespace Furniture.ViewModels
 {
     public abstract class MaterialViewModel : ChildViewModel, INotifyPropertyChanged
     {
-        public MaterialViewModel(IParentViewModel parentViewModel) : base(parentViewModel) { }
+        public MaterialViewModel(IParent parent) : base(parent) { }
 
         public abstract string Name { get; }
         public abstract decimal Total { get; set; }

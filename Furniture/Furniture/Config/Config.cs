@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Caliburn.Micro;
 using Furniture.Materials;
-using Furniture.Work;
 
 namespace Furniture.Config
 {
@@ -9,6 +8,6 @@ namespace Furniture.Config
     {
         public List<Material> Materials { get; set; }
         public Plywood Plywood { get; set; }
-        public BindableCollection<QuotationColumn> Work { get; set; }
+        public BindableCollection<Quotation.Quotation> Work { get; set; }
     }
 }

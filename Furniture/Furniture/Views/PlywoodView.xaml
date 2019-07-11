@@ -9,32 +9,53 @@
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:materials="clr-namespace:Furniture.Materials"
              mc:Ignorable="d">
-    <Grid VerticalAlignment="Center">
+    <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
+        <Grid.Resources>
+            <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignSubheadingTextBlock}">
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+            </Style>
+            <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+                <Setter Property="HorizontalAlignment" Value="Left" />
+            </Style>
+        </Grid.Resources>
 
-        <!--Thickness-->
-        <ComboBox Grid.Row="0"
-                  x:Name="Plywood_Thicknesses"
-                  SelectedItem="{Binding SelectedThickness}">
+        <!--Caption-->
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Thickness" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Quantity" />
+
+        <!--Input-->
+        <ComboBox Grid.Row="0" Grid.Column="2"
+                  ItemsSource="{Binding Path=Plywood.Thicknesses, Mode=OneWay}"
+                  SelectedItem="{Binding SelectedThickness, Mode=TwoWay}">
             <ComboBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type materials:Thickness}">
-                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding Name, Mode=OneWay}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-
-        <!--Count-->
-        <TextBox Grid.Row="1"
-                 Text="{Binding Path=Quantity,
+        <TextBox Grid.Row="1" Grid.Column="2"
+                 Text="{Binding Path=Quantity, Mode=TwoWay,
                            UpdateSourceTrigger=PropertyChanged}" />
+
+        <!--Total-->
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Total" />
+        <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left"
+                   Text="{Binding Path=Total, Mode=TwoWay,
+                                  ConverterCulture=en-PH,
+                                  StringFormat='c2'}" />
     </Grid>
 </UserControl>

@@ -1,80 +1,33 @@
-﻿using Furniture.Materials;
+﻿using System.Collections.Generic;
+using Furniture.Caption;
+using Furniture.Materials;
 
 namespace Furniture.ViewModels
 {
-    public sealed class WoodViewModel : MaterialViewModel
+    public sealed class WoodViewModel : MaterialViewModel, IParent
     {
-        private string _length = "1";
         private readonly Material _material;
-        private string _quantity = "1";
-        private string _thickness = "1";
-        private string _width = "1";
 
-        public WoodViewModel(ItemViewModel sourceViewModel, Material material) : base(sourceViewModel)
+        public WoodViewModel(ItemViewModel source, Material material) : base(source)
         {
+            Fields = new List<CaptionViewModel>
+            {
+                this.CreateTextBox("Thickness"),
+                this.CreateTextBox("Width"),
+                this.CreateTextBox("Length"),
+                this.CreateTextBox("Quantity"),
+            };
             _material = material;
         }
 
-        public string Length
-        {
-            get => _length;
-            set
-            {
-                _length = value;
-                Update();
-            }
-        }
+        public List<CaptionViewModel> Fields { get; set; }
 
         public override string Name => _material.Name;
-
-        public string Quantity
-        {
-            get => _quantity;
-            set
-            {
-                _quantity = value;
-                Update();
-            }
-        }
-
-        public string Thickness
-        {
-            get => _thickness;
-            set
-            {
-                _thickness = value;
-                Update();
-            }
-        }
-
         public override decimal Total { get; set; }
 
-        public string Width
+        public override void Update()
         {
-            get => _width;
-            set
-            {
-                _width = value;
-                Update();
-            }
-        }
-
-        protected override void Update()
-        {
-            if (!int.TryParse(Thickness, out var thickness))
-                return;
-            if (!int.TryParse(Width, out var width))
-                return;
-            if (!int.TryParse(Length, out var length))
-                return;
-            if (!int.TryParse(Quantity, out var quantity))
-                return;
-
-            var slice = thickness * width * length / 12m;
-
-            Total = slice * _material.Price * quantity;
-
-            ParentViewModel.Update();
+            Parent.Update();
         }
     }
 }

@@ -6,7 +6,7 @@ using Furniture.Properties;
 
 namespace Furniture.ViewModels
 {
-    public class ItemViewModel : INotifyPropertyChanged, IParentViewModel
+    public class ItemViewModel : INotifyPropertyChanged, IParent
     {
         private MaterialViewModel _content;
         private readonly TableViewModel _sourceViewModel;

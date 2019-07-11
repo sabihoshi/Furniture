@@ -4,12 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Furniture.Views"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
     <Grid>
         <DataGrid x:Name="Work"
-                  AlternatingRowBackground="Gray"
+                  AlternatingRowBackground="Teal"
                   CanUserAddRows="True"
                   AutoGenerateColumns="False">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow" BasedOn="{StaticResource MaterialDesignDataGridRow}">
+                    <Setter Property="cal:Message.Attach"
+                            Value="[Event MouseDoubleClick] = [Action Click($source, eventArgs)]"/>
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Type" IsReadOnly="True"
                                     Binding="{Binding Path=Name}" />

@@ -2,22 +2,22 @@
 {
     public abstract class ChildViewModel
     {
-        protected IParentViewModel ParentViewModel;
+        protected IParent Parent;
 
-        protected ChildViewModel(IParentViewModel parentViewModel)
+        protected ChildViewModel(IParent parent)
         {
-            ParentViewModel = parentViewModel;
+            Parent = parent;
         }
 
-        public ChildViewModel AddViewModel(IParentViewModel parent)
+        public ChildViewModel AddViewModel(IParent parent)
         {
-            ParentViewModel = parent;
+            Parent = parent;
             return this;
         }
 
-        protected virtual void Update()
+        public virtual void Update()
         {
-            ParentViewModel?.Update();
+            Parent?.Update();
         }
     }
 }

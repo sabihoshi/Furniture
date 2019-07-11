@@ -1,6 +1,6 @@
 ﻿namespace Furniture.ViewModels
 {
-    public interface IParentViewModel
+    public interface IParent
     {
         void Update();
     }
