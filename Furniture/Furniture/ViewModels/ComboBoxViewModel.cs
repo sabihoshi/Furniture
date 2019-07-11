@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
 using Furniture.Caption;
+using Furniture.Relationship;
 
 namespace Furniture.ViewModels
 {
-    public class ComboBoxViewModel : Input
+    public class ComboBoxViewModel<TOutput> : Input<TOutput> 
     {
-        public ComboBoxViewModel(IParent parent, List<string> values) : base(parent)
+        public ComboBoxViewModel(IParent parent, List<ComboBoxItem<TOutput>> values) : base(parent)
         {
             Values = values;
         }
-        public List<string> Values { get; set; }
+        public List<ComboBoxItem<TOutput>> Values { get; set; }
         public ComboBoxViewModel(IParent parent) : base(parent) { }
+        public override InputType Type { get; } = InputType.ComboBox;
     }
 }

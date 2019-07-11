@@ -7,5 +7,11 @@
              mc:Ignorable="d">
     <ComboBox ItemsSource="{Binding Path=Values, Mode=TwoWay}"
               SelectedItem="{Binding Path=Value, Mode=TwoWay,
-                                     UpdateSourceTrigger=PropertyChanged}"/>
+                                     UpdateSourceTrigger=PropertyChanged}">
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding Path=Output, Mode=OneWay}" />
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+    </ComboBox>
 </UserControl>

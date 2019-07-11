@@ -1,21 +1,43 @@
-﻿using Furniture.ViewModels;
+﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Furniture.Relationship;
+using Furniture.ViewModels;
+using PropertyChanged;
 
 namespace Furniture.Caption
 {
-    public abstract class Input : ChildViewModel
+    public abstract class Input<TOutput> : Child
     {
-        private string _value;
-
-        public string Value
+        public Input(IParent parent) : base(parent)
         {
-            get => _value;
+            
+        }
+        public enum InputType
+        {
+            TextBox,
+            ComboBox
+        }
+        public abstract InputType Type { get; }
+
+        private string _output;
+        public virtual TOutput Value { get; set; }
+
+        public override void Update()
+        {
+            if (!Output.Convert<TOutput>(out var result)) return;
+            Value = result;
+            base.Update();
+        }
+
+        public string Output
+        {
+            get => _output;
             set
             {
-                _value = value; 
+                _output = value; 
                 Update();
             }
         }
-
-        protected Input(IParent parent) : base(parent) { }
     }
 }

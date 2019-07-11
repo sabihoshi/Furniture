@@ -5,6 +5,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Caliburn.Micro;
 using Furniture.Properties;
+using Furniture.Relationship;
+using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.ViewModels
 {

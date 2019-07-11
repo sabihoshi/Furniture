@@ -9,5 +9,8 @@ namespace Furniture.Config
         public List<Material> Materials { get; set; }
         public Plywood Plywood { get; set; }
         public BindableCollection<Quotation.Quotation> Work { get; set; }
+
+        public List<decimal> Widths { get; set; }
+        public List<decimal> Lengths { get; set; }
     }
 }

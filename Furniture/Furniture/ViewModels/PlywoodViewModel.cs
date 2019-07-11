@@ -1,61 +1,40 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Furniture.Caption;
 using Furniture.Materials;
+using Furniture.Relationship;
 
 namespace Furniture.ViewModels
 {
-    public sealed class PlywoodViewModel : MaterialViewModel, IParent
+    public sealed class PlywoodViewModel : MaterialModel, IParent
     {
-        private string _quantity = "1";
-
-        private Thickness _selectedThickness;
-
-        public List<CaptionViewModel> Fields { get; set; }
-
+        private readonly Plywood _plywood = App.Config.Plywood;
         public PlywoodViewModel(IParent parentModel) : base(parentModel)
         {
-            Fields = new List<CaptionViewModel>
+            var builder = new CaptionBuilder(this);
+
+            Fields = new List<CaptionViewModel<decimal>>
             {
-                new CaptionViewModel(this, "Thickness", new ComboBoxViewModel(this)),
-                new CaptionViewModel(this, "Quantity", new TextBoxViewModel(this))
+                builder.CreateComboBox<decimal>(Thickness, nameof(Thickness), _plywood.Thicknesses),
+                builder.CreateTextBox(Quantity, nameof(Quantity))
             };
-            _selectedThickness = Plywood.Min;
         }
 
         public override string Name => "Plywood";
 
         public Plywood Plywood { get; set; } = App.Config.Plywood;
 
-        public string Quantity
-        {
-            get => _quantity;
-            set
-            {
-                _quantity = value;
-                Update();
-            }
-        }
-
-        public Thickness SelectedThickness
-        {
-            get =>
-                _selectedThickness;
-            set
-            {
-                _selectedThickness = value;
-                Update();
-            }
-        }
+        public CaptionViewModel<decimal> Quantity { get; } 
+        public CaptionViewModel<decimal> Thickness { get; }
 
         public override decimal Total { get; set; }
 
         public override void Update()
         {
-            if (!int.TryParse(Quantity, out var quantity))
-                return;
+            var price = Plywood.Thicknesses.Single(thickness => thickness.Value == Thickness.Input.Value).Value;
+            Total = price * Quantity.Value;
 
-            Total = SelectedThickness.Price * quantity;
-
-            Parent.Update();
+            base.Update();
         }
     }
 }

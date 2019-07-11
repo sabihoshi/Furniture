@@ -5,17 +5,16 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using Caliburn.Micro;
 using Furniture.Properties;
+using Furniture.Relationship;
 using Furniture.ViewModels;
 using Newtonsoft.Json;
-using IParent = Furniture.ViewModels.IParent;
+using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.Quotation
 {
-    public abstract class Quotation : ChildViewModel, INotifyPropertyChanged
+    public abstract class Quotation : Child
     {
         private decimal _value;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private readonly IWindowManager _manager = new WindowManager();
         protected Quotation(IParent parent) : base(parent)
@@ -52,10 +51,5 @@ namespace Furniture.Quotation
 
         public abstract decimal Calculate(decimal wood, List<Quotation> input);
 
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

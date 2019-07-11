@@ -1,8 +1,9 @@
 ﻿using System;
+using Furniture.Materials;
 
 namespace Furniture.ViewModels
 {
-    public class NoneViewModel : MaterialViewModel
+    public class NoneViewModel : MaterialModel
     {
         public NoneViewModel(ItemViewModel source) : base(source) { }
 

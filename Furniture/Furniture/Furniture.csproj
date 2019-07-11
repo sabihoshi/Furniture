@@ -126,12 +126,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Caption\CaptionFactory.cs" />
+    <Compile Include="Caption\CaptionBuilder.cs" />
+    <Compile Include="Caption\ComboBoxItem.cs" />
+    <Compile Include="Caption\Int.cs" />
+    <Compile Include="Caption\IParse.cs" />
+    <Compile Include="Caption\String.cs" />
+    <Compile Include="Materials\Material.cs" />
+    <Compile Include="Relationship\ParentViewModel.cs" />
     <Compile Include="ViewModels\ComboBoxViewModel.cs" />
     <Compile Include="Caption\Input.cs" />
     <Compile Include="ViewModels\TextBoxViewModel.cs" />
     <Compile Include="ViewModels\CaptionViewModel.cs" />
-    <Compile Include="ViewModels\MaterialViewModel.cs" />
+    <Compile Include="Materials\MaterialModel.cs" />
     <Compile Include="ViewModels\QuotationEditViewModel.cs" />
     <Compile Include="ViewModels\QuotationViewModel.cs" />
     <Compile Include="Views\CaptionView.xaml.cs">
@@ -149,12 +155,11 @@
     <Compile Include="Config\Config.cs" />
     <Compile Include="Quotation\Quotation.cs" />
     <Compile Include="Materials\IMaterial.cs" />
-    <Compile Include="Materials\Material.cs" />
     <Compile Include="Materials\Plywood.cs" />
     <Compile Include="Materials\Thickness.cs" />
     <Compile Include="Materials\Wood.cs" />
-    <Compile Include="ViewModels\ChildViewModel.cs" />
-    <Compile Include="ViewModels\IParent.cs" />
+    <Compile Include="Relationship\Child.cs" />
+    <Compile Include="Relationship\IParent.cs" />
     <Compile Include="Quotation\Value.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />

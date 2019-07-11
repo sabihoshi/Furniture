@@ -1,4 +1,4 @@
-﻿namespace Furniture.ViewModels
+﻿namespace Furniture.Relationship
 {
     public interface IParent
     {

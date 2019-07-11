@@ -19,7 +19,7 @@
                   x:Name="Items" MinWidth="50"
                   SelectedItem="{Binding Path=Content}">
             <ComboBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type viewModels:MaterialViewModel}">
+                <DataTemplate DataType="{x:Type interface:MaterialModel}">
                     <TextBlock Text="{Binding Name}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>

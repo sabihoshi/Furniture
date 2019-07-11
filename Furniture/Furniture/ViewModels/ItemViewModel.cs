@@ -2,13 +2,16 @@
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Caliburn.Micro;
+using Furniture.Materials;
 using Furniture.Properties;
+using Furniture.Relationship;
+using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.ViewModels
 {
     public class ItemViewModel : INotifyPropertyChanged, IParent
     {
-        private MaterialViewModel _content;
+        private MaterialModel _content;
         private readonly TableViewModel _sourceViewModel;
 
         public ItemViewModel(TableViewModel sourceViewModel)
@@ -25,7 +28,7 @@ namespace Furniture.ViewModels
             Content = Items.First();
         }
 
-        public MaterialViewModel Content
+        public MaterialModel Content
         {
             get => _content;
             set
@@ -42,7 +45,7 @@ namespace Furniture.ViewModels
             }
         }
 
-        public BindableCollection<MaterialViewModel> Items { get; set; } = new BindableCollection<MaterialViewModel>();
+        public BindableCollection<MaterialModel> Items { get; set; } = new BindableCollection<MaterialModel>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
