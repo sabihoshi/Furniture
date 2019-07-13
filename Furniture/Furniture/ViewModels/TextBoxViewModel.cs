@@ -1,15 +1,15 @@
-﻿using Furniture.Caption;
+﻿using System;
+using Furniture.Caption;
 using Furniture.Relationship;
 
 namespace Furniture.ViewModels
 {
-    public class TextBoxViewModel<TOutput> : Input<TOutput> 
+    public class TextBoxViewModel<T> : InputBox<T> where T : IConvertible
     {
-        public TOutput GetValue()
+        public T GetValue()
         {
-            return Value;
+            return TValue;
         }
-        public override InputType Type { get; } = InputType.TextBox;
-        public TextBoxViewModel(IParent parent) : base(parent) { }
+        public TextBoxViewModel(IParent parent, string caption) : base(parent, caption) { }
     }
 }

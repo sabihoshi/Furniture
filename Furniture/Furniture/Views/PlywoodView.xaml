@@ -27,7 +27,7 @@
         <!--Total-->
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Total" HorizontalAlignment="Right" />
         <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left"
-                   Text="{Binding Path=Total, Mode=TwoWay,
+                   Text="{Binding Path=Total, Mode=OneWay,
                                   ConverterCulture=en-PH,
                                   StringFormat='c2'}" />
     </Grid>

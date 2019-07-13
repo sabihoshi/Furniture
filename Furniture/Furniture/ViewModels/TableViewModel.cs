@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using Caliburn.Micro;
+using Furniture.Relationship;
 
 namespace Furniture.ViewModels
 {
-    public class TableViewModel : Screen
+    public class TableViewModel : Parent
     {
         public TableViewModel()
         {
@@ -13,13 +14,12 @@ namespace Furniture.ViewModels
         public BindableCollection<ItemViewModel> OrdersView { get; set; } = new BindableCollection<ItemViewModel>();
         public QuotationViewModel QuotationViewModel { get; set; }
         public decimal WoodTotal => OrdersView.Select(x => x.Content.Total).Sum();
-
         public void AddItem()
         {
             if (OrdersView.Count != 0 && OrdersView.Last().Content == null)
                 return;
             OrdersView.Add(new ItemViewModel(this));
-            Update();
+            OnPropertyChanged();
         }
 
         public void RemoveItem(ItemViewModel itemViewModel)
@@ -27,11 +27,10 @@ namespace Furniture.ViewModels
             OrdersView.Remove(itemViewModel);
         }
 
-        public void Update()
+        public override void OnPropertyChanged(string propertyName = null)
         {
-            NotifyOfPropertyChange(() => WoodTotal);
-            QuotationViewModel.Update();
-            NotifyOfPropertyChange(() => QuotationViewModel);
+            QuotationViewModel.OnPropertyChanged();
+            base.OnPropertyChanged(propertyName);
         }
     }
 }

@@ -14,13 +14,15 @@ namespace Furniture.Quotation
 {
     public abstract class Quotation : Child
     {
-        private decimal _value;
-
         private readonly IWindowManager _manager = new WindowManager();
         protected Quotation(IParent parent) : base(parent)
         {
         }
 
+        public Quotation()
+        {
+            
+        }
         public void EditValues()
         {
             dynamic settings = new ExpandoObject();
@@ -38,16 +40,7 @@ namespace Furniture.Quotation
 
         [JsonIgnore] public decimal Total { get; set; }
 
-        public decimal Value
-        {
-            get => _value;
-            set
-            {
-                if (value == _value) return;
-                _value = value;
-                Update();
-            }
-        }
+        public decimal Value { get; set; }
 
         public abstract decimal Calculate(decimal wood, List<Quotation> input);
 

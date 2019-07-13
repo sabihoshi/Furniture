@@ -1,11 +1,9 @@
-﻿using Fractions;
-
-namespace Furniture.Materials
+﻿namespace Furniture.Materials
 {
     public class Thickness
     {
         private decimal _value;
-        public string Name => Fraction.FromDecimal(Value).ToString();
+        public string Name { get; set; }
         public decimal Price { get; set; }
 
         public decimal Value

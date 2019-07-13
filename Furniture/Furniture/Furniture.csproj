@@ -128,23 +128,24 @@
     </Compile>
     <Compile Include="Caption\CaptionBuilder.cs" />
     <Compile Include="Caption\ComboBoxItem.cs" />
-    <Compile Include="Caption\Int.cs" />
-    <Compile Include="Caption\IParse.cs" />
-    <Compile Include="Caption\String.cs" />
     <Compile Include="Materials\Material.cs" />
-    <Compile Include="Relationship\ParentViewModel.cs" />
+    <Compile Include="Relationship\Parent.cs" />
     <Compile Include="ViewModels\ComboBoxViewModel.cs" />
-    <Compile Include="Caption\Input.cs" />
+    <Compile Include="Caption\InputBox.cs" />
     <Compile Include="ViewModels\TextBoxViewModel.cs" />
     <Compile Include="ViewModels\CaptionViewModel.cs" />
     <Compile Include="Materials\MaterialModel.cs" />
     <Compile Include="ViewModels\QuotationEditViewModel.cs" />
     <Compile Include="ViewModels\QuotationViewModel.cs" />
+    <Compile Include="ViewModels\OtherInputViewModel.cs" />
     <Compile Include="Views\CaptionView.xaml.cs">
       <DependentUpon>CaptionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ComboBoxView.xaml.cs">
       <DependentUpon>ComboBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OtherInputView.xaml.cs">
+      <DependentUpon>OtherInputView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\QuotationEditView.xaml.cs">
       <DependentUpon>QuotationEditView.xaml</DependentUpon>
@@ -237,6 +238,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OtherInputView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,17 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Caliburn.Micro;
 using Furniture.Caption;
-using Furniture.Relationship;
+using Furniture.Views;
+using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.ViewModels
 {
-    public class ComboBoxViewModel<TOutput> : Input<TOutput> 
+    public class ComboBoxViewModel<T> : InputBox<T>, IParent where T : IConvertible
     {
-        public ComboBoxViewModel(IParent parent, List<ComboBoxItem<TOutput>> values) : base(parent)
+        private ComboBoxItem<T> _selectedValue;
+        private readonly WindowManager _windowManager = new WindowManager();
+
+        public ComboBoxViewModel(IParent parent, List<ComboBoxItem<T>> values, string caption, bool other) : base(parent, caption)
         {
             Values = values;
+            SelectedValue = Values?.First();
+
+            if(other)
+            {
+                OtherCaption = new OtherInputViewModel<T>(this);
+                Values?.Add(Other);
+            }
         }
-        public List<ComboBoxItem<TOutput>> Values { get; set; }
-        public ComboBoxViewModel(IParent parent) : base(parent) { }
-        public override InputType Type { get; } = InputType.ComboBox;
+
+        public OtherInputViewModel<T> OtherCaption { get; }
+        public ComboBoxItem<T> Other { get; } = new ComboBoxItem<T>("Other...", default);
+
+        public ComboBoxItem<T> SelectedValue
+        {
+            get => _selectedValue;
+            set
+            {
+                if(value == Other)
+                    _windowManager.ShowPopup(OtherCaption);
+
+                _selectedValue = value; 
+            }
+        }
+        public override T TValue => SelectedValue.Value;
+        public List<ComboBoxItem<T>> Values { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection.Emit;
 using Furniture.Relationship;
 using Furniture.ViewModels;
 
@@ -9,52 +10,44 @@ namespace Furniture.Caption
 {
     public static class CaptionFactory
     {
-        public static bool Convert<T>(this string input, out T result)
+        public static bool TryParse<T>(this string input, out T result) where T : IConvertible
         {
-            result = default(T);
+            result = default;
             try
             {
                 var converter = TypeDescriptor.GetConverter(typeof(T));
                 if (converter != null)
                 {
-                    // Cast ConvertFromString(string text) : object to (T)
                     try
                     {
                         result = (T) converter.ConvertFromString(input);
                         return true;
                     }
-                    catch (Exception ex) when (ex.InnerException is FormatException)
-                    {
-                        return false;
-                    }
+                    catch { return false; }
                 }
+
                 return false;
             }
-            catch (NotSupportedException)
-            {
-                return false;
-            }
+            catch (NotSupportedException) { return false; }
         }
 
-        public static CaptionViewModel<TOutput> WithCaption<TOutput>(this CaptionViewModel<TOutput> model,
-                                                                     string caption)
+        public static CaptionViewModel<T> WithCaption<T>(this CaptionViewModel<T> model, string caption)
+            where T : IConvertible
         {
             model.Caption = caption;
             return model;
         }
 
-        public static CaptionViewModel<TOutput> WithComboBox<TOutput>(this CaptionViewModel<TOutput> model,
-                                                                             List<ComboBoxItem<TOutput>>
-                                                                                 values, IParent parent = null)
+        public static CaptionViewModel<T> WithComboBox<T>(this CaptionViewModel<T> model, List<ComboBoxItem<T>> values, string caption, bool other, IParent parent = null) where T : IConvertible
         {
-            model.Input = new ComboBoxViewModel<TOutput>(parent ?? model.Parent, values);
+            model.Input = new ComboBoxViewModel<T>(parent ?? model.Parent, values, caption, other);
             return model;
         }
 
-        public static CaptionViewModel<TOutput> WithTextBox<TOutput>(this CaptionViewModel<TOutput> model,
-                                                                     IParent parent = null)
+        public static CaptionViewModel<T> WithTextBox<T>(this CaptionViewModel<T> model, string caption = null, IParent parent = null)
+            where T : IConvertible
         {
-            model.Input = new TextBoxViewModel<TOutput>(parent ?? model.Parent);
+            model.Input = new TextBoxViewModel<T>(parent ?? model.Parent, caption ?? model.Caption);
             return model;
         }
     }
@@ -67,24 +60,23 @@ namespace Furniture.Caption
         }
 
         public IParent Parent { get; set; }
-
-        public CaptionViewModel<TOutput> CreateComboBox<TOutput>(CaptionViewModel<TOutput> model, string caption,
-                                                                        List<ComboBoxItem<TOutput>> values)
+        public CaptionViewModel<T> CreateTextBox<T>(string caption)
+            where T : IConvertible
         {
-            model = new CaptionViewModel<TOutput>(caption).WithComboBox<TOutput>(values, Parent);
-            return model;
+            return new CaptionViewModel<T>(Parent, caption).WithTextBox(caption, Parent);
         }
 
-        public CaptionViewModel<TOutput> CreateTextBox<TOutput>(CaptionViewModel<TOutput> model, string caption)
+        public CaptionViewModel<T> CreateComboBox<T>(string caption, List<ComboBoxItem<T>> values, bool other = false)
+            where T : IConvertible
         {
-            model = new CaptionViewModel<TOutput>(caption).WithTextBox(Parent);
-            return model;
+            return new CaptionViewModel<T>(Parent, caption).WithComboBox(values, caption, other, Parent);
         }
 
-        public CaptionViewModel<TOutput> CreateComboBox<TOutput>(CaptionViewModel<TOutput> model, string caption, List<TOutput> values)
+        public CaptionViewModel<T> CreateComboBox<T>(string caption, List<T> values, bool other = false)
+            where T : IConvertible
         {
-            var result = values.Select(value => new ComboBoxItem<TOutput>(value.ToString(), value)).ToList();
-            return CreateComboBox<TOutput>(model, caption, result);
+            var result = values.Select(value => new ComboBoxItem<T>(value)).ToList();
+            return CreateComboBox(caption, result, other);
         }
     }
 }

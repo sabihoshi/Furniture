@@ -10,7 +10,7 @@ namespace Furniture.Config
         public Plywood Plywood { get; set; }
         public BindableCollection<Quotation.Quotation> Work { get; set; }
 
-        public List<decimal> Widths { get; set; }
-        public List<decimal> Lengths { get; set; }
+        public List<int> Widths { get; set; }
+        public List<int> Lengths { get; set; }
     }
 }

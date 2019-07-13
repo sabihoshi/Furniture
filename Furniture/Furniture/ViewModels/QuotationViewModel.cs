@@ -1,31 +1,26 @@
-﻿using System.ComponentModel;
-using System.Linq;
+﻿using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Caliburn.Micro;
 using Furniture.Properties;
 using Furniture.Relationship;
-using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.ViewModels
 {
-    public class QuotationViewModel : INotifyPropertyChanged, IParent
+    public sealed class QuotationViewModel : Parent
     {
-        
         private readonly TableViewModel _tableViewModel;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public bool EditVisibility { get; set; } = false;
-        public QuotationEditViewModel EditValues { get; set; } = new QuotationEditViewModel();
         public QuotationViewModel(TableViewModel tableViewModel)
         {
             _tableViewModel = tableViewModel;
-            foreach (var work in Work) work.AddViewModel(this);
-            Update();
+            foreach (var work in Work) work.AddParent(this);
+            OnPropertyChanged();
         }
 
+        public QuotationEditViewModel EditValues { get; set; } = new QuotationEditViewModel();
+        public bool EditVisibility { get; set; } = false;
         public BindableCollection<Quotation.Quotation> Work { get; set; } = App.Config.Work;
 
         public static void CalculateQuotations(BindableCollection<Quotation.Quotation> quotations, decimal woodTotal)
@@ -48,15 +43,11 @@ namespace Furniture.ViewModels
             }
         }
 
-        public void Update()
+        [NotifyPropertyChangedInvocator]
+        public override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             CalculateQuotations(Work, _tableViewModel.WoodTotal);
-        }
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            base.OnPropertyChanged(propertyName);
         }
     }
 }

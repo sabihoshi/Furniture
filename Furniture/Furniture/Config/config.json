@@ -4,16 +4,16 @@
   "Plywood": {
     "Thicknesses": [
       {
-        "Value": 0.25,
-        "Price": 450.00
+        "Name": "1/4",
+        "Value": 450.00
       },
       {
-        "Value": 0.50,
-        "Price": 770.00
+        "Name": "1/2",
+        "Value": 770.00
       },
       {
-        "Value": 0.75,
-        "Price": 1270.00
+        "Name": "3/4",
+        "Value": 1270.00
       }
     ]
   },

@@ -1,40 +1,39 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Furniture.Caption;
 using Furniture.Materials;
 using Furniture.Relationship;
 
 namespace Furniture.ViewModels
 {
-    public sealed class PlywoodViewModel : MaterialModel, IParent
+    public sealed class PlywoodViewModel : MaterialModel
     {
         private readonly Plywood _plywood = App.Config.Plywood;
+
         public PlywoodViewModel(IParent parentModel) : base(parentModel)
         {
             var builder = new CaptionBuilder(this);
 
-            Fields = new List<CaptionViewModel<decimal>>
+            Thickness = builder.CreateComboBox(nameof(Thickness), _plywood.Thicknesses, true);
+            Quantity = builder.CreateTextBox<int>(nameof(Quantity));
+
+            Fields = new List<object>
             {
-                builder.CreateComboBox<decimal>(Thickness, nameof(Thickness), _plywood.Thicknesses),
-                builder.CreateTextBox(Quantity, nameof(Quantity))
+                Thickness, Quantity
             };
         }
 
         public override string Name => "Plywood";
-
         public Plywood Plywood { get; set; } = App.Config.Plywood;
-
-        public CaptionViewModel<decimal> Quantity { get; } 
+        public CaptionViewModel<int> Quantity { get; }
         public CaptionViewModel<decimal> Thickness { get; }
 
         public override decimal Total { get; set; }
 
-        public override void Update()
+        public override decimal GetTotal()
         {
-            var price = Plywood.Thicknesses.Single(thickness => thickness.Value == Thickness.Input.Value).Value;
-            Total = price * Quantity.Value;
-
-            base.Update();
+            return Thickness.TValue * Quantity.TValue;
         }
     }
 }

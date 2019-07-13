@@ -30,9 +30,8 @@
             </Grid.RowDefinitions>
 
             <!--The ItemsControl for the Orders. A card and margin is added for each item.-->
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <ItemsControl Grid.Row="0"
-                              x:Name="OrdersView">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.RowSpan="2">
+                <ItemsControl x:Name="OrdersView">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <materialDesign:Card Margin="5">
@@ -43,13 +42,11 @@
                 </ItemsControl>
             </ScrollViewer>
 
-
-            <!--<Button Grid.Row="1" x:Name="AddItem"
-                    Content="+" />-->
-
-            <Button Grid.Row="1" x:Name="AddItem"
+            <Button Grid.Row="1" Margin="10"
+                    x:Name="AddItem"
+                    HorizontalAlignment="Left"
                     Content="{materialDesign:PackIcon Plus}"
-                    Style="{StaticResource MaterialDesignFloatingActionButton}" />
+                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" />
         </Grid>
 
         <GridSplitter

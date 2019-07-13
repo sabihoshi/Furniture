@@ -1,7 +1,9 @@
-﻿namespace Furniture.Relationship
+﻿using System.Runtime.CompilerServices;
+
+namespace Furniture.Relationship
 {
     public interface IParent
     {
-        void Update();
+        void OnPropertyChanged([CallerMemberName] string propertyName = null);
     }
 }

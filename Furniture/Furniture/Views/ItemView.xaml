@@ -15,15 +15,25 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ComboBox Grid.Row="0" Margin="10"
-                  x:Name="Items" MinWidth="50"
-                  SelectedItem="{Binding Path=Content}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type interface:MaterialModel}">
-                    <TextBlock Text="{Binding Name}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+        <Grid Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <ComboBox Grid.Column="0" Margin="10"
+                      x:Name="Items" MinWidth="50"
+                      SelectedItem="{Binding Path=Content}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type interface:MaterialModel}">
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            
+            <Button Grid.Column="1"
+                    Content="{materialDesign:PackIcon Minus}"/>
+        </Grid>
 
         <ContentControl Grid.Row="1" Margin="10"
                         VerticalAlignment="Center"

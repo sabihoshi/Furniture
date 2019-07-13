@@ -15,21 +15,29 @@ namespace Furniture.ViewModels
             _material = material;
             var builder = new CaptionBuilder(this);
 
-            Fields = new List<CaptionViewModel<decimal>>
+            Thickness = builder.CreateTextBox<decimal>(nameof(Thickness));
+            Width = builder.CreateComboBox(nameof(Width), App.Config.Widths);
+            Length = builder.CreateComboBox(nameof(Length), App.Config.Lengths);
+            Quantity = builder.CreateTextBox<int>(nameof(Quantity));
+
+
+            Fields = new List<object>
             {
-                builder.CreateTextBox(Thickness, nameof(Thickness)),
-                builder.CreateComboBox(Width, nameof(Width), App.Config.Widths),
-                builder.CreateComboBox(Length, nameof(Length), App.Config.Lengths),
-                builder.CreateTextBox(Quantity, nameof(Quantity))
+                Thickness, Width, Length, Quantity
             };
         }
 
         public CaptionViewModel<decimal> Thickness { get; } 
-        public CaptionViewModel<decimal> Width { get; } 
-        public CaptionViewModel<decimal> Length { get; } 
-        public CaptionViewModel<decimal> Quantity { get; } 
+        public CaptionViewModel<int> Width { get; } 
+        public CaptionViewModel<int> Length { get; } 
+        public CaptionViewModel<int> Quantity { get; } 
 
         public override string Name => _material.Name;
         public override decimal Total { get; set; }
+
+        public override decimal GetTotal()
+        {
+            return  ((Thickness.TValue + Width.TValue + Length.TValue) / 12) * Quantity.TValue;
+        }
     }
 }

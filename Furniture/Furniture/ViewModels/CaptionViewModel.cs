@@ -1,29 +1,31 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using Furniture.Caption;
 using Furniture.Relationship;
 
 namespace Furniture.ViewModels
 {
-    public class CaptionViewModel<TOutput> : Child, IParent
+    public class CaptionViewModel<T> : Child, IParent where T : IConvertible
     {
         public enum CaptionType
         {
             ComboBox,
             TextBox
         }
-        public CaptionViewModel(IParent parent, string caption, Input<TOutput> input) : base(parent) 
+        public CaptionViewModel(IParent parent = null, [CallerMemberName] string caption = null, InputBox<T> input = null)
         {
+            Parent = parent;
             Caption = caption;
             Input = input;
         }
 
-        public CaptionViewModel([CallerMemberName] string caption = null)
+        public T TValue
         {
-            Caption = caption;
+            get => Input.TValue;
+            set => Input.TValue = value;
         }
 
-        public TOutput Value => Input.Value;
         public string Caption { get; set; }
-        public Input<TOutput> Input { get; set; }
+        public InputBox<T> Input { get; set; }
     }
 }
