@@ -4,12 +4,8 @@ using Furniture.Relationship;
 
 namespace Furniture.ViewModels
 {
-    public class TextBoxViewModel<T> : InputBox<T> where T : IConvertible
+    public class TextBoxViewModel<T> : InputBox<T> where T : struct
     {
-        public T GetValue()
-        {
-            return TValue;
-        }
-        public TextBoxViewModel(IParent parent, string caption) : base(parent, caption) { }
+        public TextBoxViewModel(IParent parent, string caption, TryParse tryParse) : base(parent, caption, tryParse) { }
     }
 }

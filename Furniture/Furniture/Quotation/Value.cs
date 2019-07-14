@@ -7,7 +7,7 @@ namespace Furniture.Quotation
     {
         public List<decimal> Values { get; set; }
 
-        public override decimal Calculate(decimal wood, List<Quotation> input)
+        public override decimal? Calculate(decimal? wood, List<Quotation> input)
         {
             return Value;
         }

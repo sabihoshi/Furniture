@@ -128,6 +128,7 @@
     </Compile>
     <Compile Include="Caption\CaptionBuilder.cs" />
     <Compile Include="Caption\ComboBoxItem.cs" />
+    <Compile Include="Caption\IHasValue.cs" />
     <Compile Include="Materials\Material.cs" />
     <Compile Include="Relationship\Parent.cs" />
     <Compile Include="ViewModels\ComboBoxViewModel.cs" />

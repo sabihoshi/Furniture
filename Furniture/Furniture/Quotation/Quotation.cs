@@ -38,11 +38,11 @@ namespace Furniture.Quotation
 
         public string Name { get; set; }
 
-        [JsonIgnore] public decimal Total { get; set; }
+        [JsonIgnore] public decimal? Total { get; set; }
 
         public decimal Value { get; set; }
 
-        public abstract decimal Calculate(decimal wood, List<Quotation> input);
+        public abstract decimal? Calculate(decimal? wood, List<Quotation> input);
 
     }
 }

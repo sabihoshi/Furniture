@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Furniture.Caption;
 using Furniture.Properties;
 using Furniture.Relationship;
 using Furniture.ViewModels;
@@ -14,17 +15,17 @@ namespace Furniture.Materials
         {
         }
 
-        public List<object> Fields { get; set; }
+        public List<IHasValue> Fields { get; set; }
         public abstract string Name { get; }
-        public abstract decimal Total { get; set; }
-        public abstract decimal GetTotal();
-        public bool CanTotal() => Fields?.All(field => field != null) ?? false;
+
+        public decimal Total { get; set; }
+
+        public abstract decimal TryGetTotal();
 
         public override void OnPropertyChanged(string propertyName = null)
         {
-            if (CanTotal())
-                Total = GetTotal();
-
+            if (Fields?.All(field => field.HasValue) ?? false)
+                Total = TryGetTotal();
             base.OnPropertyChanged(propertyName);
         }
     }

@@ -8,8 +8,8 @@ namespace Furniture.ViewModels
         public NoneViewModel(ItemViewModel source) : base(source) { }
 
         public override string Name { get; } = "None";
-        public override decimal Total { get;  set; }
-        public override decimal GetTotal()
+
+        public override decimal TryGetTotal()
         {
             throw new NotImplementedException();
         }

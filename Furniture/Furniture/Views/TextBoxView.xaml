@@ -6,6 +6,6 @@
              xmlns:local="clr-namespace:Furniture.Views"
              mc:Ignorable="d" >
     <TextBox MinWidth="10"
-             Text="{Binding Path=Output, Mode=TwoWay,
-                              UpdateSourceTrigger=PropertyChanged}"/>
+             Text="{Binding Path=Text, Mode=TwoWay,
+                            UpdateSourceTrigger=PropertyChanged}"/>
 </UserControl>

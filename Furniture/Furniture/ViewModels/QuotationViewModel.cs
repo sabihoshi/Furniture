@@ -23,7 +23,7 @@ namespace Furniture.ViewModels
         public bool EditVisibility { get; set; } = false;
         public BindableCollection<Quotation.Quotation> Work { get; set; } = App.Config.Work;
 
-        public static void CalculateQuotations(BindableCollection<Quotation.Quotation> quotations, decimal woodTotal)
+        public static void CalculateQuotations(BindableCollection<Quotation.Quotation> quotations, decimal? woodTotal)
         {
             var total = woodTotal;
 

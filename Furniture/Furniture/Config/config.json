@@ -35,6 +35,11 @@
     },
     {
       "$type": "Furniture.Quotation.Value, Furniture",
+      "Name": "Frame Labor",
+      "Value": 0 
+    },
+    {
+      "$type": "Furniture.Quotation.Value, Furniture",
       "Name": "Labor",
       "Value": 500,
       "Values": [

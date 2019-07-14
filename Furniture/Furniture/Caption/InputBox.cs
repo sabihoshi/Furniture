@@ -1,30 +1,25 @@
-﻿using System;
-using Furniture.Relationship;
+﻿using Furniture.Relationship;
 
 namespace Furniture.Caption
 {
-    public abstract class InputBox<T> : Child where T : IConvertible
+    public abstract class InputBox<T> : Child, IHasValue where T : struct
     {
-        private string _output;
+        private readonly TryParse _tryParse;
 
-        public InputBox(IParent parent, string caption) : base(parent)
+        public InputBox(IParent parent, string caption, TryParse tryParse) : base(parent)
         {
+            _tryParse = tryParse;
             Caption = caption;
-        }
-
-        public string Output
-        {
-            get => _output;
-            set
-            {
-                _output = value;
-                if (Output.TryParse<T>(out var result))
-                    TValue = result;
-            }
         }
 
         public string Caption { get; }
 
-        public virtual T TValue { get; set; }
+        public bool HasValue => !(Value is null);
+
+        public string Text { get; set; } = default(T).ToString();
+
+        public virtual T? Value => _tryParse(Text, out var result) ? result : (T?) null;
+
+        public delegate bool TryParse(string input, out T output);
     }
 }

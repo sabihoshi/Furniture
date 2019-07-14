@@ -5,7 +5,7 @@ using Furniture.Relationship;
 
 namespace Furniture.ViewModels
 {
-    public class CaptionViewModel<T> : Child, IParent where T : IConvertible
+    public class CaptionViewModel<T> : Child, IHasValue, IParent where T : struct
     {
         public enum CaptionType
         {
@@ -19,11 +19,8 @@ namespace Furniture.ViewModels
             Input = input;
         }
 
-        public T TValue
-        {
-            get => Input.TValue;
-            set => Input.TValue = value;
-        }
+        public T? Value => Input.Value;
+        public bool HasValue => Input.HasValue;
 
         public string Caption { get; set; }
         public InputBox<T> Input { get; set; }

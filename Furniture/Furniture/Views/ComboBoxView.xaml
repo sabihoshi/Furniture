@@ -7,7 +7,7 @@
     <ComboBox ItemsSource="{Binding Path=Values, Mode=TwoWay}"
               SelectedItem="{Binding Path=SelectedValue, Mode=TwoWay}">
         <ComboBox.ItemTemplate>
-            <DataTemplate DataType="{x:Type ComboBoxItem}">
+            <DataTemplate>
                 <TextBlock Text="{Binding Path=Name, Mode=OneWay}" />
             </DataTemplate>
         </ComboBox.ItemTemplate>

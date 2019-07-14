@@ -8,19 +8,19 @@ using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.ViewModels
 {
-    public class ComboBoxViewModel<T> : InputBox<T>, IParent where T : IConvertible
+    public class ComboBoxViewModel<T> : InputBox<T>, IParent where T : struct
     {
         private ComboBoxItem<T> _selectedValue;
         private readonly WindowManager _windowManager = new WindowManager();
 
-        public ComboBoxViewModel(IParent parent, List<ComboBoxItem<T>> values, string caption, bool other) : base(parent, caption)
+        public ComboBoxViewModel(IParent parent, List<ComboBoxItem<T>> values, string caption, bool other, TryParse tryParse) : base(parent, caption, tryParse)
         {
             Values = values;
             SelectedValue = Values?.First();
 
             if(other)
             {
-                OtherCaption = new OtherInputViewModel<T>(this);
+                OtherCaption = new OtherInputViewModel<T>(this, tryParse);
                 Values?.Add(Other);
             }
         }
@@ -39,7 +39,7 @@ namespace Furniture.ViewModels
                 _selectedValue = value; 
             }
         }
-        public override T TValue => SelectedValue.Value;
+        public override T? Value => SelectedValue.Value;
         public List<ComboBoxItem<T>> Values { get; set; }
     }
 }

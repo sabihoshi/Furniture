@@ -5,14 +5,13 @@ using Furniture.Relationship;
 
 namespace Furniture.ViewModels
 {
-    public class OtherInputViewModel<T> : Child where T : class, IConvertible
+    public class OtherInputViewModel<T> : Child where T : struct
     {
-        public OtherInputViewModel(ComboBoxViewModel<T> parent) : base(parent)
+        public OtherInputViewModel(ComboBoxViewModel<T> parent, InputBox<T>.TryParse tryParse) : base(parent)
         {
             var builder = new CaptionBuilder(parent);
-            Field = builder.CreateTextBox<T>(parent.Caption);
-            Field.TValue = parent.TValue ?? parent.Values.First().Value;
-            Field.Input.Output = parent.SelectedValue.Name;
+            Field = builder.CreateTextBox<T>(parent.Caption, tryParse);
+            Field.Input.Text = parent.SelectedValue.Name;
         }
 
         public CaptionViewModel<T> Field { get; set; }

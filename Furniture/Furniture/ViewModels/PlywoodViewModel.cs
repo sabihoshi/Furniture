@@ -16,9 +16,9 @@ namespace Furniture.ViewModels
             var builder = new CaptionBuilder(this);
 
             Thickness = builder.CreateComboBox(nameof(Thickness), _plywood.Thicknesses, true);
-            Quantity = builder.CreateTextBox<int>(nameof(Quantity));
+            Quantity = builder.CreateTextBox<int>(nameof(Quantity), int.TryParse);
 
-            Fields = new List<object>
+            Fields = new List<IHasValue>
             {
                 Thickness, Quantity
             };
@@ -28,12 +28,10 @@ namespace Furniture.ViewModels
         public Plywood Plywood { get; set; } = App.Config.Plywood;
         public CaptionViewModel<int> Quantity { get; }
         public CaptionViewModel<decimal> Thickness { get; }
-
-        public override decimal Total { get; set; }
-
-        public override decimal GetTotal()
+        
+        public override decimal TryGetTotal()
         {
-            return Thickness.TValue * Quantity.TValue;
+            return (decimal) (Thickness.Value * Quantity.Value);
         }
     }
 }

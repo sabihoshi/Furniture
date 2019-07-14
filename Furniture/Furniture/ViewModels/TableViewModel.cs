@@ -13,7 +13,7 @@ namespace Furniture.ViewModels
 
         public BindableCollection<ItemViewModel> OrdersView { get; set; } = new BindableCollection<ItemViewModel>();
         public QuotationViewModel QuotationViewModel { get; set; }
-        public decimal WoodTotal => OrdersView.Select(x => x.Content.Total).Sum();
+        public decimal? WoodTotal => OrdersView.Select(x => x.Content.Total).Sum();
         public void AddItem()
         {
             if (OrdersView.Count != 0 && OrdersView.Last().Content == null)
