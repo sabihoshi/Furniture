@@ -1,7 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows;
-using Furniture.ViewModels.Quotation;
 using Newtonsoft.Json;
 
 namespace Furniture

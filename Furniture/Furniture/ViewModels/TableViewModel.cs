@@ -18,13 +18,6 @@ namespace Furniture.ViewModels
         public BindableCollection<ItemViewModel> OrdersView { get; set; } = new BindableCollection<ItemViewModel>();
         public QuotationViewModel QuotationViewModel { get; set; }
 
-        public decimal? GetTotal(MaterialModel.Material type)
-        {
-            var result = OrdersView.Where(x => x.Type == type).Sum(x => x.Content.Total);
-            return result;
-        }
-
-
         [UsedImplicitly]
         public void AddItem()
         {
@@ -34,15 +27,21 @@ namespace Furniture.ViewModels
             OnPropertyChanged();
         }
 
-        public void RemoveItem(ItemViewModel itemViewModel)
+        public decimal? GetTotal(MaterialModel.Material type)
         {
-            OrdersView.Remove(itemViewModel);
+            var result = OrdersView.Where(x => x.Type == type).Sum(x => x.Content.Total);
+            return result;
         }
 
         public override void OnPropertyChanged(string propertyName = null)
         {
             QuotationViewModel.OnPropertyChanged();
             base.OnPropertyChanged(propertyName);
+        }
+
+        public void RemoveItem(ItemViewModel itemViewModel)
+        {
+            OrdersView.Remove(itemViewModel);
         }
     }
 }

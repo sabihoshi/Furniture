@@ -36,7 +36,7 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <materialDesign:Card Margin="5">
-                                <ContentControl cal:View.Model="{Binding}" MinWidth="175"/>
+                                <ContentControl cal:View.Model="{Binding}" MinWidth="175" />
                             </materialDesign:Card>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

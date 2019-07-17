@@ -4,6 +4,8 @@ namespace Furniture.ViewModels.Caption
 {
     public abstract class InputBox<T> : Child, IHasValue where T : struct
     {
+        public delegate bool TryParse(string input, out T output);
+
         private readonly TryParse _tryParse;
 
         public InputBox(IParent parent, string caption, TryParse tryParse, T value = default) : base(parent)
@@ -17,10 +19,8 @@ namespace Furniture.ViewModels.Caption
 
         public bool HasValue => !(Value is null);
 
-        public string Text { get; set; } 
+        public string Text { get; set; }
 
         public virtual T? Value => _tryParse(Text, out var result) ? result : (T?) null;
-
-        public delegate bool TryParse(string input, out T output);
     }
 }

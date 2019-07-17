@@ -7,7 +7,7 @@ namespace Furniture.ViewModels.Caption
         public OtherInputViewModel(ComboBoxViewModel<T> parent, InputBox<T>.TryParse tryParse) : base(parent)
         {
             var builder = new CaptionBuilder(parent);
-            Field = builder.CreateTextBox<T>(parent.Caption, tryParse);
+            Field = builder.CreateTextBox(parent.Caption, tryParse);
             Field.Input.Text = parent.SelectedValue.Name;
         }
 

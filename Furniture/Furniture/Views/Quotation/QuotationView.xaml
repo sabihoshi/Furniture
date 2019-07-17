@@ -15,7 +15,7 @@
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow" BasedOn="{StaticResource MaterialDesignDataGridRow}">
                     <Setter Property="cal:Message.Attach"
-                            Value="[Event MouseDoubleClick] = [Action Click($source, eventArgs)]"/>
+                            Value="[Event MouseDoubleClick] = [Action Click($source, eventArgs)]" />
                 </Style>
             </DataGrid.RowStyle>
             <DataGrid.Columns>

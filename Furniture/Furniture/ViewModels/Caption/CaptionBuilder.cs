@@ -31,23 +31,26 @@ namespace Furniture.ViewModels.Caption
         }
 
         public IParent Parent { get; set; }
-        public CaptionViewModel<T> CreateTextBox<T>(string caption, InputBox<T>.TryParse tryParse, T value = default)
-            where T : struct
-        {
-            return new CaptionViewModel<T>(Parent, caption).WithTextBox(Parent, caption, tryParse, value);
-        }
 
-        public CaptionViewModel<T> CreateComboBox<T>(string caption, List<ComboBoxItem<T>> values, InputBox<T>.TryParse tryParse = null)
+        public CaptionViewModel<T> CreateComboBox<T>(string caption, List<ComboBoxItem<T>> values,
+                                                     InputBox<T>.TryParse tryParse = null)
             where T : struct
         {
             return new CaptionViewModel<T>(Parent, caption).WithComboBox(Parent, values, caption, tryParse);
         }
 
-        public CaptionViewModel<T> CreateComboBox<T>(string caption, List<T> values, InputBox<T>.TryParse tryParse = null)
+        public CaptionViewModel<T> CreateComboBox<T>(string caption, List<T> values,
+                                                     InputBox<T>.TryParse tryParse = null)
             where T : struct
         {
             var result = values.Select(value => new ComboBoxItem<T>(value)).ToList();
             return CreateComboBox(caption, result, tryParse);
+        }
+
+        public CaptionViewModel<T> CreateTextBox<T>(string caption, InputBox<T>.TryParse tryParse, T value = default)
+            where T : struct
+        {
+            return new CaptionViewModel<T>(Parent, caption).WithTextBox(Parent, caption, tryParse, value);
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
+using Furniture.Relationship;
 using Furniture.ViewModels.Caption;
-using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.ViewModels.Materials
 {
     public class GlassViewModel : MaterialModel
     {
-        
         public GlassViewModel(IParent parent) : base(parent)
         {
             var builder = new CaptionBuilder(this);

@@ -15,8 +15,6 @@ namespace Furniture
 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            
-
             manager.ShowWindow(new TableViewModel());
         }
     }

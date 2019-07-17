@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Caliburn.Micro;
 
 namespace Furniture.Relationship
 {
@@ -13,13 +12,13 @@ namespace Furniture.Relationship
 
         public IParent Parent { get; set; }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public Child AddParent(IParent parent)
         {
             Parent = parent;
             return this;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

@@ -3,7 +3,7 @@
 namespace Furniture.Views.Caption
 {
     /// <summary>
-    /// Interaction logic for OtherInputView.xaml
+    ///     Interaction logic for OtherInputView.xaml
     /// </summary>
     public partial class OtherInputView : UserControl
     {

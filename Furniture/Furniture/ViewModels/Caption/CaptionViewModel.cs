@@ -7,20 +7,21 @@ namespace Furniture.ViewModels.Caption
     {
         public enum CaptionType
         {
-            ComboBox,
-            TextBox
+            ComboBox, TextBox
         }
-        public CaptionViewModel(IParent parent = null, [CallerMemberName] string caption = null, InputBox<T> input = null)
+
+        public CaptionViewModel(IParent parent = null, [CallerMemberName] string caption = null,
+                                InputBox<T> input = null)
         {
             Parent = parent;
             Caption = caption;
             Input = input;
         }
 
-        public T? Value => Input.Value;
-        public bool HasValue => Input.HasValue;
-
         public string Caption { get; set; }
+        public bool HasValue => Input.HasValue;
         public InputBox<T> Input { get; set; }
+
+        public T? Value => Input.Value;
     }
 }

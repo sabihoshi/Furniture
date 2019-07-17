@@ -3,7 +3,7 @@
 namespace Furniture.Views.Quotation
 {
     /// <summary>
-    /// Interaction logic for QuotationEditView.xaml
+    ///     Interaction logic for QuotationEditView.xaml
     /// </summary>
     public partial class QuotationEditView : UserControl
     {

@@ -9,6 +9,8 @@ namespace Furniture.ViewModels.Quotation
     {
         private readonly IWindowManager _manager = new WindowManager();
 
+        public Percentage(string name, decimal value) : base(name, value) { }
+
         public void EditValues()
         {
             dynamic settings = new ExpandoObject();
@@ -26,7 +28,5 @@ namespace Furniture.ViewModels.Quotation
         {
             return Parent?.Quotations.TakeWhile(x => x != this).Sum(x => x.Total) * Value;
         }
-
-        public Percentage(string name, decimal value) : base(name, value) { }
     }
 }

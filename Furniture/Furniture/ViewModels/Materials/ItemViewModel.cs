@@ -10,8 +10,6 @@ namespace Furniture.ViewModels.Materials
     {
         private MaterialMasterViewModel _content;
 
-        public MaterialModel.Material Type => Content.Type;
-
         public ItemViewModel(TableViewModel parent)
         {
             Parent = parent;
@@ -46,5 +44,7 @@ namespace Furniture.ViewModels.Materials
 
         public BindableCollection<MaterialMasterViewModel> Items { get; set; } = new BindableCollection<
             MaterialMasterViewModel>();
+
+        public MaterialModel.Material Type => Content.Type;
     }
 }

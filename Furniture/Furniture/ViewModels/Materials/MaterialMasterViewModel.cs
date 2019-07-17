@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Caliburn.Micro;
 
 namespace Furniture.ViewModels.Materials
@@ -12,23 +8,22 @@ namespace Furniture.ViewModels.Materials
         public static BindableCollection<MaterialMasterViewModel> ConvertModels(this List<MaterialModel> models)
         {
             var list = new BindableCollection<MaterialMasterViewModel>();
-            foreach (var model in models)
-            {
-                list.Add(new MaterialMasterViewModel(model));
-            }
+            foreach (var model in models) list.Add(new MaterialMasterViewModel(model));
 
             return list;
         }
     }
+
     public class MaterialMasterViewModel
     {
-        public decimal Total => Model.Total;
-        public MaterialModel.Material Type => Model.Type;
-        public string Name => Model.Name;
-        public MaterialModel Model { get; }
         public MaterialMasterViewModel(MaterialModel model)
         {
             Model = model;
         }
+
+        public MaterialModel Model { get; }
+        public string Name => Model.Name;
+        public decimal Total => Model.Total;
+        public MaterialModel.Material Type => Model.Type;
     }
 }

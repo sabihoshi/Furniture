@@ -19,10 +19,7 @@ namespace Furniture.ViewModels.Quotation
             Quotations.Add(subTotal);
             Quotations.Add(tax);
 
-            foreach (var work in Quotations)
-            {
-                work.AddParent(this);
-            }
+            foreach (var work in Quotations) work.AddParent(this);
 
             OnPropertyChanged();
         }
@@ -30,6 +27,12 @@ namespace Furniture.ViewModels.Quotation
         public new TableViewModel Parent { get; }
 
         public BindableCollection<Quotation> Quotations { get; set; } = App.Config.Work;
+
+        public override void OnPropertyChanged(string propertyName = null)
+        {
+            CalculateQuotations(Quotations);
+            base.OnPropertyChanged(propertyName);
+        }
 
         public static void CalculateQuotations(BindableCollection<Quotation> quotations)
         {
@@ -49,12 +52,6 @@ namespace Furniture.ViewModels.Quotation
         public decimal? GetTotal(MaterialModel.Material material)
         {
             return Parent.GetTotal(material);
-        }
-
-        public override void OnPropertyChanged(string propertyName = null)
-        {
-            CalculateQuotations(Quotations);
-            base.OnPropertyChanged(propertyName);
         }
     }
 }

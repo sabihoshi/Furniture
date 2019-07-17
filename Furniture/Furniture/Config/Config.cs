@@ -7,11 +7,11 @@ namespace Furniture.Config
 {
     public class Config
     {
-        public List<Wood> Woods { get; set; }
-        public Plywood Plywood { get; set; }
-        public BindableCollection<Quotation> Work { get; set; }
-        public List<int> Widths { get; set; }
         public List<int> Lengths { get; set; }
+        public Plywood Plywood { get; set; }
         public List<decimal> Values { get; set; }
+        public List<int> Widths { get; set; }
+        public List<Wood> Woods { get; set; }
+        public BindableCollection<Quotation> Work { get; set; }
     }
 }

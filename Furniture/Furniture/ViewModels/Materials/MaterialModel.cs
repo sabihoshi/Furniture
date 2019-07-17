@@ -33,6 +33,7 @@ namespace Furniture.ViewModels.Materials
                 Total = GetTotal();
             base.OnPropertyChanged(propertyName);
         }
+
         public abstract decimal GetTotal();
     }
 }

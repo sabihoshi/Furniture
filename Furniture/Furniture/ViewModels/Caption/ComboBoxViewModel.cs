@@ -10,32 +10,35 @@ namespace Furniture.ViewModels.Caption
         private ComboBoxItem<T> _selectedValue;
         private readonly WindowManager _windowManager = new WindowManager();
 
-        public ComboBoxViewModel(IParent parent, List<ComboBoxItem<T>> values, string caption, TryParse tryParse) : base(parent, caption, tryParse)
+        public ComboBoxViewModel(IParent parent, List<ComboBoxItem<T>> values, string caption, TryParse tryParse) :
+            base(parent, caption, tryParse)
         {
             Values = values;
             SelectedValue = Values?.First();
 
-            if(tryParse != null)
+            if (tryParse != null)
             {
                 OtherCaption = new OtherInputViewModel<T>(this, tryParse);
                 Values?.Add(Other);
             }
         }
 
-        public OtherInputViewModel<T> OtherCaption { get; }
         public ComboBoxItem<T> Other { get; } = new ComboBoxItem<T>("Other...", default);
+
+        public OtherInputViewModel<T> OtherCaption { get; }
 
         public ComboBoxItem<T> SelectedValue
         {
             get => _selectedValue;
             set
             {
-                if(value == Other)
+                if (value == Other)
                     _windowManager.ShowPopup(OtherCaption);
 
-                _selectedValue = value; 
+                _selectedValue = value;
             }
         }
+
         public override T? Value => SelectedValue.Value;
         public List<ComboBoxItem<T>> Values { get; set; }
     }
