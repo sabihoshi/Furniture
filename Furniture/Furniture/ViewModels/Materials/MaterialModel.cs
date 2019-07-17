@@ -18,7 +18,8 @@ namespace Furniture.ViewModels.Materials
 
         public MaterialModel(IParent parent) : base(parent)
         {
-            ViewModelBinder.Bind(this, new MaterialModelView(), null);
+            // Currently does not work
+            // ViewModelBinder.Bind(this, new MaterialMasterView(), null);
         }
 
         public List<IHasValue> Fields { get; set; }
