@@ -9,7 +9,7 @@ namespace Furniture.Views.Materials
     {
         public MaterialMasterView()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }
