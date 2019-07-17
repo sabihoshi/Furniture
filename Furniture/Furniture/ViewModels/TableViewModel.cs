@@ -1,6 +1,9 @@
 ﻿using System.Linq;
 using Caliburn.Micro;
+using Furniture.Properties;
 using Furniture.Relationship;
+using Furniture.ViewModels.Materials;
+using Furniture.ViewModels.Quotation;
 
 namespace Furniture.ViewModels
 {
@@ -9,11 +12,20 @@ namespace Furniture.ViewModels
         public TableViewModel()
         {
             QuotationViewModel = new QuotationViewModel(this);
+            AddItem();
         }
 
         public BindableCollection<ItemViewModel> OrdersView { get; set; } = new BindableCollection<ItemViewModel>();
         public QuotationViewModel QuotationViewModel { get; set; }
-        public decimal? WoodTotal => OrdersView.Select(x => x.Content.Total).Sum();
+
+        public decimal? GetTotal(MaterialModel.Material type)
+        {
+            var result = OrdersView.Where(x => x.Type == type).Sum(x => x.Content.Total);
+            return result;
+        }
+
+
+        [UsedImplicitly]
         public void AddItem()
         {
             if (OrdersView.Count != 0 && OrdersView.Last().Content == null)

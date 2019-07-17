@@ -126,60 +126,67 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Caption\CaptionBuilder.cs" />
-    <Compile Include="Caption\ComboBoxItem.cs" />
-    <Compile Include="Caption\IHasValue.cs" />
-    <Compile Include="Materials\Material.cs" />
+    <Compile Include="ViewModels\Caption\CaptionBuilder.cs" />
+    <Compile Include="ViewModels\Caption\ComboBoxItem.cs" />
+    <Compile Include="ViewModels\Caption\IHasValue.cs" />
+    <Compile Include="ViewModels\Materials\MaterialMasterViewModel.cs" />
+    <Compile Include="ViewModels\Materials\Wood.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModels\Quotation\Quotation.cs" />
+    <Compile Include="ViewModels\Quotation\ICalculate.cs" />
+    <Compile Include="ViewModels\Quotation\Source.cs" />
     <Compile Include="Relationship\Parent.cs" />
-    <Compile Include="ViewModels\ComboBoxViewModel.cs" />
-    <Compile Include="Caption\InputBox.cs" />
-    <Compile Include="ViewModels\TextBoxViewModel.cs" />
-    <Compile Include="ViewModels\CaptionViewModel.cs" />
-    <Compile Include="Materials\MaterialModel.cs" />
-    <Compile Include="ViewModels\QuotationEditViewModel.cs" />
-    <Compile Include="ViewModels\QuotationViewModel.cs" />
-    <Compile Include="ViewModels\OtherInputViewModel.cs" />
-    <Compile Include="Views\CaptionView.xaml.cs">
+    <Compile Include="ViewModels\Caption\ComboBoxViewModel.cs" />
+    <Compile Include="ViewModels\Caption\InputBox.cs" />
+    <Compile Include="ViewModels\Materials\ConcealedViewModel.cs" />
+    <Compile Include="ViewModels\Materials\FrameViewModel.cs" />
+    <Compile Include="ViewModels\Materials\GlassViewModel.cs" />
+    <Compile Include="ViewModels\Materials\HandleViewModel.cs" />
+    <Compile Include="ViewModels\Caption\TextBoxViewModel.cs" />
+    <Compile Include="ViewModels\Caption\CaptionViewModel.cs" />
+    <Compile Include="ViewModels\Materials\MaterialModel.cs" />
+    <Compile Include="ViewModels\Quotation\QuotationEditViewModel.cs" />
+    <Compile Include="ViewModels\Quotation\QuotationViewModel.cs" />
+    <Compile Include="ViewModels\Caption\OtherInputViewModel.cs" />
+    <Compile Include="ViewModels\Quotation\SubTotal.cs" />
+    <Compile Include="ViewModels\Quotation\Tax.cs" />
+    <Compile Include="Views\Caption\CaptionView.xaml.cs">
       <DependentUpon>CaptionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ComboBoxView.xaml.cs">
+    <Compile Include="Views\Caption\ComboBoxView.xaml.cs">
       <DependentUpon>ComboBoxView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\OtherInputView.xaml.cs">
+    <Compile Include="Views\Materials\MaterialMasterView.xaml.cs">
+      <DependentUpon>MaterialMasterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Materials\MaterialModelView.xaml.cs">
+      <DependentUpon>MaterialModelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Caption\OtherInputView.xaml.cs">
       <DependentUpon>OtherInputView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\QuotationEditView.xaml.cs">
+    <Compile Include="Views\Quotation\QuotationEditView.xaml.cs">
       <DependentUpon>QuotationEditView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\QuotationView.xaml.cs">
+    <Compile Include="Views\Quotation\QuotationView.xaml.cs">
       <DependentUpon>QuotationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Config\Config.cs" />
-    <Compile Include="Quotation\Quotation.cs" />
-    <Compile Include="Materials\IMaterial.cs" />
-    <Compile Include="Materials\Plywood.cs" />
-    <Compile Include="Materials\Thickness.cs" />
-    <Compile Include="Materials\Wood.cs" />
+    <Compile Include="ViewModels\Materials\IMaterial.cs" />
+    <Compile Include="ViewModels\Materials\Plywood.cs" />
+    <Compile Include="ViewModels\Materials\Thickness.cs" />
     <Compile Include="Relationship\Child.cs" />
     <Compile Include="Relationship\IParent.cs" />
-    <Compile Include="Quotation\Value.cs" />
-    <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="ViewModels\ItemViewModel.cs" />
-    <Compile Include="ViewModels\WoodViewModel.cs" />
-    <Compile Include="ViewModels\NoneViewModel.cs" />
-    <Compile Include="ViewModels\PlywoodViewModel.cs" />
+    <Compile Include="ViewModels\Materials\ItemViewModel.cs" />
+    <Compile Include="ViewModels\Materials\WoodViewModel.cs" />
+    <Compile Include="ViewModels\Materials\NoneViewModel.cs" />
+    <Compile Include="ViewModels\Materials\PlywoodViewModel.cs" />
     <Compile Include="ViewModels\TableViewModel.cs" />
-    <Compile Include="Views\ItemView.xaml.cs">
+    <Compile Include="Views\Materials\ItemView.xaml.cs">
       <DependentUpon>ItemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TextBoxView.xaml.cs">
+    <Compile Include="Views\Caption\TextBoxView.xaml.cs">
       <DependentUpon>TextBoxView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WoodView.xaml.cs">
-      <DependentUpon>WoodView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PlywoodView.xaml.cs">
-      <DependentUpon>PlywoodView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TableView.xaml.cs">
       <DependentUpon>TableView.xaml</DependentUpon>
@@ -212,7 +219,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Quotation\Percentage.cs" />
+    <Compile Include="ViewModels\Quotation\Percentage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -230,39 +237,39 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\CaptionView.xaml">
+    <Page Include="Views\Caption\CaptionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ComboBoxView.xaml">
+    <Page Include="Views\Caption\ComboBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ItemView.xaml">
+    <Page Include="Views\Materials\ItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\OtherInputView.xaml">
+    <Page Include="Views\Materials\MaterialMasterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\QuotationEditView.xaml">
+    <Page Include="Views\Materials\MaterialModelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TextBoxView.xaml">
+    <Page Include="Views\Caption\OtherInputView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\WoodView.xaml">
+    <Page Include="Views\Quotation\QuotationEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PlywoodView.xaml">
+    <Page Include="Views\Caption\TextBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\QuotationView.xaml">
+    <Page Include="Views\Quotation\QuotationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

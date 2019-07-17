@@ -17,7 +17,7 @@
         Title="TableView" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="250" />
+            <ColumnDefinition Width="300" />
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
@@ -30,15 +30,22 @@
             </Grid.RowDefinitions>
 
             <!--The ItemsControl for the Orders. A card and margin is added for each item.-->
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.RowSpan="2">
-                <ItemsControl x:Name="OrdersView">
+            <ScrollViewer Grid.RowSpan="2"
+                          VerticalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="OrdersView" MinWidth="175">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <materialDesign:Card Margin="5">
-                                <ContentControl cal:View.Model="{Binding}" />
+                                <ContentControl cal:View.Model="{Binding}" MinWidth="175"/>
                             </materialDesign:Card>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
                 </ItemsControl>
             </ScrollViewer>
 

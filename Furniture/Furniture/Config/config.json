@@ -1,6 +1,27 @@
 {
-  "Widths": [2,3,4,5,6,7,8],
-  "Lengths": [4,5,6,7,8,9,10],
+  "Widths": [ 2, 3, 4, 5, 6, 7, 8 ],
+  "Lengths": [ 4, 5, 6, 7, 8, 9, 10 ],
+  "Values": [
+    500,
+    800,
+    1000,
+    1200,
+    1500,
+    1700,
+    2000,
+    2200,
+    2500,
+    2800,
+    3000,
+    3200,
+    3500,
+    3800,
+    4000,
+    4200,
+    4500,
+    4800,
+    5000
+  ],
   "Plywood": {
     "Thicknesses": [
       {
@@ -17,7 +38,7 @@
       }
     ]
   },
-  "Materials": [
+  "Woods": [
     {
       "Name": "Mahogany",
       "Price": 90.00
@@ -29,60 +50,54 @@
   ],
   "Work": [
     {
-      "$type": "Furniture.Quotation.Percentage, Furniture",
+      "$type": "Furniture.ViewModels.Quotation.Source, Furniture",
+      "Type": 1,
+      "Name": "Wood"
+    },
+    {
+      "$type": "Furniture.ViewModels.Quotation.Percentage, Furniture",
       "Name": "Milling",
       "Value": 0.10
     },
     {
-      "$type": "Furniture.Quotation.Value, Furniture",
-      "Name": "Frame Labor",
-      "Value": 0 
+      "$type": "Furniture.ViewModels.Quotation.Source, Furniture",
+      "Type": 2,
+      "Name": "Frame"
     },
     {
-      "$type": "Furniture.Quotation.Value, Furniture",
-      "Name": "Labor",
-      "Value": 500,
-      "Values": [
-        500,
-        800,
-        1000,
-        1200,
-        1500,
-        1700,
-        2000,
-        2200,
-        2500,
-        2700,
-        3000,
-        3200,
-        3500,
-        3700,
-        4000,
-        4200,
-        4500,
-        4700,
-        5000
-      ]
-    },
-    {
-      "$type": "Furniture.Quotation.Percentage, Furniture",
+      "$type": "Furniture.ViewModels.Quotation.Percentage, Furniture",
       "Name": "Finishing",
       "Value": 0.45
     },
     {
-      "$type": "Furniture.Quotation.Percentage, Furniture",
+      "$type": "Furniture.ViewModels.Quotation.Source, Furniture",
+      "Type": 3,
+      "Name": "Concealed"
+    },
+    {
+      "$type": "Furniture.ViewModels.Quotation.Source, Furniture",
+      "Type": 4,
+      "Name": "Handles"
+    },
+    {
+      "$type": "Furniture.ViewModels.Quotation.Percentage, Furniture",
       "Name": "Overhead",
       "Value": 0.35
     },
     {
-      "$type": "Furniture.Quotation.Percentage, Furniture",
+      "$type": "Furniture.ViewModels.Quotation.Percentage, Furniture",
       "Name": "Office",
       "Value": 0.25
     },
     {
-      "$type": "Furniture.Quotation.Percentage, Furniture",
+      "$type": "Furniture.ViewModels.Quotation.Percentage, Furniture",
       "Name": "Store",
       "Value": 0.15
+    },
+    {
+      "$type": "Furniture.ViewModels.Quotation.Source, Furniture",
+      "Type": 5,
+      "Name": "Glass"
     }
   ]
 }

@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 using Caliburn.Micro;
-using Furniture.Materials;
+using Furniture.ViewModels.Materials;
+using Furniture.ViewModels.Quotation;
 
 namespace Furniture.Config
 {
     public class Config
     {
-        public List<Material> Materials { get; set; }
+        public List<Wood> Woods { get; set; }
         public Plywood Plywood { get; set; }
-        public BindableCollection<Quotation.Quotation> Work { get; set; }
-
+        public BindableCollection<Quotation> Work { get; set; }
         public List<int> Widths { get; set; }
         public List<int> Lengths { get; set; }
+        public List<decimal> Values { get; set; }
     }
 }
