@@ -11,9 +11,9 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition SharedSizeGroup="Labels" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition SharedSizeGroup="Input" />
+            <ColumnDefinition width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width ="*"/>
         </Grid.ColumnDefinitions>
 
         <ItemsControl Grid.Row="0" Grid.Column="0"
@@ -22,8 +22,8 @@
                       x:Name="Model_Fields" />
 
         <!--Total-->
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Total" HorizontalAlignment="Right" />
-        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left"
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Total" HorizontalAlignment="Left" Padding="30,0,0,0 "/>
+        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Padding="0,0,23,0"
                    Text="{Binding Path=Model.Total, Mode=OneWay,
                                   ConverterCulture=en-PH,
                                   StringFormat='c2'}" />
