@@ -11,6 +11,6 @@ namespace Furniture.ViewModels.Caption
             Field.Input.Text = parent.SelectedValue.Name;
         }
 
-        public CaptionViewModel<T> Field { get; set; }
+        public CaptionModel<T> Field { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using Caliburn.Micro;
 using Furniture.Relationship;
@@ -9,6 +11,7 @@ namespace Furniture.ViewModels.Quotation
 {
     public sealed class QuotationViewModel : Child, IParent
     {
+        
         public QuotationViewModel(TableViewModel parent)
         {
             Parent = parent;
