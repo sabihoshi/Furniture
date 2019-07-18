@@ -132,6 +132,7 @@
     <Compile Include="ViewModels\Materials\MaterialMasterViewModel.cs" />
     <Compile Include="ViewModels\Materials\Wood.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModels\Quotation\DecimalPercentageConverter.cs" />
     <Compile Include="ViewModels\Quotation\Quotation.cs" />
     <Compile Include="ViewModels\Quotation\ICalculate.cs" />
     <Compile Include="ViewModels\Quotation\Source.cs" />
