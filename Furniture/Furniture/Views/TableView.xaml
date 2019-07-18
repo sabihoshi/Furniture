@@ -14,11 +14,11 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="TableView" Height="450" Width="800">
+        Title="TableView" Height="550" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400" />
-            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
 
 
