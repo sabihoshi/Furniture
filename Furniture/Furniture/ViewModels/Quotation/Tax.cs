@@ -4,7 +4,7 @@
     {
         private readonly SubTotal _subTotal;
 
-        public Tax(SubTotal subTotal) : base(nameof(Tax))
+        public Tax(SubTotal subTotal) : base(nameof(Tax), 0.12m)
         {
             _subTotal = subTotal;
         }

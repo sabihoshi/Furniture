@@ -3,14 +3,14 @@ using Furniture.Relationship;
 
 namespace Furniture.ViewModels.Caption
 {
-    public class CaptionViewModel<T> : Child, IHasValue, IParent where T : struct
+    public class CaptionModel<T> : Child, IHasValue, IParent where T : struct
     {
         public enum CaptionType
         {
             ComboBox, TextBox
         }
 
-        public CaptionViewModel(IParent parent = null, [CallerMemberName] string caption = null,
+        public CaptionModel(IParent parent = null, [CallerMemberName] string caption = null,
                                 InputBox<T> input = null)
         {
             Parent = parent;

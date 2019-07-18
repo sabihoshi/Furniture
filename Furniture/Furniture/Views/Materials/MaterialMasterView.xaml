@@ -3,7 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materials="clr-namespace:Furniture.ViewModels.Materials"
+             xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d">
+
+    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -12,17 +17,52 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition SharedSizeGroup="Labels" />
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" SharedSizeGroup="Divider" />
             <ColumnDefinition SharedSizeGroup="Input" />
         </Grid.ColumnDefinitions>
 
+        <Grid.Resources>
+            <Style TargetType="TextBlock" x:Key="Caption"
+                   BasedOn="{StaticResource MaterialDesignSubheadingTextBlock}">
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="VerticalAlignment" Value="Bottom" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+            </Style>
+        </Grid.Resources>
+
         <ItemsControl Grid.Row="0" Grid.Column="0"
-                      Grid.ColumnSpan="3"
-                      Grid.IsSharedSizeScope="True"
-                      x:Name="Model_Fields" />
+                      Grid.ColumnSpan="3" x:Name="Model_Fields" >
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type materials:MaterialModel}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition SharedSizeGroup="Labels" />
+                            <ColumnDefinition Width="10" SharedSizeGroup="Divider" />
+                            <ColumnDefinition SharedSizeGroup="Input" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Grid.Resources>
+                            <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+                                <Setter Property="HorizontalAlignment" Value="Left" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                            <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignComboBox}">
+                                <Setter Property="HorizontalAlignment" Value="Left" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </Grid.Resources>
+
+                        <TextBlock Grid.Column="0" Text="{Binding Path=Caption, Mode=OneWay}"
+                                   Style="{StaticResource Caption}"/>
+                        <ContentControl Grid.Column="2" cal:View.Model="{Binding Path=Input, Mode=TwoWay}"
+                                        HorizontalContentAlignment="Left"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
         <!--Total-->
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Total" HorizontalAlignment="Right" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Total" Style="{StaticResource Caption}" />
         <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left"
                    Text="{Binding Path=Model.Total, Mode=OneWay,
                                   ConverterCulture=en-PH,
