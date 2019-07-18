@@ -24,15 +24,15 @@ namespace Furniture.ViewModels.Materials
             };
         }
 
-        public CaptionModel<int> Length { get; }
+        public CaptionViewModel<int> Length { get; }
 
         public override string Name => _material.Name;
-        public CaptionModel<int> Quantity { get; }
+        public CaptionViewModel<int> Quantity { get; }
 
-        public CaptionModel<int> Thickness { get; }
+        public CaptionViewModel<int> Thickness { get; }
 
         public override Material Type => Material.Wood;
-        public CaptionModel<int> Width { get; }
+        public CaptionViewModel<int> Width { get; }
 
         public override decimal GetTotal()
         {

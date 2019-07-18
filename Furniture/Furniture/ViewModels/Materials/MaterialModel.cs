@@ -25,7 +25,6 @@ namespace Furniture.ViewModels.Materials
         public List<IHasValue> Fields { get; set; }
         public abstract string Name { get; }
         public decimal Total { get; set; }
-
         public abstract Material Type { get; }
 
         public override void OnPropertyChanged(string propertyName = null)

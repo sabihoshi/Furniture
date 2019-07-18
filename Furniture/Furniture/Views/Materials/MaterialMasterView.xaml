@@ -33,7 +33,7 @@
         <ItemsControl Grid.Row="0" Grid.Column="0"
                       Grid.ColumnSpan="3" x:Name="Model_Fields" >
             <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type materials:MaterialModel}">
+                <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition SharedSizeGroup="Labels" />

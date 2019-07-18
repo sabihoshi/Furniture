@@ -19,10 +19,10 @@ namespace Furniture.ViewModels.Materials
             };
         }
 
-        public CaptionModel<decimal> Amount { get; }
+        public CaptionViewModel<decimal> Amount { get; }
 
         public override string Name => "Glass";
-        public CaptionModel<int> Quantity { get; }
+        public CaptionViewModel<int> Quantity { get; }
         public override Material Type => Material.Glass;
 
         public override decimal GetTotal()
