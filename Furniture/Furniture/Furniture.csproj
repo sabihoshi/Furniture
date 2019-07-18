@@ -150,6 +150,7 @@
     <Compile Include="ViewModels\Caption\OtherInputViewModel.cs" />
     <Compile Include="ViewModels\Quotation\SubTotal.cs" />
     <Compile Include="ViewModels\Quotation\Tax.cs" />
+    <Compile Include="ViewModels\Quotation\Total.cs" />
     <Compile Include="Views\Caption\ComboBoxView.xaml.cs">
       <DependentUpon>ComboBoxView.xaml</DependentUpon>
     </Compile>

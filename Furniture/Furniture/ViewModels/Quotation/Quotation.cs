@@ -12,11 +12,12 @@ namespace Furniture.ViewModels.Quotation
             Value = value;
         }
 
+        public bool HasValue => Value.HasValue;
+
         public virtual string Name { get; }
 
         [JsonIgnore] public decimal? Total { get; set; }
-
-        public decimal? Value { get; }
+        public decimal? Value { get; set; }
 
         [JsonIgnore] protected new QuotationViewModel Parent { get; set; }
 

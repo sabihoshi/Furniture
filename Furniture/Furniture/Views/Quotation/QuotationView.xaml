@@ -12,12 +12,16 @@
                   AlternatingRowBackground="Teal"
                   CanUserAddRows="True"
                   AutoGenerateColumns="False">
+
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow" BasedOn="{StaticResource MaterialDesignDataGridRow}">
                     <Setter Property="cal:Message.Attach"
                             Value="[Event MouseDoubleClick] = [Action Click($source, eventArgs)]" />
+                    <Setter Property="IsHitTestVisible" 
+                            Value="{Binding Path=HasValue}" />
                 </Style>
             </DataGrid.RowStyle>
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Type" IsReadOnly="True"
                                     Binding="{Binding Path=Name}" />

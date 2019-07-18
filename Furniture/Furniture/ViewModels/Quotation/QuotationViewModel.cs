@@ -18,13 +18,13 @@ namespace Furniture.ViewModels.Quotation
 
             var subTotal = new SubTotal();
             var tax = new Tax(subTotal);
+            var total = new Total();
 
             Quotations.Add(subTotal);
             Quotations.Add(tax);
+            Quotations.Add(total);
 
             foreach (var work in Quotations) work.AddParent(this);
-
-            OnPropertyChanged();
         }
 
         public new TableViewModel Parent { get; }
