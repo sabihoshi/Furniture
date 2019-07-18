@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
+using System.Windows.Controls.Primitives;
 using Caliburn.Micro;
 using IParent = Furniture.Relationship.IParent;
 
@@ -19,6 +21,16 @@ namespace Furniture.ViewModels.Caption
             if (tryParse != null)
             {
                 OtherCaption = new OtherInputViewModel<T>(this, tryParse);
+
+                OtherCaption.ValueChanged += (source, value) =>
+                {
+
+                    if (value is T result)
+                    {
+                        SelectedValue = new ComboBoxItem<T>(result);
+                    }
+                };
+
                 Values?.Add(Other);
             }
         }
@@ -33,9 +45,13 @@ namespace Furniture.ViewModels.Caption
             set
             {
                 if (value == Other)
-                    _windowManager.ShowPopup(OtherCaption);
+                {
+                    dynamic settings = new ExpandoObject();
+                    settings.StaysOpen = false;
+                    _windowManager.ShowPopup(OtherCaption, null, settings);
+                }
 
-                _selectedValue = value;
+            _selectedValue = value;
             }
         }
 

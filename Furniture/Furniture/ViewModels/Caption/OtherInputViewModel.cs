@@ -1,4 +1,8 @@
-﻿using Furniture.Relationship;
+﻿using System;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
+using Caliburn.Micro;
+using Furniture.Relationship;
 
 namespace Furniture.ViewModels.Caption
 {
@@ -11,6 +15,19 @@ namespace Furniture.ViewModels.Caption
             Field.Input.Text = parent.SelectedValue.Name;
         }
 
-        public CaptionViewModel<T> Field { get; set; }
+        public CaptionModel<T> Field { get; set; }
+
+        public event EventHandler<T?> ValueChanged;
+
+        public void OnClosing()
+        {
+            ValueChanged?.Invoke(this, Field.Value);
+        }
+
+        public void KeyDown(KeyEventArgs args)
+        {
+            if(args != null && args.Key == Key.Enter)
+                ValueChanged?.Invoke(this, Field.Value);
+        }
     }
 }
