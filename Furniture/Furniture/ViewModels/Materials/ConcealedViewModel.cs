@@ -20,9 +20,9 @@ namespace Furniture.ViewModels.Materials
             };
         }
 
-        public CaptionViewModel<decimal> Amount { get; }
+        public Caption<decimal> Amount { get; }
         public override string Name => "Concealed";
-        public CaptionViewModel<int> Pairs { get; }
+        public Caption<int> Pairs { get; }
 
         public override Material Type => Material.Concealed;
 

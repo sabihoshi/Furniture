@@ -20,10 +20,10 @@ namespace Furniture.ViewModels.Materials
             };
         }
 
-        public CaptionViewModel<decimal> Amount { get; }
+        public Caption<decimal> Amount { get; }
 
         public override string Name => "Handles";
-        public CaptionViewModel<int> Quantity { get; }
+        public Caption<int> Quantity { get; }
 
         public override Material Type => Material.Handles;
 

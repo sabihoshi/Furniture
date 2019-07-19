@@ -21,10 +21,10 @@ namespace Furniture.ViewModels.Materials
             };
         }
 
-        public CaptionViewModel<decimal> Frame { get; }
-        public CaptionViewModel<decimal> Labor { get; }
+        public Caption<decimal> Frame { get; }
+        public Caption<decimal> Labor { get; }
         public override string Name => "Metal Frame";
-        public CaptionViewModel<int> Quantity { get; }
+        public Caption<int> Quantity { get; }
         public override Material Type => Material.Frame;
 
         public override decimal GetTotal()

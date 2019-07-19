@@ -144,16 +144,13 @@
     <Compile Include="ViewModels\Materials\GlassViewModel.cs" />
     <Compile Include="ViewModels\Materials\HandleViewModel.cs" />
     <Compile Include="ViewModels\Caption\TextBoxViewModel.cs" />
-    <Compile Include="ViewModels\Caption\CaptionViewModel.cs" />
+    <Compile Include="ViewModels\Caption\Caption.cs" />
     <Compile Include="ViewModels\Materials\MaterialBase.cs" />
     <Compile Include="ViewModels\Quotation\QuotationEditViewModel.cs" />
     <Compile Include="ViewModels\Quotation\QuotationViewModel.cs" />
     <Compile Include="ViewModels\Quotation\SubTotal.cs" />
     <Compile Include="ViewModels\Quotation\Tax.cs" />
     <Compile Include="ViewModels\Quotation\Total.cs" />
-    <Compile Include="Views\Caption\CaptionView.xaml.cs">
-      <DependentUpon>CaptionView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Caption\ComboBoxView.xaml.cs">
       <DependentUpon>ComboBoxView.xaml</DependentUpon>
     </Compile>
@@ -232,10 +229,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\Caption\CaptionView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Caption\ComboBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

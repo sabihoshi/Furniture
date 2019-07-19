@@ -24,8 +24,8 @@ namespace Furniture.ViewModels.Materials
 
         public override string Name => "Plywood";
         public Plywood Plywood { get; set; } = App.Config.Plywood;
-        public CaptionViewModel<int> Quantity { get; }
-        public CaptionViewModel<decimal> Thickness { get; }
+        public Caption<int> Quantity { get; }
+        public Caption<decimal> Thickness { get; }
 
         public override Material Type => Material.Wood;
 

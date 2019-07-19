@@ -49,8 +49,8 @@
                             </Style>
                         </Grid.Resources>
 
-                        <TextBlock Grid.Column="0" Text="{Binding Path=Caption, Mode=OneWay}"
-                                   Style="{StaticResource Caption}"/>
+                        <TextBlock Grid.Column="0" Style="{StaticResource Caption}"
+                                   Text="{Binding Path=Name, Mode=OneWay}" />
                         <ContentControl Grid.Column="2" cal:View.Model="{Binding Path=Input, Mode=TwoWay}"
                                         HorizontalContentAlignment="Left"/>
                     </Grid>
