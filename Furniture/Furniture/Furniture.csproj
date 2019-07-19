@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\PropertyChanged.Fody.3.0.1\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.0.1\build\PropertyChanged.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -148,7 +148,6 @@
     <Compile Include="ViewModels\Materials\MaterialBase.cs" />
     <Compile Include="ViewModels\Quotation\QuotationEditViewModel.cs" />
     <Compile Include="ViewModels\Quotation\QuotationViewModel.cs" />
-    <Compile Include="ViewModels\Caption\OtherInputViewModel.cs" />
     <Compile Include="ViewModels\Quotation\SubTotal.cs" />
     <Compile Include="ViewModels\Quotation\Tax.cs" />
     <Compile Include="ViewModels\Quotation\Total.cs" />
@@ -246,10 +245,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Materials\MaterialView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Caption\OtherInputView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

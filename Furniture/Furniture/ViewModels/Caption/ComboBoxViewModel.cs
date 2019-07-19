@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
-using System.Windows.Controls.Primitives;
 using Caliburn.Micro;
 using IParent = Furniture.Relationship.IParent;
 
@@ -9,36 +7,27 @@ namespace Furniture.ViewModels.Caption
 {
     public class ComboBoxViewModel<T> : InputBox<T>, IParent where T : struct
     {
-        private ComboBoxItem<T> _selectedValue;
+        private readonly TryParse _tryParse;
         private readonly WindowManager _windowManager = new WindowManager();
+        private ComboBoxItem<T> _selectedValue;
 
         public ComboBoxViewModel(IParent parent, List<ComboBoxItem<T>> values, string caption, TryParse tryParse) :
             base(parent, caption, tryParse)
         {
+            _tryParse = tryParse;
             Values = new BindableCollection<ComboBoxItem<T>>(values);
+
             SelectedValue = Values?.First();
 
             if (tryParse != null)
             {
-                OtherCaption = new OtherInputViewModel<T>(this, tryParse);
-
-                OtherCaption.ValueChanged += (source, value) =>
-                {
-                    if (value is T result)
-                    {
-                        var newOption = new ComboBoxItem<T>(result);
-                        Values.Add(newOption);
-                        SelectedValue = newOption;
-                    }
-                };
-
+                Other = new ComboBoxItem<T>("Other...", SelectedValue.Value);
                 Values?.Add(Other);
             }
         }
 
-        public ComboBoxItem<T> Other { get; } = new ComboBoxItem<T>("Other...", default);
-
-        public OtherInputViewModel<T> OtherCaption { get; }
+        public bool IsEditable => SelectedValue == Other;
+        public ComboBoxItem<T> Other { get; }
 
         public ComboBoxItem<T> SelectedValue
         {
@@ -46,17 +35,27 @@ namespace Furniture.ViewModels.Caption
             set
             {
                 if (value == Other)
-                {
-                    dynamic settings = new ExpandoObject();
-                    settings.StaysOpen = false;
-                    _windowManager.ShowPopup(OtherCaption, null, settings);
-                }
-                else
-                    _selectedValue = value;
+                    Text = _selectedValue.Name; 
+
+                _selectedValue = value;
             }
         }
 
-        public override T? Value => SelectedValue.Value;
+        public override T? Value
+        {
+            get
+            {
+                if (IsEditable)
+                {
+                    if (_tryParse(Text, out var result))
+                        return result;
+                    return null;
+                }
+
+                return SelectedValue?.Value;
+            }
+        }
+
         public BindableCollection<ComboBoxItem<T>> Values { get; set; }
     }
 }
