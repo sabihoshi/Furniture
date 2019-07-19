@@ -27,7 +27,7 @@ namespace Furniture.ViewModels
             OnPropertyChanged();
         }
 
-        public decimal? GetTotal(MaterialModel.Material type)
+        public decimal? GetTotal(MaterialBase.Material type)
         {
             var result = OrdersView.Where(x => x.Type == type).Sum(x => x.Content.Total);
             return result;

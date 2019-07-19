@@ -52,7 +52,7 @@ namespace Furniture.ViewModels.Quotation
             }
         }
 
-        public decimal? GetTotal(MaterialModel.Material material)
+        public decimal? GetTotal(MaterialBase.Material material)
         {
             return Parent.GetTotal(material);
         }

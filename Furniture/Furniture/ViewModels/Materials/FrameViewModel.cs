@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using Furniture.Relationship;
+using Caliburn.Micro;
 using Furniture.ViewModels.Caption;
+using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.ViewModels.Materials
 {
-    public class FrameViewModel : MaterialModel
+    public class FrameViewModel : MaterialBase
     {
         public FrameViewModel(IParent parent) : base(parent)
         {
@@ -14,7 +15,7 @@ namespace Furniture.ViewModels.Materials
             Frame = builder.CreateComboBox(nameof(Frame), App.Config.Values, decimal.TryParse);
             Quantity = builder.CreateTextBox<int>(nameof(Quantity), int.TryParse);
 
-            Fields = new List<IHasValue>
+            Fields = new BindableCollection<IHasValue>
             {
                 Labor, Frame, Quantity
             };

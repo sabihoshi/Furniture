@@ -3,7 +3,7 @@
 namespace Furniture.Views.Materials
 {
     /// <summary>
-    ///     Interaction logic for MaterialMasterView.xaml
+    ///     Interaction logic for MaterialView.xaml
     /// </summary>
     public partial class MaterialView : UserControl
     {

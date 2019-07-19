@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using Furniture.Relationship;
+using Caliburn.Micro;
 using Furniture.ViewModels.Caption;
+using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.ViewModels.Materials
 {
-    public sealed class PlywoodViewModel : MaterialModel
+    public sealed class PlywoodViewModel : MaterialBase
     {
         private readonly Plywood _plywood = App.Config.Plywood;
 
@@ -15,7 +16,7 @@ namespace Furniture.ViewModels.Materials
             Thickness = builder.CreateComboBox(nameof(Thickness), _plywood.Thicknesses);
             Quantity = builder.CreateTextBox(nameof(Quantity), int.TryParse, 1);
 
-            Fields = new List<IHasValue>
+            Fields = new BindableCollection<IHasValue>
             {
                 Thickness, Quantity
             };

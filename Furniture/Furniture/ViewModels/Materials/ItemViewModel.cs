@@ -8,12 +8,12 @@ namespace Furniture.ViewModels.Materials
 {
     public class ItemViewModel : Child, IParent
     {
-        private MaterialMasterViewModel _content;
+        private MaterialViewModel _content;
 
         public ItemViewModel(TableViewModel parent)
         {
             Parent = parent;
-            Items.AddRange(new List<MaterialModel>(App.Config.Woods.Select(wood => new WoodViewModel(this, wood)))
+            Items.AddRange(new List<MaterialBase>(App.Config.Woods.Select(wood => new WoodViewModel(this, wood)))
             {
                 new PlywoodViewModel(this),
                 new FrameViewModel(this),
@@ -26,7 +26,7 @@ namespace Furniture.ViewModels.Materials
             Content = Items.First();
         }
 
-        public MaterialMasterViewModel Content
+        public MaterialViewModel Content
         {
             get => _content;
             set
@@ -42,9 +42,9 @@ namespace Furniture.ViewModels.Materials
             }
         }
 
-        public BindableCollection<MaterialMasterViewModel> Items { get; set; } = new BindableCollection<
-            MaterialMasterViewModel>();
+        public BindableCollection<MaterialViewModel> Items { get; set; } = new BindableCollection<
+            MaterialViewModel>();
 
-        public MaterialModel.Material Type => Content.Type;
+        public MaterialBase.Material Type => Content.Type;
     }
 }

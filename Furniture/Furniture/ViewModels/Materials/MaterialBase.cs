@@ -8,7 +8,7 @@ using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.ViewModels.Materials
 {
-    public abstract class MaterialModel : Child, IParent
+    public abstract class MaterialBase : Child, IParent
     {
         public enum Material
         {
@@ -16,13 +16,13 @@ namespace Furniture.ViewModels.Materials
             Concealed, Handles, Glass
         }
 
-        public MaterialModel(IParent parent) : base(parent)
+        public MaterialBase(IParent parent) : base(parent)
         {
             // Currently does not work
             // ViewModelBinder.Bind(this, new MaterialMasterView(), null);
         }
 
-        public List<IHasValue> Fields { get; set; }
+        public BindableCollection<IHasValue> Fields { get; set; }
         public abstract string Name { get; }
         public decimal Total { get; set; }
         public abstract Material Type { get; }

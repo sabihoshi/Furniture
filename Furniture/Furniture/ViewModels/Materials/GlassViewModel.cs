@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using Furniture.Relationship;
+using Caliburn.Micro;
 using Furniture.ViewModels.Caption;
+using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.ViewModels.Materials
 {
-    public class GlassViewModel : MaterialModel
+    public class GlassViewModel : MaterialBase
     {
         public GlassViewModel(IParent parent) : base(parent)
         {
@@ -13,7 +14,7 @@ namespace Furniture.ViewModels.Materials
             Amount = builder.CreateComboBox(nameof(Amount), App.Config.Values, decimal.TryParse);
             Quantity = builder.CreateTextBox<int>(nameof(Quantity), int.TryParse);
 
-            Fields = new List<IHasValue>
+            Fields = new BindableCollection<IHasValue>
             {
                 Amount, Quantity
             };
