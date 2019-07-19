@@ -16,7 +16,7 @@
              FontFamily="{DynamicResource MaterialDesignFont}">
     <materialDesign:Card Padding="10">
         <ContentControl cal:View.Model="{Binding Path=Field, Mode=TwoWay}"
-                        cal:Message.Attach="[Event KeyDown] = [Action KeyDown($eventArgs)];
+                        cal:Message.Attach="[Event KeyDown] = [Action KeyDown($source, $eventArgs)];
                                             [Event Closing] = [Action OnClosing]"/>
     </materialDesign:Card>
 </UserControl>

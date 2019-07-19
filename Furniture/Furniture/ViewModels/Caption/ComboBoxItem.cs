@@ -12,11 +12,7 @@ namespace Furniture.ViewModels.Caption
             Value = value;
         }
 
-        public ComboBoxItem(TOutput value)
-        {
-            Value = value;
-            Name = value.ToString();
-        }
+        public ComboBoxItem(TOutput value) : this(value.ToString(), value) { }
 
         public string Name { get; set; }
         public TOutput Value { get; set; }

@@ -15,7 +15,7 @@ namespace Furniture.ViewModels.Caption
         public ComboBoxViewModel(IParent parent, List<ComboBoxItem<T>> values, string caption, TryParse tryParse) :
             base(parent, caption, tryParse)
         {
-            Values = values;
+            Values = new BindableCollection<ComboBoxItem<T>>(values);
             SelectedValue = Values?.First();
 
             if (tryParse != null)
@@ -24,10 +24,11 @@ namespace Furniture.ViewModels.Caption
 
                 OtherCaption.ValueChanged += (source, value) =>
                 {
-
                     if (value is T result)
                     {
-                        SelectedValue = new ComboBoxItem<T>(result);
+                        var newOption = new ComboBoxItem<T>(result);
+                        Values.Add(newOption);
+                        SelectedValue = newOption;
                     }
                 };
 
@@ -50,12 +51,12 @@ namespace Furniture.ViewModels.Caption
                     settings.StaysOpen = false;
                     _windowManager.ShowPopup(OtherCaption, null, settings);
                 }
-
-            _selectedValue = value;
+                else
+                    _selectedValue = value;
             }
         }
 
         public override T? Value => SelectedValue.Value;
-        public List<ComboBoxItem<T>> Values { get; set; }
+        public BindableCollection<ComboBoxItem<T>> Values { get; set; }
     }
 }
