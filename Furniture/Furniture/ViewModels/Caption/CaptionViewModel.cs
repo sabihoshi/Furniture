@@ -21,7 +21,6 @@ namespace Furniture.ViewModels.Caption
         public string Caption { get; set; }
         public bool HasValue => Input.HasValue;
         public InputBox<T> Input { get; set; }
-
         public T? Value => Input.Value;
     }
 }
