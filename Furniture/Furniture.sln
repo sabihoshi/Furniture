@@ -5,16 +5,28 @@ VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furniture", "Furniture\Furniture.csproj", "{F423FD44-2821-4AB3-9124-D92A2D4E7410}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FurnitureInstaller", "..\Installer\FurnitureInstaller\FurnitureInstaller.vdproj", "{74BDAD00-5A80-457C-96B4-9A00AB13DAEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F423FD44-2821-4AB3-9124-D92A2D4E7410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F423FD44-2821-4AB3-9124-D92A2D4E7410}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F423FD44-2821-4AB3-9124-D92A2D4E7410}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F423FD44-2821-4AB3-9124-D92A2D4E7410}.Debug|x86.Build.0 = Debug|Any CPU
 		{F423FD44-2821-4AB3-9124-D92A2D4E7410}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F423FD44-2821-4AB3-9124-D92A2D4E7410}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F423FD44-2821-4AB3-9124-D92A2D4E7410}.Release|x86.ActiveCfg = Release|Any CPU
+		{F423FD44-2821-4AB3-9124-D92A2D4E7410}.Release|x86.Build.0 = Release|Any CPU
+		{74BDAD00-5A80-457C-96B4-9A00AB13DAEF}.Debug|Any CPU.ActiveCfg = Debug
+		{74BDAD00-5A80-457C-96B4-9A00AB13DAEF}.Debug|x86.ActiveCfg = Debug
+		{74BDAD00-5A80-457C-96B4-9A00AB13DAEF}.Release|Any CPU.ActiveCfg = Release
+		{74BDAD00-5A80-457C-96B4-9A00AB13DAEF}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
