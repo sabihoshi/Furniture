@@ -13,7 +13,8 @@ namespace Furniture.ViewModels.Materials
         public enum Material
         {
             None, Wood, Frame,
-            Concealed, Handles, Glass
+            Concealed, Handles, Glass,
+            Special
         }
 
         public MaterialBase(IParent parent) : base(parent)
