@@ -9,13 +9,13 @@
              xmlns:quotation="clr-namespace:Furniture.ViewModels.Quotation"
              mc:Ignorable="d">
     <Grid>
-
         <Grid.Resources>
             <quotation:DecimalPercentageConverter x:Key="DecimalPercentageConverter" />
         </Grid.Resources>
 
         <DataGrid ItemsSource="{Binding Path=Quotations, Mode=TwoWay}"
-                  AlternatingRowBackground="Teal"
+                  Background="{StaticResource MaterialDesignCardBackground}"
+                  AlternatingRowBackground="{StaticResource PrimaryHueDarkBrush}"
                   CanUserAddRows="True"
                   AutoGenerateColumns="False">
 

@@ -1,0 +1,63 @@
+﻿<Window x:Class="Furniture.Views.Materials.NewWoodView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Furniture.Views.Materials"
+        xmlns:cal="http://www.caliburnproject.org"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="16"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="Transparent"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterOwner"
+        Title="NewWoodView" Height="150" Width="200">
+    <materialDesign:Card UniformCornerRadius="5" VerticalAlignment="Stretch">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition SharedSizeGroup="Labels" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition SharedSizeGroup="Input" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.Resources>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignSubheadingTextBlock}">
+                    <Setter Property="HorizontalAlignment" Value="Right" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+                <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+            </Grid.Resources>
+
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" />
+            <TextBox Grid.Column="2" Grid.Row="0" Text="{Binding Path=Wood.Name, Mode=TwoWay}" />
+
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Price" />
+            <TextBox Grid.Column="2" Grid.Row="1" Text="{Binding Path=Wood.Price, Mode=TwoWay}" />
+
+            <Button Grid.Column="0" Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    x:Name="OnViewClosed"
+                    Content="{materialDesign:PackIcon Cancel}" />
+            <Button Grid.Column="2" Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    x:Name="Okay"
+                    Content="{materialDesign:PackIcon Check}" />
+        </Grid>
+    </materialDesign:Card>
+</Window>

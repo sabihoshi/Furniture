@@ -133,6 +133,7 @@
     <Compile Include="ViewModels\Caption\ComboBoxItem.cs" />
     <Compile Include="ViewModels\Caption\IHasValue.cs" />
     <Compile Include="ViewModels\Materials\MaterialViewModel.cs" />
+    <Compile Include="ViewModels\Materials\NewWoodViewModel.cs" />
     <Compile Include="ViewModels\Materials\Wood.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\Quotation\DecimalPercentageConverter.cs" />
@@ -159,6 +160,9 @@
     </Compile>
     <Compile Include="Views\Materials\MaterialView.xaml.cs">
       <DependentUpon>MaterialView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Materials\NewWoodView.xaml.cs">
+      <DependentUpon>NewWoodView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Quotation\QuotationEditView.xaml.cs">
       <DependentUpon>QuotationEditView.xaml</DependentUpon>
@@ -241,6 +245,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Materials\MaterialView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Materials\NewWoodView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
