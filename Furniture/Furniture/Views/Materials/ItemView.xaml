@@ -12,7 +12,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <ComboBox Grid.Column="0" Margin="10"
@@ -26,7 +26,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <ContentControl Grid.Row="1" 
+        <ContentControl Grid.Row="1"
                         cal:View.Model="{Binding Path=Content}" />
     </Grid>
 </UserControl>

@@ -9,7 +9,7 @@
              mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
@@ -21,6 +21,8 @@
  
         <ItemsControl Grid.Row="0" Grid.Column="0" Padding="30,10"
                       Grid.IsSharedSizeScope="True"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
                       ItemsSource="{Binding Path=Model.Fields, Mode=TwoWay}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
