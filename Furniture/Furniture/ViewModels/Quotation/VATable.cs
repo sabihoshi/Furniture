@@ -2,9 +2,9 @@
 
 namespace Furniture.ViewModels.Quotation
 {
-    public class SubTotal : Quotation
+    public class VatAble : Quotation
     {
-        public SubTotal() : base(nameof(SubTotal)) { }
+        public VatAble() : base("Non-VAT") { }
 
         public override decimal? GetTotal()
         {

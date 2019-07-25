@@ -1,4 +1,4 @@
-﻿<Window x:Class="Furniture.Views.TableView"
+<Window x:Class="Furniture.Views.TableView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -81,8 +81,12 @@
                     Style="{StaticResource MaterialDesignFloatingActionButton}" />
         </Grid>
 
-        <ContentControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
-                        cal:View.Model="{Binding Path=QuotationViewModel, Mode=TwoWay}" />
+        <materialDesign:Card Grid.Row="0" Grid.RowSpan="2"
+                             Grid.Column="1"
+                             Margin="10">
+            <ContentControl
+                cal:View.Model="{Binding Path=QuotationViewModel, Mode=TwoWay}" />
+        </materialDesign:Card>
 
         <GridSplitter 
             Background="{StaticResource SecondaryAccentForegroundBrush}"

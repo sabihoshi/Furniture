@@ -16,17 +16,18 @@ namespace Furniture.ViewModels.Quotation
         {
             Parent = parent;
 
-            var subTotal = new SubTotal();
-            var tax = new Tax(subTotal);
-            var total = new Total();
+            var subTotal = new VatAble();
+            var tax = new Vat(subTotal);
+            var total = new Total(subTotal, tax);
 
             Quotations.Add(subTotal);
             Quotations.Add(tax);
-            Quotations.Add(total);
+            Total = total;
 
             foreach (var work in Quotations) work.AddParent(this);
         }
 
+        public Quotation Total { get; }
         public new TableViewModel Parent { get; }
 
         public BindableCollection<Quotation> Quotations { get; set; } = App.Config.Work;
@@ -37,10 +38,11 @@ namespace Furniture.ViewModels.Quotation
             base.OnPropertyChanged(propertyName);
         }
 
-        public static void CalculateQuotations(BindableCollection<Quotation> quotations)
+        public void CalculateQuotations(BindableCollection<Quotation> quotations)
         {
             foreach (var quotation in quotations)
                 quotation.Total = quotation.GetTotal();
+            Total.Total = Total.GetTotal();
         }
 
         public void Click(object sender, MouseButtonEventArgs e)

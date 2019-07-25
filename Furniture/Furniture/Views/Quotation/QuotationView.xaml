@@ -8,39 +8,70 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:quotation="clr-namespace:Furniture.ViewModels.Quotation"
              mc:Ignorable="d">
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
         <Grid.Resources>
             <quotation:DecimalPercentageConverter x:Key="DecimalPercentageConverter" />
         </Grid.Resources>
 
-        <DataGrid ItemsSource="{Binding Path=Quotations, Mode=TwoWay}"
+        <DataGrid Grid.Row="0"
+                  ItemsSource="{Binding Path=Quotations, Mode=TwoWay}"
                   Background="{StaticResource MaterialDesignCardBackground}"
-                  AlternatingRowBackground="{StaticResource PrimaryHueDarkBrush}"
+                  AlternatingRowBackground="{StaticResource MaterialDesignCardBackground}"
+                  RowBackground="{StaticResource MaterialDesignDarkBackground}"
                   CanUserAddRows="True"
                   AutoGenerateColumns="False">
 
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow" BasedOn="{StaticResource MaterialDesignDataGridRow}">
                     <Setter Property="cal:Message.Attach"
-                            Value="[Event MouseDoubleClick] = [Action Click($source, eventArgs)]" />
-                    <Setter Property="IsHitTestVisible" 
-                            Value="{Binding Path=HasValue}" />
+                                Value="[Event MouseDoubleClick] = [Action Click($source, eventArgs)]" />
+                    <Setter Property="IsHitTestVisible"
+                                Value="{Binding Path=HasValue}" />
                 </Style>
             </DataGrid.RowStyle>
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Type" IsReadOnly="True"
-                                    Binding="{Binding Path=Name}" />
+                                        Binding="{Binding Path=Name}" />
 
                 <DataGridTextColumn Header="Value"
-                                    Binding="{Binding Path=Value,
-                                                      Converter={StaticResource DecimalPercentageConverter}}" />
+                                        Binding="{Binding Path=Value,
+                                                          Converter={StaticResource DecimalPercentageConverter}}" />
 
                 <DataGridTextColumn Header="Amount" IsReadOnly="True"
-                                    Binding="{Binding Path=Total,
-                                                      ConverterCulture=en-PH,
-                                                      StringFormat='c2'}" />
+                                        Binding="{Binding Path=Total,
+                                                          ConverterCulture=en-PH,
+                                                          StringFormat='c2'}" />
             </DataGrid.Columns>
         </DataGrid>
+
+        <!--Total-->
+        <Grid Row="1" Background="{DynamicResource PrimaryHueDarkBrush}">
+            <Grid Margin="10" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Total"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource MaterialDesignTitleTextBlock}" />
+
+                <TextBlock Grid.Column="2"
+
+                           VerticalAlignment="Center"
+                           Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                           Text="{Binding Path=Total.Total, Mode=TwoWay,
+                                          ConverterCulture=en-PH,
+                                          StringFormat='c2'}" />
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

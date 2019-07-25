@@ -152,8 +152,8 @@
     <Compile Include="ViewModels\Materials\MaterialBase.cs" />
     <Compile Include="ViewModels\Quotation\QuotationEditViewModel.cs" />
     <Compile Include="ViewModels\Quotation\QuotationViewModel.cs" />
-    <Compile Include="ViewModels\Quotation\SubTotal.cs" />
-    <Compile Include="ViewModels\Quotation\Tax.cs" />
+    <Compile Include="ViewModels\Quotation\VatAble.cs" />
+    <Compile Include="ViewModels\Quotation\Vat.cs" />
     <Compile Include="ViewModels\Quotation\Total.cs" />
     <Compile Include="Views\Caption\ComboBoxView.xaml.cs">
       <DependentUpon>ComboBoxView.xaml</DependentUpon>
