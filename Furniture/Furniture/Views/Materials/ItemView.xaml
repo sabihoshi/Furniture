@@ -17,7 +17,7 @@
 
         <ComboBox Grid.Column="0" Margin="10"
                   x:Name="Items" MinWidth="50"
-                  HorizontalContentAlignment="Stretch"
+                  HorizontalContentAlignment="Center"
                   SelectedItem="{Binding Path=Content}">
             <ComboBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type interface:MaterialBase}">
@@ -25,6 +25,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        
 
         <ContentControl Grid.Row="1"
                         cal:View.Model="{Binding Path=Content}" />

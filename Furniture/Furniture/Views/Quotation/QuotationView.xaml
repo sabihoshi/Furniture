@@ -21,7 +21,7 @@
 
         <DataGrid Grid.Row="0"
                   ItemsSource="{Binding Path=Quotations, Mode=TwoWay}"
-                  Background="{StaticResource MaterialDesignCardBackground}"
+                  Background="{StaticResource PrimaryHueDarkBrush}"
                   AlternatingRowBackground="{StaticResource MaterialDesignCardBackground}"
                   RowBackground="{StaticResource MaterialDesignDarkBackground}"
                   CanUserAddRows="True"
