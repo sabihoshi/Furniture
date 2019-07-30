@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Caliburn.Micro;
+using Furniture.ViewModels.Materials.Models;
 
 namespace Furniture.ViewModels.Materials
 {

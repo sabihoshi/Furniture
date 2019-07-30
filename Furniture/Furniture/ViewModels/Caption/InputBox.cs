@@ -8,12 +8,15 @@ namespace Furniture.ViewModels.Caption
 
         private readonly TryParse _tryParse;
 
-        public InputBox(IParent parent, string caption, TryParse tryParse, T value = default) : base(parent)
+        public InputBox(IParent parent, string caption, string label, TryParse tryParse, T value = default) : base(parent)
         {
             _tryParse = tryParse;
             Text = value.ToString();
             Caption = caption;
+            Label = label;
         }
+
+        public string Label { get; }
 
         public string Caption { get; }
 

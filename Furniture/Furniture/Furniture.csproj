@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\PropertyChanged.Fody.3.0.1\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.0.1\build\PropertyChanged.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -132,10 +132,12 @@
     <Compile Include="ViewModels\Caption\CaptionBuilder.cs" />
     <Compile Include="ViewModels\Caption\ComboBoxItem.cs" />
     <Compile Include="ViewModels\Caption\IHasValue.cs" />
+    <Compile Include="ViewModels\Materials\Items\FoamItem.cs" />
     <Compile Include="ViewModels\Materials\MaterialViewModel.cs" />
+    <Compile Include="ViewModels\Materials\Models\Piece.cs" />
     <Compile Include="ViewModels\Materials\NewWoodViewModel.cs" />
-    <Compile Include="ViewModels\Materials\Wood.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModels\Materials\Models\Wood.cs" />
     <Compile Include="ViewModels\Quotation\DecimalPercentageConverter.cs" />
     <Compile Include="ViewModels\Quotation\Quotation.cs" />
     <Compile Include="ViewModels\Quotation\ICalculate.cs" />
@@ -143,13 +145,10 @@
     <Compile Include="Relationship\Parent.cs" />
     <Compile Include="ViewModels\Caption\ComboBoxViewModel.cs" />
     <Compile Include="ViewModels\Caption\InputBox.cs" />
-    <Compile Include="ViewModels\Materials\ConcealedViewModel.cs" />
-    <Compile Include="ViewModels\Materials\FrameViewModel.cs" />
-    <Compile Include="ViewModels\Materials\GlassViewModel.cs" />
-    <Compile Include="ViewModels\Materials\HandleViewModel.cs" />
+    <Compile Include="ViewModels\Materials\Items\PieceItem.cs" />
     <Compile Include="ViewModels\Caption\TextBoxViewModel.cs" />
     <Compile Include="ViewModels\Caption\Caption.cs" />
-    <Compile Include="ViewModels\Materials\MaterialBase.cs" />
+    <Compile Include="ViewModels\Materials\Items\MaterialBase.cs" />
     <Compile Include="ViewModels\Quotation\QuotationEditViewModel.cs" />
     <Compile Include="ViewModels\Quotation\QuotationViewModel.cs" />
     <Compile Include="ViewModels\Quotation\VatAble.cs" />
@@ -171,15 +170,13 @@
       <DependentUpon>QuotationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Config\Config.cs" />
-    <Compile Include="ViewModels\Materials\IMaterial.cs" />
-    <Compile Include="ViewModels\Materials\Plywood.cs" />
-    <Compile Include="ViewModels\Materials\Thickness.cs" />
+    <Compile Include="ViewModels\Materials\Items\IMaterial.cs" />
     <Compile Include="Relationship\Child.cs" />
     <Compile Include="Relationship\IParent.cs" />
     <Compile Include="ViewModels\Materials\ItemViewModel.cs" />
-    <Compile Include="ViewModels\Materials\WoodViewModel.cs" />
-    <Compile Include="ViewModels\Materials\NoneViewModel.cs" />
-    <Compile Include="ViewModels\Materials\PlywoodViewModel.cs" />
+    <Compile Include="ViewModels\Materials\Items\WoodItem.cs" />
+    <Compile Include="ViewModels\Materials\Items\NoneItem.cs" />
+    <Compile Include="ViewModels\Materials\Items\PlywoodItem.cs" />
     <Compile Include="ViewModels\TableViewModel.cs" />
     <Compile Include="Views\Materials\ItemView.xaml.cs">
       <DependentUpon>ItemView.xaml</DependentUpon>

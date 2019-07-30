@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Caliburn.Micro;
 using Furniture.Relationship;
+using Furniture.ViewModels.Materials.Items;
+using Furniture.ViewModels.Materials.Models;
 using IParent = Furniture.Relationship.IParent;
+using PieceItem = Furniture.ViewModels.Materials.Items.PieceItem;
 
 namespace Furniture.ViewModels.Materials
 {
@@ -14,17 +17,23 @@ namespace Furniture.ViewModels.Materials
         {
             Parent = parent;
 
-            Items.AddRange(new List<MaterialBase>(App.Config.Woods.Select(wood => new WoodViewModel(this, wood)))
+            Items.AddRange(
+                App.Config.Woods
+                   .Select(cuboid => new WoodItem(this, cuboid))
+                   .ConvertToModels());
+
+            Items.AddRange(
+                App.Config.Pieces
+                    .Select(piece => new PieceItem(this, piece))
+                    .ConvertToModels());
+
+            Items.AddRange(new List<MaterialBase>
             {
-                new PlywoodViewModel(this),
-                new FrameViewModel(this),
-                new ConcealedViewModel(this),
-                new HandleViewModel(this),
-                new GlassViewModel(this),
-                new NoneViewModel(this)
+                new PlywoodItem(this),
+                new NoneItem(this)
             }.ConvertToModels());
 
-            Content = Items.First();
+            Content = Items.FirstOrDefault();
 
             Parent.WoodCreated += OnWoodCreated;
         }
@@ -36,7 +45,7 @@ namespace Furniture.ViewModels.Materials
 
         private void OnWoodCreated(TableViewModel sender, Wood e)
         {
-            var model = new WoodViewModel(this, e);
+            var model = new WoodItem(this, e);
             Items.Add(model.ConvertToModel());
         }
 

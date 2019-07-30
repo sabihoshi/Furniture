@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Caliburn.Micro;
 using Furniture.Relationship;
 using Furniture.ViewModels.Materials;
+using Furniture.ViewModels.Materials.Items;
 using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.ViewModels.Quotation

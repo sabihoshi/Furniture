@@ -6,6 +6,8 @@ using Caliburn.Micro;
 using Furniture.Properties;
 using Furniture.Relationship;
 using Furniture.ViewModels.Materials;
+using Furniture.ViewModels.Materials.Items;
+using Furniture.ViewModels.Materials.Models;
 using Furniture.ViewModels.Quotation;
 
 namespace Furniture.ViewModels
@@ -25,6 +27,7 @@ namespace Furniture.ViewModels
         public delegate void WoodCreatedDelegate(TableViewModel sender, Wood e);
 
         public BindableCollection<ItemViewModel> OrdersView { get; set; } = new BindableCollection<ItemViewModel>();
+
         public QuotationViewModel QuotationViewModel { get; set; }
 
         [UsedImplicitly]
