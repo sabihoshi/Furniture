@@ -13,17 +13,22 @@ namespace Furniture.ViewModels.Materials.Items
     {
         public FoamItem(ItemViewModel parent) : base(parent)
         {
+            var widths = App.Config.Cuboids
+                .Single(x => x.Type == Type).Widths;
+            var lengths = App.Config.Cuboids
+                .Single(x => x.Type == Type).Lengths;
             var builder = new CaptionBuilder(this);
 
             Thickness = builder.CreateTextBox(nameof(Thickness), int.TryParse, "in", 2);
-            Width = builder.CreateComboBox(nameof(Width), App.Config.Widths, label: "in");
-            Length = builder.CreateComboBox(nameof(Length), App.Config.Lengths, label: "ft");
+            Width = builder.CreateComboBox(nameof(Width), this.GetCuboid().Widths, label: "in");
+            Length = builder.CreateComboBox(nameof(Length), this.GetCuboid().Lengths, label: "ft");
             Quantity = builder.CreateTextBox<int>(nameof(Quantity), int.TryParse, value: 1);
             Labor = builder.CreateComboBox<decimal>(nameof(Labor), App.Config.PieceValues, decimal.TryParse, "PHP", 150);
+            Amount = builder.CreateComboBox(nameof(Amount), App.Config.PieceValues, decimal.TryParse, "PHP", 150);
 
             Fields = new BindableCollection<IHasValue>
             {
-                Thickness, Width, Length, Quantity
+                Labor, Thickness, Width, Length, Amount, Quantity
             };
         }
 
@@ -38,6 +43,8 @@ namespace Furniture.ViewModels.Materials.Items
         public Caption<int> Thickness { get; }
 
         public Caption<int> Width { get; }
+
+        public Caption<decimal> Amount { get; }
 
         public Caption<decimal> Labor { get; }
 

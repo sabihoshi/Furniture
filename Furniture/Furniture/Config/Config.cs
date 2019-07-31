@@ -11,9 +11,7 @@ namespace Furniture.Config
 {
     public class Config
     {
-        public List<int> Lengths { get; set; }
-
-        public List<int> Widths { get; set; }
+        public List<Cuboid> Cuboids { get; set; }
 
         public List<decimal> WoodValues { get; set; }
 

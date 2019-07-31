@@ -29,6 +29,7 @@ namespace Furniture.ViewModels.Materials
 
             Items.AddRange(new List<MaterialBase>
             {
+                new FoamItem(this),
                 new PlywoodItem(this),
                 new NoneItem(this)
             }.ConvertToModels());

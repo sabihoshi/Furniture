@@ -16,8 +16,8 @@ namespace Furniture.ViewModels.Materials.Items
             var builder = new CaptionBuilder(this);
 
             Thickness = builder.CreateTextBox(nameof(Thickness), int.TryParse, "in", 2);
-            Width = builder.CreateComboBox(nameof(Width), App.Config.Widths, label: "in");
-            Length = builder.CreateComboBox(nameof(Length), App.Config.Lengths, label: "ft");
+            Width = builder.CreateComboBox(nameof(Width), this.GetCuboid().Widths, label: "in");
+            Length = builder.CreateComboBox(nameof(Length), this.GetCuboid().Lengths, label: "ft");
             Quantity = builder.CreateTextBox<int>(nameof(Quantity), int.TryParse, value: 1);
 
             Fields = new BindableCollection<IHasValue>

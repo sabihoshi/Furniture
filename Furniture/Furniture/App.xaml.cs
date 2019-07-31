@@ -1,5 +1,8 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Windows;
+using Furniture.ViewModels.Materials.Items;
+using Furniture.ViewModels.Materials.Models;
 using Newtonsoft.Json;
 
 namespace Furniture

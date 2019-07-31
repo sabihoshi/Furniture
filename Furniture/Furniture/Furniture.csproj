@@ -134,6 +134,7 @@
     <Compile Include="ViewModels\Caption\IHasValue.cs" />
     <Compile Include="ViewModels\Materials\Items\FoamItem.cs" />
     <Compile Include="ViewModels\Materials\MaterialViewModel.cs" />
+    <Compile Include="ViewModels\Materials\Models\Cuboid.cs" />
     <Compile Include="ViewModels\Materials\Models\Piece.cs" />
     <Compile Include="ViewModels\Materials\NewWoodViewModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
