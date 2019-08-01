@@ -15,8 +15,9 @@ namespace Furniture.ViewModels.Materials.Items
 
             var builder = new CaptionBuilder(this);
 
-            Amount = builder.CreateComboBox(nameof(Amount), App.Config.PieceValues, decimal.TryParse, "PHP", _material.Value);
-            Quantity = builder.CreateTextBox<int>(nameof(Quantity), int.TryParse, value: 1);
+            Amount = builder.CreateComboBox(nameof(Amount), App.Config.PieceValues, decimal.TryParse, "PHP",
+                _material.Value);
+            Quantity = builder.CreateTextBox(nameof(Quantity), int.TryParse, value: 1);
 
             Fields = new BindableCollection<IHasValue>
             {

@@ -14,11 +14,10 @@
         </Grid.RowDefinitions>
 
         <Grid.Resources>
-            <Style TargetType="TextBlock" 
-                   BasedOn="{StaticResource MaterialDesignSubheadingTextBlock}">
-            </Style>
+            <Style TargetType="TextBlock"
+                   BasedOn="{StaticResource MaterialDesignSubheadingTextBlock}" />
         </Grid.Resources>
- 
+
         <ItemsControl Grid.Row="0" Grid.Column="0" Padding="30,10"
                       Grid.IsSharedSizeScope="True"
                       VerticalAlignment="Center"
@@ -33,7 +32,7 @@
                             <ColumnDefinition SharedSizeGroup="Input" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" 
+                        <TextBlock Grid.Column="0"
                                    Text="{Binding Path=Name, Mode=OneWay}"
                                    Margin="0,10,0,0"
                                    HorizontalAlignment="Right"
@@ -41,30 +40,30 @@
 
                         <ContentControl Grid.Column="2"
                                         cal:View.Model="{Binding Path=Input, Mode=TwoWay}"
-                                        HorizontalAlignment="Left"/>
+                                        HorizontalAlignment="Left" />
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
         <!--Total-->
-        <Grid Row="1" 
+        <Grid Row="1"
               Background="{DynamicResource PrimaryHueDarkBrush}">
             <Grid Margin="0,10" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="Labels" />
                     <ColumnDefinition Width="10" />
-                    <ColumnDefinition SharedSizeGroup="Input"  />
+                    <ColumnDefinition SharedSizeGroup="Input" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="Total"/>
+                <TextBlock Grid.Column="0" Text="Total" />
 
                 <TextBlock Grid.Column="2" Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                            Text="{Binding Path=Model.Total, Mode=OneWay,
                                   ConverterCulture=en-PH,
                                   StringFormat='c2'}" />
             </Grid>
-            
+
         </Grid>
     </Grid>
 </UserControl>

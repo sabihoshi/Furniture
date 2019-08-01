@@ -15,6 +15,7 @@ namespace Furniture.ViewModels.Caption
         public ComboBoxItem(TOutput value) : this(value.ToString(), value) { }
 
         public string Name { get; set; }
+
         public TOutput Value { get; set; }
     }
 }

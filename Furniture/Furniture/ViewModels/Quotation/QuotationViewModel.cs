@@ -1,10 +1,7 @@
-﻿using System;
-using System.Windows.Controls;
-using System.Windows.Data;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
 using Caliburn.Micro;
 using Furniture.Relationship;
-using Furniture.ViewModels.Materials;
 using Furniture.ViewModels.Materials.Items;
 using IParent = Furniture.Relationship.IParent;
 
@@ -12,7 +9,6 @@ namespace Furniture.ViewModels.Quotation
 {
     public sealed class QuotationViewModel : Child, IParent
     {
-        
         public QuotationViewModel(TableViewModel parent)
         {
             Parent = parent;
@@ -29,6 +25,7 @@ namespace Furniture.ViewModels.Quotation
         }
 
         public Quotation Total { get; }
+
         public new TableViewModel Parent { get; }
 
         public BindableCollection<Quotation> Quotations { get; set; } = App.Config.Work;

@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using Caliburn.Micro;
 using Furniture.ViewModels.Caption;
-using Furniture.ViewModels.Materials;
-using Furniture.ViewModels.Materials.Items;
 using Furniture.ViewModels.Materials.Models;
 using Furniture.ViewModels.Quotation;
-using Wood = Furniture.ViewModels.Materials.Models.Wood;
 
 namespace Furniture.Config
 {

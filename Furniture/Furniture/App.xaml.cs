@@ -1,8 +1,5 @@
 ﻿using System.IO;
-using System.Linq;
 using System.Windows;
-using Furniture.ViewModels.Materials.Items;
-using Furniture.ViewModels.Materials.Models;
 using Newtonsoft.Json;
 
 namespace Furniture
@@ -13,6 +10,7 @@ namespace Furniture
     public partial class App : Application
     {
         private const string ConfigLocation = @"Config/config.json";
+
         public App()
         {
             var settings = new JsonSerializerSettings

@@ -1,15 +1,14 @@
 {
-  
   "Cuboids": [
     {
       "Type": 1,
-      "Widths": [ 2, 3, 4, 5, 6, 7, 8 ],
-      "Lengths": [ 4, 5, 6, 7, 8, 9, 10 ]
+      "Widths": [2, 3, 4, 5, 6, 7, 8],
+      "Lengths": [4, 5, 6, 7, 8, 9, 10]
     },
     {
       "Type": 7,
-      "Widths": [ 1, 2, 3, 4 ],
-      "Lengths": [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+      "Widths": [1, 2, 3, 4],
+      "Lengths": [1, 2, 3, 4, 5, 6, 7, 8]
     }
   ],
   "WoodValues": [
@@ -33,7 +32,7 @@
     4800,
     5000
   ],
-  "PieceValues": [ 100, 150, 200, 250, 300, 350, 400, 450, 500 ],
+  "PieceValues": [100, 150, 200, 250, 300, 350, 400, 450, 500],
   "Plywood": [
     {
       "Name": "1/4",
@@ -72,17 +71,17 @@
     {
       "Name": "Handles",
       "Type": 4,
-      "Value": 150 
+      "Value": 150
     },
     {
       "Name": "Glass",
       "Type": 5,
-      "Value": 2500 
+      "Value": 2500
     },
     {
       "Name": "Drawer Guides",
       "Type": 6,
-      "Value": 150 
+      "Value": 150
     }
   ],
   "Work": [

@@ -1,8 +1,6 @@
-﻿using System.Diagnostics;
-using Caliburn.Micro;
+﻿using Caliburn.Micro;
 using Furniture.ViewModels.Caption;
 using Furniture.ViewModels.Materials.Models;
-using IParent = Furniture.Relationship.IParent;
 
 namespace Furniture.ViewModels.Materials.Items
 {
@@ -18,7 +16,7 @@ namespace Furniture.ViewModels.Materials.Items
             Thickness = builder.CreateTextBox(nameof(Thickness), int.TryParse, "in", 2);
             Width = builder.CreateComboBox(nameof(Width), this.GetCuboid().Widths, label: "in");
             Length = builder.CreateComboBox(nameof(Length), this.GetCuboid().Lengths, label: "ft");
-            Quantity = builder.CreateTextBox<int>(nameof(Quantity), int.TryParse, value: 1);
+            Quantity = builder.CreateTextBox(nameof(Quantity), int.TryParse, value: 1);
 
             Fields = new BindableCollection<IHasValue>
             {
@@ -40,7 +38,8 @@ namespace Furniture.ViewModels.Materials.Items
 
         public override decimal GetTotal()
         {
-            return Thickness.Value ?? 0 * Width.Value ?? 0 * Length.Value ?? 0 / 12m * Quantity.Value ?? 0 * _wood.Value;
+            return Thickness.Value ??
+                   0 * Width.Value ?? 0 * Length.Value ?? 0 / 12m * Quantity.Value ?? 0 * _wood.Value;
         }
     }
 }

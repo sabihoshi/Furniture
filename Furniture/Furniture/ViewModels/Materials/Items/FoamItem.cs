@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Caliburn.Micro;
 using Furniture.ViewModels.Caption;
 using Furniture.ViewModels.Materials.Models;
@@ -22,8 +18,8 @@ namespace Furniture.ViewModels.Materials.Items
             Thickness = builder.CreateTextBox(nameof(Thickness), int.TryParse, "in", 2);
             Width = builder.CreateComboBox(nameof(Width), this.GetCuboid().Widths, label: "in");
             Length = builder.CreateComboBox(nameof(Length), this.GetCuboid().Lengths, label: "ft");
-            Quantity = builder.CreateTextBox<int>(nameof(Quantity), int.TryParse, value: 1);
-            Labor = builder.CreateComboBox<decimal>(nameof(Labor), App.Config.PieceValues, decimal.TryParse, "PHP", 150);
+            Quantity = builder.CreateTextBox(nameof(Quantity), int.TryParse, value: 1);
+            Labor = builder.CreateComboBox(nameof(Labor), App.Config.PieceValues, decimal.TryParse, "PHP", 150);
             Amount = builder.CreateComboBox(nameof(Amount), App.Config.PieceValues, decimal.TryParse, "PHP", 150);
 
             Fields = new BindableCollection<IHasValue>
@@ -50,7 +46,8 @@ namespace Furniture.ViewModels.Materials.Items
 
         public override decimal GetTotal()
         {
-            return (Thickness.Value ?? 0 * Width.Value ?? 0 * Length.Value ?? 0 / 12m * Quantity.Value ?? 0 + Labor.Value ?? 0);
+            return Thickness.Value ??
+                   0 * Width.Value ?? 0 * Length.Value ?? 0 / 12m * Quantity.Value ?? 0 + Labor.Value ?? 0;
         }
     }
 }

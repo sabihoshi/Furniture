@@ -7,7 +7,7 @@ namespace Furniture.ViewModels.Quotation
     public class DecimalPercentageConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter,
-                              CultureInfo culture)
+            CultureInfo culture)
         {
             if (targetType != typeof(string) || value == null)
                 return value;
@@ -19,7 +19,7 @@ namespace Furniture.ViewModels.Quotation
         }
 
         public object ConvertBack(object value, Type targetType, object parameter,
-                                  CultureInfo culture)
+            CultureInfo culture)
         {
             if (targetType != typeof(decimal) || value == null)
                 return value;

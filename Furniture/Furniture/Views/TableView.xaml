@@ -32,7 +32,7 @@
 
         <DockPanel Grid.Row="0" Grid.Column="0">
             <Menu DockPanel.Dock="Top"
-                      Background="{StaticResource MaterialDesignCardBackground}">
+                  Background="{StaticResource MaterialDesignCardBackground}">
                 <MenuItem Header="New...">
                     <MenuItem Header="Material" x:Name="CreateMaterial" />
                 </MenuItem>

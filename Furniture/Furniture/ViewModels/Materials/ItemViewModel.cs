@@ -6,21 +6,21 @@ using Furniture.Relationship;
 using Furniture.ViewModels.Materials.Items;
 using Furniture.ViewModels.Materials.Models;
 using IParent = Furniture.Relationship.IParent;
-using PieceItem = Furniture.ViewModels.Materials.Items.PieceItem;
 
 namespace Furniture.ViewModels.Materials
 {
     public class ItemViewModel : Child, IParent, IDisposable
     {
-        private bool _disposed = false;
+        private bool _disposed;
+
         public ItemViewModel(TableViewModel parent) : base(parent)
         {
             Parent = parent;
 
             Items.AddRange(
                 App.Config.Woods
-                   .Select(cuboid => new WoodItem(this, cuboid))
-                   .ConvertToModels());
+                    .Select(cuboid => new WoodItem(this, cuboid))
+                    .ConvertToModels());
 
             Items.AddRange(
                 App.Config.Pieces
@@ -40,9 +40,16 @@ namespace Furniture.ViewModels.Materials
         }
 
         public new TableViewModel Parent { get; set; }
-        ~ItemViewModel() => Dispose(false);
 
-        void IDisposable.Dispose() => Dispose(true);
+        ~ItemViewModel()
+        {
+            Dispose(false);
+        }
+
+        void IDisposable.Dispose()
+        {
+            Dispose(true);
+        }
 
         private void OnWoodCreated(TableViewModel sender, Wood e)
         {
@@ -64,6 +71,7 @@ namespace Furniture.ViewModels.Materials
                 Dispose(true);
                 return;
             }
+
             base.OnPropertyChanged(propertyName);
         }
 

@@ -1,5 +1,4 @@
-﻿using Furniture.ViewModels.Materials;
-using Furniture.ViewModels.Materials.Items;
+﻿using Furniture.ViewModels.Materials.Items;
 
 namespace Furniture.ViewModels.Quotation
 {

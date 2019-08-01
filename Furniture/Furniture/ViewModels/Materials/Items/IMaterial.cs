@@ -3,6 +3,7 @@
     public interface IMaterial
     {
         string Name { get; }
+
         decimal Value { get; }
     }
 }

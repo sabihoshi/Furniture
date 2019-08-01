@@ -12,6 +12,7 @@ namespace Furniture.ViewModels.Materials
         }
 
         public TableViewModel Parent { get; }
+
         public Wood Wood { get; } = new Wood("New wood", 100);
 
         public void Okay()

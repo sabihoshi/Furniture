@@ -9,7 +9,9 @@ namespace Furniture.ViewModels.Materials.Models
             Name = name;
             Value = value;
         }
+
         public string Name { get; set; }
+
         public decimal Value { get; set; }
     }
 }
