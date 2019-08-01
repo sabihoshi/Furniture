@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Caliburn.Micro;
+using Furniture.ViewModels.Materials.Models;
 
 namespace Furniture.ViewModels.Materials
 {
@@ -11,6 +12,7 @@ namespace Furniture.ViewModels.Materials
         }
 
         public TableViewModel Parent { get; }
+
         public Wood Wood { get; } = new Wood("New wood", 100);
 
         public void Okay()

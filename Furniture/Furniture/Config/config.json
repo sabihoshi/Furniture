@@ -1,7 +1,17 @@
 {
-  "Widths": [ 2, 3, 4, 5, 6, 7, 8 ],
-  "Lengths": [ 4, 5, 6, 7, 8, 9, 10 ],
-  "Values": [
+  "Cuboids": [
+    {
+      "Type": 1,
+      "Widths": [2, 3, 4, 5, 6, 7, 8],
+      "Lengths": [4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "Type": 7,
+      "Widths": [1, 2, 3, 4],
+      "Lengths": [1, 2, 3, 4, 5, 6, 7, 8]
+    }
+  ],
+  "WoodValues": [
     500,
     800,
     1000,
@@ -22,30 +32,56 @@
     4800,
     5000
   ],
-  "Plywood": {
-    "Thicknesses": [
-      {
-        "Name": "1/4",
-        "Value": 450.00
-      },
-      {
-        "Name": "1/2",
-        "Value": 770.00
-      },
-      {
-        "Name": "3/4",
-        "Value": 1270.00
-      }
-    ]
-  },
+  "PieceValues": [100, 150, 200, 250, 300, 350, 400, 450, 500],
+  "Plywood": [
+    {
+      "Name": "1/4",
+      "Value": 450
+    },
+    {
+      "Name": "1/2",
+      "Value": 770
+    },
+    {
+      "Name": "3/4",
+      "Value": 1270
+    }
+  ],
   "Woods": [
     {
       "Name": "Mahogany",
-      "Price": 90.00
+      "Value": 90
     },
     {
       "Name": "Tanguile",
-      "Price": 100.00
+      "Value": 100
+    }
+  ],
+  "Pieces": [
+    {
+      "Name": "Frame",
+      "Type": 2,
+      "Value": 2800
+    },
+    {
+      "Name": "Concealed",
+      "Type": 3,
+      "Value": 250
+    },
+    {
+      "Name": "Handles",
+      "Type": 4,
+      "Value": 150
+    },
+    {
+      "Name": "Glass",
+      "Type": 5,
+      "Value": 2500
+    },
+    {
+      "Name": "Drawer Guides",
+      "Type": 6,
+      "Value": 150
     }
   ],
   "Work": [
@@ -80,6 +116,26 @@
       "Name": "Handles"
     },
     {
+      "$type": "Furniture.ViewModels.Quotation.Source, Furniture",
+      "Type": 5,
+      "Name": "Glass"
+    },
+    {
+      "$type": "Furniture.ViewModels.Quotation.Source, Furniture",
+      "Type": 6,
+      "Name": "Drawer Guides"
+    },
+    {
+      "$type": "Furniture.ViewModels.Quotation.Source, Furniture",
+      "Type": 7,
+      "Name": "Foam"
+    },
+    {
+      "$type": "Furniture.ViewModels.Quotation.Source, Furniture",
+      "Type": 8,
+      "Name": "Fabric"
+    },
+    {
       "$type": "Furniture.ViewModels.Quotation.Percentage, Furniture",
       "Name": "Overhead",
       "Value": 0.35
@@ -93,11 +149,6 @@
       "$type": "Furniture.ViewModels.Quotation.Percentage, Furniture",
       "Name": "Store",
       "Value": 0.15
-    },
-    {
-      "$type": "Furniture.ViewModels.Quotation.Source, Furniture",
-      "Type": 5,
-      "Name": "Glass"
     }
   ]
 }

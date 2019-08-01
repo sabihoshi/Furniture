@@ -9,19 +9,28 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ComboBox Grid.Row="0"
-                  ItemsSource="{Binding Path=Values, Mode=TwoWay}"
-                  SelectedItem="{Binding Path=SelectedValue, Mode=TwoWay}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Path=Name, Mode=OneWay}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
 
-        <TextBox Grid.Row="1" Visibility="{Binding Path=IsEditable,
-                 Converter={StaticResource BooleanToVisibilityConverter}}"
-                 Text="{Binding Path=Text, Mode=TwoWay,
-                                UpdateSourceTrigger=PropertyChanged}"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <ComboBox ItemsSource="{Binding Path=Values, Mode=TwoWay}"
+                      SelectedItem="{Binding Path=SelectedValue, Mode=TwoWay}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Name, Mode=OneWay}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Margin="5,0" VerticalAlignment="Bottom"
+                       Text="{Binding Path=Label, Mode=OneWay}"
+                       Visibility="{Binding Path=IsEditable,
+                                    Converter={StaticResource InverseBoolToVisConverter}}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal"
+                    Visibility="{Binding Path=IsEditable,
+                    Converter={StaticResource BooleanToVisibilityConverter}}">
+            <TextBox Text="{Binding Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Margin="5,0" VerticalAlignment="Bottom"
+                       Text="{Binding Path=Label, Mode=OneWay}" />
+        </StackPanel>
     </Grid>
 </UserControl>

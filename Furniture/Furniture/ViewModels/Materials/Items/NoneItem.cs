@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace Furniture.ViewModels.Materials
+namespace Furniture.ViewModels.Materials.Items
 {
-    public class NoneViewModel : MaterialBase
+    public class NoneItem : MaterialBase
     {
-        public NoneViewModel(ItemViewModel source) : base(source) { }
+        public NoneItem(ItemViewModel source) : base(source) { }
+
         public override string Name { get; } = "None";
 
         public override Material Type => Material.None;

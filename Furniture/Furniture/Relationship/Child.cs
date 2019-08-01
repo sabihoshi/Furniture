@@ -22,7 +22,7 @@ namespace Furniture.Relationship
 
         public virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if(propertyName != null)
+            if (propertyName != null)
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             Parent?.OnPropertyChanged(null);
         }

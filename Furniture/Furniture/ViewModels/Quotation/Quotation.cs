@@ -17,6 +17,7 @@ namespace Furniture.ViewModels.Quotation
         public virtual string Name { get; }
 
         [JsonIgnore] public decimal? Total { get; set; }
+
         public decimal? Value { get; set; }
 
         [JsonIgnore] protected new QuotationViewModel Parent { get; set; }

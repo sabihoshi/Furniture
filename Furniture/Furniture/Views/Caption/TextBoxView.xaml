@@ -6,7 +6,13 @@
              xmlns:local="clr-namespace:Furniture.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
-    <TextBox MinWidth="10"
-             Text="{Binding Path=Text, Mode=TwoWay,
+
+
+    <StackPanel Orientation="Horizontal">
+        <TextBox MinWidth="10"
+                 Text="{Binding Path=Text, Mode=TwoWay,
                             UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock Margin="5,0" VerticalAlignment="Bottom"
+                   Text="{Binding Path=Label, Mode=OneWay}" />
+    </StackPanel>
 </UserControl>

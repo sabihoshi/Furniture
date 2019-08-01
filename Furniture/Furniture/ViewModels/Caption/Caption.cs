@@ -5,13 +5,8 @@ namespace Furniture.ViewModels.Caption
 {
     public class Caption<T> : Child, IHasValue, IParent where T : struct
     {
-        public enum Type
-        {
-            ComboBox, TextBox
-        }
-
         public Caption(IParent parent = null, [CallerMemberName] string caption = null,
-                                InputBox<T> input = null)
+            InputBox<T> input = null)
         {
             Parent = parent;
             Name = caption;
@@ -19,8 +14,11 @@ namespace Furniture.ViewModels.Caption
         }
 
         public string Name { get; set; }
+
         public bool HasValue => Input.HasValue;
+
         public InputBox<T> Input { get; set; }
+
         public T? Value => Input.Value;
     }
 }

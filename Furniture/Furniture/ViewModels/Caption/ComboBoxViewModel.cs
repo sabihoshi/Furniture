@@ -11,13 +11,14 @@ namespace Furniture.ViewModels.Caption
         private readonly WindowManager _windowManager = new WindowManager();
         private ComboBoxItem<T> _selectedValue;
 
-        public ComboBoxViewModel(IParent parent, List<ComboBoxItem<T>> values, string caption, TryParse tryParse) :
-            base(parent, caption, tryParse)
+        public ComboBoxViewModel(IParent parent, List<ComboBoxItem<T>> values, string caption, string label,
+            TryParse tryParse, ComboBoxItem<T> value = null) :
+            base(parent, caption, label, tryParse)
         {
             _tryParse = tryParse;
             Values = new BindableCollection<ComboBoxItem<T>>(values);
 
-            SelectedValue = Values?.First();
+            SelectedValue = value ?? Values?.FirstOrDefault();
 
             if (tryParse != null)
             {
@@ -27,6 +28,7 @@ namespace Furniture.ViewModels.Caption
         }
 
         public bool IsEditable => SelectedValue == Other;
+
         public ComboBoxItem<T> Other { get; }
 
         public ComboBoxItem<T> SelectedValue
@@ -35,7 +37,7 @@ namespace Furniture.ViewModels.Caption
             set
             {
                 if (value == Other)
-                    Text = _selectedValue.Name; 
+                    Text = _selectedValue.Name;
 
                 _selectedValue = value;
             }

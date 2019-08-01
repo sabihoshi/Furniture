@@ -10,6 +10,7 @@ namespace Furniture
     public partial class App : Application
     {
         private const string ConfigLocation = @"Config/config.json";
+
         public App()
         {
             var settings = new JsonSerializerSettings

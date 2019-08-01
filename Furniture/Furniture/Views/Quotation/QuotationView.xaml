@@ -30,22 +30,22 @@
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow" BasedOn="{StaticResource MaterialDesignDataGridRow}">
                     <Setter Property="cal:Message.Attach"
-                                Value="[Event MouseDoubleClick] = [Action Click($source, eventArgs)]" />
+                            Value="[Event MouseDoubleClick] = [Action Click($source, eventArgs)]" />
                     <Setter Property="IsHitTestVisible"
-                                Value="{Binding Path=HasValue}" />
+                            Value="{Binding Path=HasValue}" />
                 </Style>
             </DataGrid.RowStyle>
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Type" IsReadOnly="True"
-                                        Binding="{Binding Path=Name}" />
+                                    Binding="{Binding Path=Name}" />
 
                 <DataGridTextColumn Header="Value"
-                                        Binding="{Binding Path=Value,
+                                    Binding="{Binding Path=Value,
                                                           Converter={StaticResource DecimalPercentageConverter}}" />
 
                 <DataGridTextColumn Header="Amount" IsReadOnly="True"
-                                        Binding="{Binding Path=Total,
+                                    Binding="{Binding Path=Total,
                                                           ConverterCulture=en-PH,
                                                           StringFormat='c2'}" />
             </DataGrid.Columns>
