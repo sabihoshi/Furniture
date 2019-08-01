@@ -38,7 +38,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-
+    
             <DockPanel Grid.Row="0" Grid.Column="0">
                 <Menu DockPanel.Dock="Top"
                       Background="{StaticResource MaterialDesignCardBackground}">
@@ -111,17 +111,22 @@
                     cal:View.Model="{Binding Path=QuotationViewModel, Mode=TwoWay}" />
             </materialDesign:Card>
 
-            <Image Grid.Row="2"
-                   RenderOptions.BitmapScalingMode="HighQuality"
-                   Source="pack://application:,,,/Resources/furniture.png" />
-
             <GridSplitter Grid.Row="1"
                           Background="{StaticResource SecondaryAccentForegroundBrush}"
-
                           ResizeDirection="Rows"
                           Height="3"
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Bottom" />
+
+            <Image Grid.Row="2"
+                   RenderOptions.BitmapScalingMode="HighQuality"
+                   Source="{Binding Path=Image, Mode=TwoWay}"
+                   AllowDrop="True"
+                   cal:Message.Attach="[Event MouseDown] = [Action Test];   
+                                       [Event Drop] = [Action ChangeImage($eventArgs)];
+                                       [Event PreviewDragOver] = [Action FilePreviewDragEnter($eventArgs)]" />
+
+            
 
 
         </Grid>
