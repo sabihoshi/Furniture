@@ -141,8 +141,8 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\Materials\Models\Wood.cs" />
     <Compile Include="ViewModels\Quotation\DecimalPercentageConverter.cs" />
+    <Compile Include="ViewModels\Quotation\Percentage.cs" />
     <Compile Include="ViewModels\Quotation\Quotation.cs" />
-    <Compile Include="ViewModels\Quotation\ICalculate.cs" />
     <Compile Include="ViewModels\Quotation\Source.cs" />
     <Compile Include="Relationship\Parent.cs" />
     <Compile Include="ViewModels\Caption\ComboBoxViewModel.cs" />
@@ -151,7 +151,6 @@
     <Compile Include="ViewModels\Caption\TextBoxViewModel.cs" />
     <Compile Include="ViewModels\Caption\Caption.cs" />
     <Compile Include="ViewModels\Materials\Items\MaterialBase.cs" />
-    <Compile Include="ViewModels\Quotation\QuotationEditViewModel.cs" />
     <Compile Include="ViewModels\Quotation\QuotationViewModel.cs" />
     <Compile Include="ViewModels\Quotation\VatAble.cs" />
     <Compile Include="ViewModels\Quotation\Vat.cs" />
@@ -219,7 +218,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="ViewModels\Quotation\Percentage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

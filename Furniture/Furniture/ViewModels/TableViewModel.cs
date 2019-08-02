@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using Caliburn.Micro;
@@ -19,27 +19,9 @@ namespace Furniture.ViewModels
 {
     public class TableViewModel : Parent
     {
+        public delegate void WoodCreatedDelegate(TableViewModel sender, Wood e);
+
         private readonly WindowManager _windowManager = new WindowManager();
-
-        public BitmapImage Image { get; set; } = BitmapToImageSource(Properties.Resources.furniture);
-
-        public static BitmapImage BitmapToImageSource(Bitmap bitmap)
-        {
-            using (MemoryStream memory = new MemoryStream())
-            {
-                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
-                memory.Position = 0;
-                BitmapImage bitmapimage = new BitmapImage();
-                bitmapimage.BeginInit();
-                bitmapimage.StreamSource = memory;
-                bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapimage.EndInit();
-
-                return bitmapimage;
-            }
-        }
-
-        public event WoodCreatedDelegate WoodCreated;
 
         public TableViewModel()
         {
@@ -47,11 +29,30 @@ namespace Furniture.ViewModels
             AddItem();
         }
 
-        public delegate void WoodCreatedDelegate(TableViewModel sender, Wood e);
+        public BitmapImage Image { get; set; } = BitmapToImageSource(Resources.furniture);
 
         public BindableCollection<ItemViewModel> OrdersView { get; set; } = new BindableCollection<ItemViewModel>();
 
         public QuotationViewModel QuotationViewModel { get; set; }
+
+        public static BitmapImage BitmapToImageSource(Bitmap bitmap)
+        {
+            using (var memory = new MemoryStream())
+            {
+                bitmap.Save(memory, ImageFormat.Bmp);
+                memory.Position = 0;
+
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memory;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+
+                return bitmapImage;
+            }
+        }
+
+        public event WoodCreatedDelegate WoodCreated;
 
         [UsedImplicitly]
         public void AddItem()
@@ -104,10 +105,7 @@ namespace Furniture.ViewModels
         public void ChangeImage(DragEventArgs e)
         {
             var fileList = (string[]) e.Data.GetData(DataFormats.FileDrop, false);
-            if (fileList?.FirstOrDefault() != null)
-            {
-                Image = new BitmapImage(new Uri(fileList.First()));
-            }
+            if (fileList?.FirstOrDefault() != null) Image = new BitmapImage(new Uri(fileList.First()));
         }
 
         [UsedImplicitly]
@@ -116,13 +114,16 @@ namespace Furniture.ViewModels
             var dropEnabled = true;
             if (e.Data.GetDataPresent(DataFormats.FileDrop, true))
             {
-                if (e.Data.GetData(DataFormats.FileDrop, true) is string[] filenames)
+                if (e.Data.GetData(DataFormats.FileDrop, true) is string[] fileNames)
                 {
-                    var ext = Path.GetExtension(filenames[0])?.ToUpperInvariant();
+                    var ext = Path.GetExtension(fileNames.FirstOrDefault())?.ToUpperInvariant();
                     if (ext != ".PNG" && ext != ".JPG" && ext != ".JPEG") dropEnabled = false;
                 }
             }
-            else { dropEnabled = false; }
+            else
+            {
+                dropEnabled = false;
+            }
 
             if (!dropEnabled)
             {

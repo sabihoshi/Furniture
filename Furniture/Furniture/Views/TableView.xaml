@@ -3,10 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Furniture.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:cal="http://www.caliburnproject.org"
-        xmlns:materials="clr-namespace:Furniture.ViewModels.Materials"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -38,7 +36,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-    
+
             <DockPanel Grid.Row="0" Grid.Column="0">
                 <Menu DockPanel.Dock="Top"
                       Background="{StaticResource MaterialDesignCardBackground}">
@@ -122,13 +120,8 @@
                    RenderOptions.BitmapScalingMode="HighQuality"
                    Source="{Binding Path=Image, Mode=TwoWay}"
                    AllowDrop="True"
-                   cal:Message.Attach="[Event MouseDown] = [Action Test];   
-                                       [Event Drop] = [Action ChangeImage($eventArgs)];
+                   cal:Message.Attach="[Event Drop] = [Action ChangeImage($eventArgs)];
                                        [Event PreviewDragOver] = [Action FilePreviewDragEnter($eventArgs)]" />
-
-            
-
-
         </Grid>
     </Grid>
 </Window>

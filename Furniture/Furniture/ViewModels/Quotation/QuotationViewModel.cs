@@ -43,15 +43,6 @@ namespace Furniture.ViewModels.Quotation
             Total.Total = Total.GetTotal();
         }
 
-        public void Click(object sender, MouseButtonEventArgs e)
-        {
-            var row = sender as DataGridRow;
-            if (row?.DataContext is Quotation quotationRow)
-            {
-                // quotationRow.EditValues();
-            }
-        }
-
         public decimal? GetTotal(MaterialBase.Material material)
         {
             return Parent.GetTotal(material);
