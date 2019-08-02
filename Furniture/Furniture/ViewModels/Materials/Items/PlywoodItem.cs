@@ -31,7 +31,7 @@ namespace Furniture.ViewModels.Materials.Items
 
         public override decimal GetTotal()
         {
-            return (decimal) (Thickness.Value * Quantity.Value);
+            return (Thickness.Value ?? 0) * (Quantity.Value ?? 0);
         }
     }
 }

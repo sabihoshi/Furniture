@@ -35,7 +35,7 @@ namespace Furniture.ViewModels.Materials.Items
 
         public override decimal GetTotal()
         {
-            return (decimal) (Amount.Value * Quantity.Value);
+            return (Amount.Value ?? 0) * (Quantity.Value ?? 0);
         }
     }
 }

@@ -46,8 +46,7 @@ namespace Furniture.ViewModels.Materials.Items
 
         public override decimal GetTotal()
         {
-            return Thickness.Value ??
-                   0 * Width.Value ?? 0 * Length.Value ?? 0 / 12m * Quantity.Value ?? 0 + Labor.Value ?? 0;
+            return (Thickness.Value ?? 0) * (Width.Value ?? 0) * (Length.Value ?? 0) / 12m * (Quantity.Value ?? 0) * (Amount.Value ?? 0) + (Labor.Value ?? 0);
         }
     }
 }
